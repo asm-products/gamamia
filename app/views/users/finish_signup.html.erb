@@ -1,0 +1,34 @@
+<div id="add-email" class="container">
+  <h1>Add Email</h1>
+  <%= current_user.email %>
+  <%= form_for(current_user, :as => 'user', :url => finish_signup_path(current_user), :html => { role: 'form'}) do |f| %>
+    <% if @show_errors && current_user.errors.any? %>
+      <div id="error_explanation">
+        <% current_user.errors.full_messages.each do |msg| %>
+          <%= msg %><br>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="form-group">
+      <%= f.label :email %>
+      <div class="controls">
+        <% if current_user.email %>
+          <%= f.text_field :email, :autofocus => true, :value => current_user.email, class: '' %>
+        <% else %>
+          <%= f.text_field :email, :autofocus => true, :value => '', class: '', placeholder: 'Example: email@me.com' %>
+        <% end %>
+
+        <p class="help-block">Please confirm your email address. No spam.</p>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :occupation %>
+        <div class="controls">
+          <%= f.text_field :occupation, :value => '', class: '', placeholder: 'Occupation' %>
+        </div>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Continue', :class => 'btn btn-primary' %>
+    </div>
+  <% end %>
+</div>
