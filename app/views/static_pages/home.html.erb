@@ -1,0 +1,6 @@
+<h1>Gamamia</h1>
+<p>Welcome to the future home of Gamamia</p>
+
+<% if user_signed_in? %>
+	<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<% end %>
