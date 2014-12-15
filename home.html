@@ -3,35 +3,273 @@
 <html lang = "en">
 
 <head>
-	<meta charset = "utf-8" />
-	<meta name = "viewport" content = "width = device-width, initial scale = 1.0">
+    <meta charset = "utf-8" />
+    <meta name = "viewport" content = "width = device-width, initial scale = 1.0">
 
 
-	 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
 
    
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 
+  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
     <script src = "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"> </script>
 
 
 
-	<style>
+    <style>
+
+    * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+        }       
+
+/*
+ * -- BASE STYLES --
+ * Most of these are inherited from Base, but I want to change a few.
+ */
+
+
+body {
+    
+ 
+    font-family: 'Open Sans', sans-serif;
+     color: #666666;
+    
+}
+
+h1,h2,h3,h4,h5,h6,label {
+   /* color: #22313F; */
+    color: #666666;
+    
+}
+
+h3{
+    font-weight: bold;
+}
+.l-box {
+    padding: 4em;
+}
+
+.l-box-lrg {
+    padding: 2em;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+}
+
+.top-margin{
+    margin-top: 1em;
+
+}
+.is-center {
+    text-align: center;
+}
+
+
+html, body {
+    height:100%;
+} 
+
+.text-white{
+    color:white;
+}
+
+
+
+
+
+/*
+ * -- SPLASH STYLES --
+ * This is the blue top section that appears on the page.
+
+ blue - 005580
+ grey - f7f7f9
+ green - 66cc99
+ dark grey - 292929c
+
+ */
+
+.splash-container {
+     
+
+    background-color: white;
+    /* The following styles are required for the "scroll-over" effect */
+    width: 100%;
+    height: 90%;
+
+
+
+
+}
+
+.splash {
+    /* absolute center .splash within .splash-container */
+  
+    
+    padding-top: 5%;
+    margin:0 auto;
+    margin-left: 2em;
+    margin-right: 2em;
+    
+    text-align: center;
+
+    background-color: #ffffff;
+    height: 100%;
+
+
+
+  
+}
+
+/* This is the main heading that appears on the blue section */
+.splash-head {
+    font-size: 2.0em;
+    font-weight: 600;
+    color: #666666;
+
+    
+    
+
+   
+}
+
+/* This is the subheading that appears on the blue section */
+.splash-subhead {
+    margin-top: 1em;
+    font-size: 1em;
+    color: #666666;
+    font-weight: 400;
+
+  
+}
+
+
+/*
+ * -- CONTENT STYLES --
+ * This represents the content area (everything below the blue section)
+ */
+.content-wrapper {
+    /* These styles are required for the "scroll-over" effect */
+
+    
+    background-color: white;
+    margin: 0 auto;
+    width: 100%;
+    height: 100%;
+
+    
+
+}
+
+/* This is the class used for the main content headers (<h2>) */
+.content-head {
+
+    margin: 1em 0 1em;
+    padding: 0;
+    color: white;
+    font-size: 3em;
+    font-weight: 400;
+}
+
+
+
+.pure-button{
+    padding: 1em;
+    padding-top: 0.6em;
+    padding-bottom:0.6em;
+  
+    border-radius: 0.15em;
+
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+
+
+    background-color: #FA5B5B;
+    background-image: none;
+    box-shadow: none;
+
+    color: white;
+
+    -webkit-transition: background-color linear 0.2s; 
+     transition: background-color linear 0.2s;
+}
+
+.pure-button:hover{
+    color: white;
+    background-color: #C24F55;
+    background-image: none;
+    box-shadow: none;
+
+}
+
+
+input, .form-control{
+
+
+     background-image: none;
+     box-shadow: none;
+     border: none;
+     text-align: center;
+     padding: 2em;
+     border-radius: 0;
+
+      margin: 0;
+
+
+}
+
+
+.content-wrapper{
+
+}
+
+.content-wrapper {
+    /* These styles are required for the "scroll-over" effect */
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    margin: 0 auto;
+
+    color: #666666;
+
+}
+
+/* This is the class used for the main content headers (<h2>) */
+.content-head {
+    letter-spacing: 0.05em;
+    margin: 1em 0 1em;
+    padding: 0;
+}
+
+
+.guide-container{
+    text-align: center;
+
+}
 
 @media (min-width: 48em) {
+
+      .pure-menu {
+        text-align: left;
+
+    }
+        .pure-menu ul {
+            float: right;
+        }
 
 }
 
 @media (min-width: 78em) {
-
+  
 }
 
 
 
-		
-	</style>
+        
+    </style>
 
 </head>
 
@@ -39,7 +277,86 @@
 <body>
 
 
-<h1> TEST </h1>
+
+
+<div class="splash-container">
+   
+    <div class="splash">
+
+         <img src="http://i58.tinypic.com/3009umh.png" height="250px"width=auto>
+    
+        <div class="splash-head"> 
+
+        GAMAMIA!
+
+        </div>
+
+        <p class="splash-subhead">
+         A weekly list of fantastic games from new developers and indie favorites.
+        </p>
+       
+
+       <button class = "pure-button top-margin"> Sign Up </button>
+        <button class = "pure-button top-margin"> Submit </button>
+   
+
+    </div>
+
+
+</div>
+
+<div class = "guide-container">
+
+ <p> How it works </br> &#11015;</p>
+
+</div>
+
+
+<div class="content-wrapper">
+
+    <div class="content is-center">
+
+         <div class="information pure-g">
+
+             <div class="pure-u-1 pure-u-md-1-3">
+
+                 <div class = "l-box">
+
+                     <img src="http://i58.tinypic.com/3009umh.png" height="250px"width=auto>
+                     <p>
+                       First we look through every nook and cranny of the game development world to find the best new games and then we play them (Our favorite part).
+                     </p>
+                 </div>
+             </div>
+
+             <div class="pure-u-1 pure-u-md-1-3">
+                 <div class = "l-box">
+
+                     <img src="http://i58.tinypic.com/3009umh.png" height="250px"width=auto>
+                    <p>
+                        We then meet in a secret cave and decide on the ones we think you would love.
+                    </p>
+                    
+                    
+                 </div>
+             </div>
+
+             <div class="pure-u-1 pure-u-md-1-3">
+                 <div class = "l-box"> 
+
+                     <img src="http://i58.tinypic.com/3009umh.png" height="250px"width=auto>
+                    <p>
+                       Finally, we put the very best together and send them right to your email in time to play them all weekend (Your favorite part).
+                     </p>
+                 </div>
+             </div>
+          
+
+     </div> <!-- end information -->
+    </div> <!-- end l-content -->
+
+    
+</div>
 
 
 </body>
