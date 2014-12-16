@@ -1,6 +1,5 @@
 <div id="add-email" class="container">
   <h1>Add Email</h1>
-  <%= current_user.email %>
   <%= form_for(current_user, :as => 'user', :url => finish_signup_path(current_user), :html => { role: 'form'}) do |f| %>
     <% if @show_errors && current_user.errors.any? %>
       <div id="error_explanation">
@@ -24,11 +23,13 @@
       <div class="form-group">
         <%= f.label :occupation %>
         <div class="controls">
-          <%= f.text_field :occupation, :value => '', class: '', placeholder: 'Occupation' %>
+          <%= f.text_field :occupation, :value => current_user.occupation, class: '', placeholder: 'Occupation' %>
         </div>
     </div>
     <div class="actions">
       <%= f.submit 'Continue', :class => 'btn btn-primary' %>
     </div>
   <% end %>
+  <!-- Added for pure building convenience, probably shouldn't be here -->
+  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 </div>
