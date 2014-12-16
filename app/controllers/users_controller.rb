@@ -27,11 +27,23 @@ class UsersController < ApplicationController
 
   # GET/PATCH /users/:id/finish_signup
   def finish_signup
+
     #authorize! :update, @user
-    if request.patch? && params[:user] #&& params[:user][:email]
+    if request.patch? && params[:user]
       if @user.update(user_params)
         sign_in(@user == current_user ? @user : current_user, :bypass => true)
+        flash[:notice] = ""
+        redirect_to root_url
       else
+        # If user already exist with that e-mail tell the user that
+        # TODO Improve this flow. What should actually happen when the following happens:
+        # 1. The user signs-up with Twitter, goes about his business and signs-out
+        # 2. Later returns to our site but this time clicks sign-in with Facebook. He will then not be recognized
+        #    hence flashed the usual sign-up procedure.
+        # 3. If he then enters the e-mail he used to sign-up with in step 1, what should actually happen?
+        if User.find_by_email(user_params[:email])
+          flash[:notice] = "A user already exist with that e-mail."
+        end
         @show_errors = true
       end
     end
@@ -46,15 +58,14 @@ class UsersController < ApplicationController
       format.json { head :no_content }
     end
   end
-  
+
   private
     def set_user
       @user = User.find(params[:id])
     end
 
+    # This checks which parameters are permitted for change. Remember to update it if new parameters are introduced
     def user_params
-      accessible = [ :name, :email ] # extend with your own params
-      accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
-      params.require(:user).permit(accessible)
+      params.require(:user).permit(:name,:email,:password,:password_confirmation,:occupation)
     end
 end
