@@ -64,6 +64,7 @@ class UsersController < ApplicationController
       @user = User.find(params[:id])
     end
 
+    # This checks which parameters are permitted for change. Remember to update it if new parameters are introduced
     def user_params
       params.require(:user).permit(:name,:email,:password,:password_confirmation,:occupation)
     end
