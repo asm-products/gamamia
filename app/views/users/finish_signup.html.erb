@@ -1,7 +1,5 @@
 <div id="add-email" class="container">
   <h1>Add Email</h1>
-  <%= current_user.email %>
-  <%= current_user.occupation %>
   <%= form_for(current_user, :as => 'user', :url => finish_signup_path(current_user), :html => { role: 'form'}) do |f| %>
     <% if @show_errors && current_user.errors.any? %>
       <div id="error_explanation">
@@ -32,4 +30,6 @@
       <%= f.submit 'Continue', :class => 'btn btn-primary' %>
     </div>
   <% end %>
+  <!-- Added for pure building convenience, probably shouldn't be here -->
+  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
 </div>
