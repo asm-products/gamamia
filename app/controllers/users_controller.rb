@@ -30,6 +30,8 @@ class UsersController < ApplicationController
     #authorize! :update, @user
     if request.patch? && params[:user] #&& params[:user][:email]
       if @user.update(user_params)
+        puts "USER"
+        puts current_user
         sign_in(@user == current_user ? @user : current_user, :bypass => true)
       else
         @show_errors = true
