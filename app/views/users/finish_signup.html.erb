@@ -1,7 +1,7 @@
 <div id="add-email" class="container">
   <h1>Add Email</h1>
   <%= current_user.email %>
-  <%= form_for(@user, :as => 'user', :url => finish_signup_path(@user), :html => { role: 'form'}) do |f| %>
+  <%= form_for(current_user, :as => 'user', :url => finish_signup_path(current_user), :html => { role: 'form'}) do |f| %>
     <% if @show_errors && current_user.errors.any? %>
       <div id="error_explanation">
         <% current_user.errors.full_messages.each do |msg| %>
