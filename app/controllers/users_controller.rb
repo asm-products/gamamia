@@ -32,6 +32,7 @@ class UsersController < ApplicationController
     if request.patch? && params[:user]
       if @user.update(user_params)
         sign_in(@user == current_user ? @user : current_user, :bypass => true)
+        flash[:notice] = ""
         redirect_to root_url
       else
         # If user already exist with that e-mail tell the user that
