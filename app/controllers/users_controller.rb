@@ -29,13 +29,22 @@ class UsersController < ApplicationController
   def finish_signup
 
     #authorize! :update, @user
-      if request.patch? && params[:user] #&& params[:user][:email]
-        if @user.update(user_params)
-          sign_in(@user == current_user ? @user : current_user, :bypass => true)
-          redirect_to root_url
-        else
-          @show_errors = true
+    if request.patch? && params[:user]
+      if @user.update(user_params)
+        sign_in(@user == current_user ? @user : current_user, :bypass => true)
+        redirect_to root_url
+      else
+        # If user already exist with that e-mail tell the user that
+        # TODO Improve this flow. What should actually happen when the following happens:
+        # 1. The user signs-up with Twitter, goes about his business and signs-out
+        # 2. Later returns to our site but this time clicks sign-in with Facebook. He will then not be recognized
+        #    hence flashed the usual sign-up procedure.
+        # 3. If he then enters the e-mail he used to sign-up with in step 1, what should actually happen?
+        if User.find_by_email(user_params[:email])
+          flash[:notice] = "A user already exist with that e-mail."
         end
+        @show_errors = true
+      end
     end
   end
 
