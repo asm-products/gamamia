@@ -29,12 +29,13 @@ class UsersController < ApplicationController
   def finish_signup
 
     #authorize! :update, @user
-    if request.patch? && params[:user] #&& params[:user][:email]
-      if @user.update(user_params)
-        sign_in(@user == current_user ? @user : current_user, :bypass => true)
-      else
-        @show_errors = true
-      end
+      if request.patch? && params[:user] #&& params[:user][:email]
+        if @user.update(user_params)
+          sign_in(@user == current_user ? @user : current_user, :bypass => true)
+          redirect_to root_url
+        else
+          @show_errors = true
+        end
     end
   end
 
