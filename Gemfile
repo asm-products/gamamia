@@ -44,3 +44,6 @@ gem 'devise'
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
+
+# Acts as Votable
+gem 'acts_as_votable', '~> 0.10.0'
