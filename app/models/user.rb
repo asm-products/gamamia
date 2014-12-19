@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   # TODO Can a user have many identities? What if he connects both FB, TW etc profiles?
   has_many :identities, dependent: :destroy
+  has_many :comments
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
