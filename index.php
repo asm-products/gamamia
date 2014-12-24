@@ -1,6 +1,6 @@
 <html>
  <head>
-  <title>PHP Test</title>
+  <title>Gamamia</title>
  </head>
  <body>
  <?php include_once("home.html"); ?>
