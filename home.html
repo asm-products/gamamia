@@ -3,28 +3,31 @@
 <html lang = "en">
 
 <head>
-    <meta charset = "utf-8" />
-    <meta name = "viewport" content = "width = device-width, initial scale = 1.0">
+	<meta charset = "utf-8" />
+	<meta name = "viewport" content = "width = device-width, initial scale = 1.0">
 
 
-     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+	 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+
+   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
+   <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+   <script src = "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"> </script>
+
+   <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
    
-    <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
-
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
-
-  <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
-
-    <script src = "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"> </script>
-
-     <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
 
 
-    <style>
+	<style>
 
-    * {
+	* {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -35,174 +38,84 @@
  * Most of these are inherited from Base, but I want to change a few.
  */
 
+a{
+    color: #333333;
+    text-decoration: none;
+}
+
 
 body {
-    
- 
+
     font-family: 'Open Sans', sans-serif;
-     color: #666666;
+
+     -webkit-font-smoothing: antialiased;
     
+   
 }
 
 h1,h2,h3,h4,h5,h6,label {
-   /* color: #22313F; */
-    color: #666666;
     
 }
 
-h3{
+
+strong{
     font-weight: bold;
+    font-size: 0.85em;
 }
+
+/*
+ * -- LAYOUT STYLES --
+ * These are some useful classes which I will need
+ */
 .l-box {
-    padding: 4em;
+    padding: 1em;
 }
 
 .l-box-lrg {
-    padding: 2em;
-    border-bottom: 1px solid rgba(0,0,0,0.1);
+    margin-top: 3em;
+    margin-bottom: 1em;
+
+    padding: 8em;
+
+
 }
 
-.top-margin{
-    margin-top: 1em;
-
-}
 .is-center {
     text-align: center;
 }
 
-
-html, body {
-    height:100%;
-} 
-
-.text-white{
-    color:white;
+.text-dark{
+  color: #333;
 }
 
-
-
-/*
- * -- MENU STYLES --
- * I want to customize how my .pure-menu looks at the top of the page
- */
-
-.home-menu {
-    
-    padding:1em;
-    text-align: center;
-    font-size: 1.2em;
-
-
-}
-.home-menu.pure-menu-open {
-    background-color: white;
-  
-    
-    
-}
-.pure-menu.pure-menu-open.pure-menu-fixed {
-    /* Fixed menus normally have a border at the bottom. */
-    border-bottom: none;
-    /* I need a higher z-index here because of the scroll-over effect. */
-    z-index: 4;
+.text-light{
+  color: #fff;
 }
 
-.home-menu .pure-menu-heading {
-    font-weight: 300;
-    text-transform: lowercase;
-
-
+.text-right{
+  text-align: right;
 }
 
-.home-menu .pure-menu-selected a {
-    color: #FA5B5B;
-    opacity: 1;
-
+.text-left{
+  text-align: left;
 }
 
-.home-menu a {
-    color: #FA5B5B;
-    font-weight: 400;
-    font-size: 0.9em;
-    text-decoration: none;
-    text-transform: lowercase;
-
-    margin: 0;
-    font-family: 'Open Sans', sans-serif;
-}
-.home-menu li a:hover,
-.home-menu li a:focus {
-    background-color: #FA5B5B;
-    border: none;
-    color: white;
-    outline-style: none;
-
-    border: 0.15em solid;
-
-
+.button-large{
+  font-size: 125%;
 }
 
-
-/*
- * -- SPLASH STYLES --
- * This is the blue top section that appears on the page.
-
- blue - 005580
- grey - f7f7f9
- green - 66cc99
- dark grey - 292929c
-
- */
-
-.splash-container {
-     
-
-    background-color: white;
-    /* The following styles are required for the "scroll-over" effect */
-    width: 100%;
-    height: 90%;
-
+.float-bottom{
+  padding-top: 8em;
 }
 
-.splash {
-    /* absolute center .splash within .splash-container */
-  
-    margin:0 auto;
-    margin-left: 2em;
-    margin-right: 2em;
-    
-    text-align: center;
-
-    background-color: #ffffff;
-    height: 100%;
-  
+.margin-right{
+  margin-right: -3em;
 }
 
-.splash-image{
-  padding-top: 7em;
+/* Needed for Large screens */
+.regular{
+  display: none;
 }
-
-
-/* This is the main heading that appears on the blue section */
-.splash-head {
-    font-size: 1.5em;
-    font-weight: 600;
-    color: #666666;
-   
-}
-
-/* This is the subheading that appears on the blue section */
-.splash-subhead {
-    margin-top: 1em;
-    font-size: 0.8em;
-    color: #666666;
-    font-weight: 400;
-
-    letter-spacing: 0.075em;
-
-  
-}
-
 
 /* MODAL STYLINE */
 .modal.custom {
@@ -225,350 +138,441 @@ html, body {
 }
 
 
+/*Button Styling */
+.pure-button{
+  padding: 0.7em;
+  padding-left: 1.6em;
+  padding-right: 1.6em;
+  letter-spacing: 0.1em;
+  border-radius: 0.2em;
+  background-color: rgb(250,90,90);
+  font-weight: 600;
+  color: white;
+
+  -webkit-font-smoothing: antialiased;
+  -webkit-transition: background-color linear 0.2s; 
+   transition: background-color linear 0.2s;
+}
+
+.pure-button:hover{
+    color: white;
+    background-color: #37AADB;
+    background-image: none;
+    box-shadow: none;
+
+}
+
+
+/*
+ * -- SPLASH STYLES --
+ * The header, call to action & first image you see
+ */
+
+.splash-container {
+    z-index: 1;
+    overflow: hidden;
+    /* The following styles are required for the "scroll-over" effect */
+    width: 100%;
+    height:100%;
+    top: 0;
+    left: 0;
+    position: fixed !important; 
+
+
+}
+
+.splash {
+    max-width: 65em;
+    height: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5em;
+    padding-right: 5em;
+    position: absolute; 
+    top: 5em; left: 0; bottom: 0; right: 0;
+
+    color: #555;
+    font-weight: 400;
+     -webkit-font-smoothing: antialiased;
+}
+
+.splash >.title h1{
+  padding-bottom: 0.5em; 
+}
+
 
 /*
  * -- CONTENT STYLES --
- * This represents the content area (everything below the blue section)
+ * This represents the content area (everything below the splash)
  */
 .content-wrapper {
-    /* These styles are required for the "scroll-over" effect */
-    background-color: white;
-    margin: 0 auto;
-    width: 90%;
-    margin-left: 5%;
-    margin-right: 5%;
+  /* These styles are required for the "scroll-over" effect */
+  position: absolute; 
+  top: 92%;
+  width: 100%;
+  min-height: 10%;
+  z-index: 2; 
+  background: white;
+  /* Pure.css likes to override my fonts */
+  font-family: 'Open Sans', sans-serif;
+   -webkit-font-smoothing: antialiased;
+   color: #555;
+}
+
+.content-wrapper > .learn-more{
+    padding: 1em;
+
+}
+.content{
+  
+  padding-top: 5em;
+  padding: 1em;
+
+}
+.content-text p{
+
+  letter-spacing: 0.05em;
+}
+
+/* This is the class used for the footer */
+.footer {
+
+    background: rgb(250,90,90);
+    color: #333333;
+    padding-left: 0em;
+    padding-right: 0em;
+}
+
+.footer p{
+ 
+  margin-left: -2em;
+}
+.footer a{
+ 
+  letter-spacing: 0.05em;
+  padding: 1em;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer a:hover{
+
+  border-bottom:  solid white;
 
 
-    margin-top: 10em;
-    
+
+}
+
+.team-pics > .portrait{
+
+  padding: 1em;
+}
+
+.team-pics > .portrait a{
+  text-decoration: none;
+  color: #4A90E2;
+  transition: color ease 0.3s;
+
+}
+
+.team-pics > .portrait a:hover{
+
+  color: #2F3650;
+}
+/*
+ * -- TABLET (AND UP) MEDIA QUERIES --
+ */
+@media (min-width: 48em) {
+
+.mobile{
+  display: none;
+}
+
+.regular{
+  display: inline;
+}
+
+.splash{
+   top: 10em; left: 0; bottom: 0; right: 0;
+}
+.splash >.title{
+  padding-top: 7em;
+  padding-right: 5em;
+  float: left;
+  text-align: left;
+}
+
+.splash >.title h1{
+  padding-bottom: 0.5em; 
 }
 
 .content{
-
-padding: 2em;
-
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5em;
+  padding-right: 5em;
+  padding-top: 5em;
+  max-width: 70em;
 }
 
-.content p{
-  letter-spacing: 0.075em;
-}
-/* This is the class used for the main content headers (<h2>) */
-.content-head {
-
-    margin: 1em 0 1em;
-    padding: 0;
-    color: white;
-    font-size: 3em;
-    font-weight: 400;
+.footer p{
+  padding: 1em;
+  margin-left: -2em;
 }
 
-.after-content-signup{
-
-  text-align: center;
-  padding: 7em;
-}
-
-.pure-button{
-
-    width: 10em;
-
-    padding: 1em;
-    padding-top: 0.6em;
-    padding-bottom:0.6em;
-  
-    border-radius: 0.15em;
-    background-color: #FA5B5B;
-    background-image: none;
-    box-shadow: none;
-    font-size: 1em;
-
-    color: white;
-
-    -webkit-transition: background-color linear 0.2s; 
-     transition: background-color linear 0.2s;
-}
-
-.large{
-  font-size: 1.5em;
-}
-
-
-.secondary{
-
-    background-color: transparent;
-    border: 0.15em solid;
-    color: #FA5B5B;
-}
-
-.secondary:hover{
-
-    color: white;
-    border: 0.15em solid;
-    background-color: #C24F55;
-    background-image: none;
-    box-shadow: none;
-
-}
-.pure-button:hover{
-    color: white;
-    background-color: #C24F55;
-    background-image: none;
-    box-shadow: none;
-
-}
-
-
-input, .form-control{
-
-
-     background-image: none;
-     box-shadow: none;
-     border: none;
-     text-align: center;
-     padding: 2em;
-     border-radius: 0;
-
-     margin: 0;
-
-     color: #666666;
-
-}
-
-
-.logo{
-    margin: 3em;
-}
-.guide-container{
-    text-align: center;
-
-}
-
-.info{
-
-    min-width: 5em;
-}
-
-.img{
-
-   margin-bottom: 2em;
-
-}
-
-.footer-wrapper{
-    margin: 0 auto;
-}
-
-#footer{
-    background-color: #FA5B5B;
-    text-align: center;
+.footer a{
  
-    padding-top:2em;
-    padding-bottom: 2em;
+  letter-spacing: 0.05em;
 
-
-}
-
-.footer-list>li{
-
-  color:white;
-  margin-left: 0;
-  margin-right: 3em;
-  
-
-}
-
-.footer-list>a{
-  color:white !important;
+  padding: 2em;
+  color: white;
   text-decoration: none;
-  
+  font-weight: 600;
 }
-
-.modal-body>a{
-
-color: #4AC9E2;
-text-decoration: none;
-}
-
-
-li { 
-  cursor: pointer; cursor: hand;
-   }
-
-@media (min-width: 48em) {
-
-  .splash-image{
-  padding-top: 10em;
-}
- /* This is the main heading that appears on the blue section */
-.splash-head {
-
-    font-size: 2.5em;
-
-}
-
-
-/* This is the subheading that appears on the blue section */
-.splash-subhead {
-    font-size: 1em;
-  
-}
-
-      .pure-menu {
-        text-align: left;
-
-    }
-        .pure-menu ul {
-            float: right;
-        }
-
-    #footer{
-      text-align: right;
-      padding-bottom: 4em;
-
-
-    }
-
-    #footer ul{
-      float: left;
-
-    }
 
 
 }
 
 @media (min-width: 78em) {
 
+ 
 
-.splash-image{
-  padding-top: 15em;
-}
- /* This is the main heading that appears on the blue section */
-.splash-head {
-    font-size: 2.5em;
-}
-
-/* This is the subheading that appears on the blue section */
-.splash-subhead {
-    font-size: 1em;
-  
-}
-
-#footer{
-  padding-bottom: 4em;
-}
-
-  
+ 
 }
 
 
 
-        
-    </style>
+		
+	</style>
 
 </head>
 
 
 <body>
 
+<!--mobile splash-->
 
+<div class="splash-container mobile">
+    <div class="splash is-center less-top-padding">
 
- <div class="header">
-    <div class="home-menu pure-menu pure-menu-open pure-menu-horizontal pure-menu-fixed">
+       <div class = "title-image pure-u-1 is-center">
 
-        <a class="pure-menu-heading" href="">  <img src = "Gamamia_Logo_Dark.png" height="50px"> </a>
+              <img src = "Front2.png" height = "200px">
 
-        <ul>
-            <li><a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78">Subscribe</a></li>
-            <li><a href =""> Submit</a></li>
-        </ul>
-    </div>
+       </div>
+
+       <div class = "title pure-u-1">
+
+             <h1 class = "is-center"> Gamamia </h1>
+
+             <p>  A weekly list of fantastic games from new developers and indie favorites. </p>
+
+             <a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78">  
+             <button type="button" class="pure-button">Subscribe</button> </a>
+ 
+       </div>
+  </div>
 </div>
 
+<!--regular splash-->
 
-
-
-<div class="splash-container">
-   
+<div class="splash-container regular">
     <div class="splash">
 
-      <div class = "splash-image">
-       <img src = "Oval.png" class = "img" width = "150px">
-      </div>
+       <div class = "title pure-u-md-1-2">
 
+            <h1> Gamamia </h1>
 
+            <p>  A weekly list of fantastic games from new developers and indie favorites. </p>
 
-        <div class="splash-head is-center"> 
-
-         GAMAMIA 
+            <a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78">  
+             <button type="button" class="pure-button">Subscribe</button> </a>
 
         </div>
 
-        <p class="splash-subhead">
-         A weekly collection of fantastic games from new developers and indie favorites.
-        </p>
-       
-        <a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78">  <button class = "pure-button top-margin">Subscribe</button>  </a>
+         <div class = "title-image pure-u-md-1-2 text-left">
 
- 
+            <img src = "Front2.png" height = "700px">
 
-        <div> <button class = "pure-button top-margin secondary">Submit</button></div>
-       
-   
+        </div>
+  
+    </div>
+</div>
 
+
+
+<!--mobile content wrapper -->
+
+<div class="content-wrapper mobile">
+
+  <p class = "learn-more is-center"> Learn More </p>
+
+   <div class ="content pure-g">
+
+         <div class="pure-u-1 is-center">
+                 <div class="l-box">
+                     <img src = "First.png" height = "200px">
+                 </div>
+        </div>
+
+        <div class="pure-u-1 is-center">
+                 <div class="l-box content-text">
+                     <h3>The Hunt</h3>
+                     <p>
+                        First we look through every nook and cranny of the game development world to find the best new games and then we play them (Our favorite part).
+                     </p>
+                 </div>
+        </div>
+             <!--fffff-->
+
+        <div class="pure-u-1 is-center">
+                 <div class="l-box">
+                    
+                     <h5>
+                         <img src = "Second.png" height = "200px">
+                     </h5>
+                 </div>
+        </div>
+
+        <div class="pure-u-1 is-center">
+                 <div class="l-box content-text">
+                     <h3>The Debate</h3>
+                     <p>
+                       Then we meet in a secret cave and decide on the ones we think you would love.
+                     </p>
+                 </div>
+       </div>
+
+             <!--ffff-->
+
+        <div class="pure-u-1 is-center">
+                 <div class="l-box">
+                     <h5>
+                        <img src = "Last.png" height = "200px">
+                       
+                     </h5>
+                 </div>
+        </div>
+
+         <div class="pure-u-1 is-center">
+                 <div class="l-box content-text">
+                     <h3>The Weekend</h3>
+                     <p>
+                       Finally we put the very best together and send them right to your email in time for you to play them all weekend (Your favorite part).   
+                       
+                     </p>
+                 </div>
+        </div>
     </div>
 
 
+     <div class = "l-box-lrg is-center">
+              <button class = "pure-button button-large"> Sign me up! </button>
+     </div>
+
+      <div class = "footer l-box is-center">
+              <p>
+                <a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78">  Subscribe </a>
+                <a href="">Submit</a>
+                <a data-toggle="modal" data-target="#aboutModal"> About </a>  
+                <a href="mailto:support@gamamia.com"> Contact</a>
+             </p>
+          
+      </div>
+          
 </div>
-
-<div class = "guide-container">
-
- <p> How it works </br> &#11015;</p>
-
-</div>
+          
 
 
+<!-- normal content wrapper -->
+<div class="content-wrapper regular">
 
-<div class="content-wrapper">
+  <p class = "learn-more is-center"> Learn More </p>
 
-    <div class="is-center">
-
-         <div class="information pure-g">
-
-             <div class="pure-u-1 pure-u-md-1-3 content">
-
-                <img src = "Oval.png" class = "img" width = "150px">
-
-                 <p>First we look through every nook and cranny of the game development world to find the best new games and then we play them (Our favorite part). </p>
-                                        
-             </div>
-
-             <div class = "pure-u-1 pure-u-md-1-3 content">
-
-                <img src = "Oval.png" class ="img" width = "150px">
-
-               <p> We then meet in a secret cave and decidde on the ones we think you would love. </p>
-                                            
+   <div class ="content pure-g">
+            <div class="pure-u-1 pure-u-md-1-2">
+                 <div class="l-box float-bottom content-text">
+                     <h3>The Hunt</h3>
+                     <p>
+                        First we look through every nook and cranny of the game development world to find the best new games and then we play them (Our favorite part).
+                     </p>
+                 </div>
            </div>
 
-            <div class = "pure-u-1 pure-u-md-1-3 content">
+             <div class="pure-u-1 pure-u-md-1-2 is-center">
+                 <div class="l-box text-right">
+                     <img src = "First.png" height = "300px">
+                 </div>
+             </div>
 
-                <img src = "Oval.png" class ="img" width = "150px">
+             <!--fffff-->
 
-               <p> Finally we put the very best together and send them right to your email in time for you to play them all weekend (Your favorite part).  </p>
-                                           
-            </div>
+             <div class="pure-u-1 pure-u-md-1-2 is-center">
+                 <div class="l-box text-left">
+                    
+                     <h5>
+                         <img src = "Second.png" height = "300px">
+                     </h5>
+                 </div>
+             </div>
 
-     </div> <!-- end information -->
-    </div> <!-- end l-content -->
+             <div class="pure-u-1 pure-u-md-1-2">
+                 <div class="l-box float-bottom content-text">
+                     <h3>The Debate</h3>
+                     <p>
+                       Then we meet in a secret cave and decide on the ones we think you would love.
+                       
+                     </p>
+                 </div>
+             </div>
+
+             <!--ffff-->
+
+             <div class="pure-u-1 pure-u-md-1-2">
+                 <div class="l-box float-bottom content-text">
+                     <h3>The Weekend</h3>
+                     <p>
+                       Finally we put the very best together and send them right to your email in time for you to play them all weekend (Your favorite part).   
+                       
+                     </p>
+                 </div>
+             </div>
+
+             <div class="pure-u-1 pure-u-md-1-2 is-center">
+                 <div class="l-box text-right">
+                 
+                     <h5>
+                        <img src = "Last.png" height = "300px">
+                       
+                     </h5>
+                 </div>
+             </div>
+    </div>
+
+
+    <div class = "l-box-lrg is-center">
+     <a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78"> <button class = "pure-button button-large"> Sign me up! </button> </a>
+    </div>
+
+
+    <div class = "footer l-box is-center">
+        <p>
+          <a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78">  Subscribe </a>
+          
+          <a href="">Submit</a>
+    
+          <img src = "Logo.png" height = "30px"> 
+          
+          <a data-toggle="modal" data-target="#aboutModal"> About </a>
+          
+          <a href="mailto:support@gamamia.com"> Contact</a>
+       </p>
+    
+     </div>
+
 </div>
 
- <div class = "after-content-signup">
- <a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78"> 
-
-  <button class = "pure-button top-margin large">  Sign me up! </button> 
-</a>
-
-</div>
 
 
 <!-- Modal -->
@@ -577,17 +581,98 @@ li {
     <div class="modal-content">
       <div class="modal-header">
 
-        <h4 class="modal-title is-center" id="myModalLabel">The Whos and Whats</h4>
+        <h4 class="modal-title is-center" id="myModalLabel">About</h4>
 
       </div>
-      <div class="modal-body">
+      <div class="modal-body is-center">
+        <h4>Gamamia</h4>
        
-       Gamamia (Gahma-mia) is more than an awesome game newsletter, we're currently working on making Gamamia a web app that will
-       be curated by the community. It's a big project so if you have any comments or feedback that could help. Please let us know <a href = "mailto:support@gamamia.com"> here</a>. If you're inerested in joining us, check us out on <a href = "https://assembly.com/gamamia" target ="_blank"> Assembly. </a>
+      <p> Gamamia is a weekly newsletter focused on independent and non-AAA titles. 
+      </br>
+          The games that don't have million dollar marketing budgets but are more than worthy of our time.
+      </p>
 
+    </br>
+  
+
+      <h4> Future Plans </h4>
+      <p> We're working hard on making Gamamia a web app that will be curated the community. If you're interested
+        in joining us, check us out on <a href = "https://assembly.com/gamamia" target ="_blank"> Assembly. </a> 
+</br>
+</br>
+      <h4 class = "is-center"> Team </h4> 
+    </br>
+
+      <div class = "team-pics is-center">
+
+       <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
+        <p> Illustration | UI <p>
+              <div>
+                   <img src = "Maggie.png" height = "100px">
+              </div>
+            </br>
+           
+            <a href="https://twitter.com/mappletons"> @mappletons</a>
+       </div>
+
+       <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
+       <p> UX | Front-End </p>
+              <div>
+                   <img src = "Alberto.png" height = "100px">
+              </div>
+            </br>
+           
+            <a href="https://twitter.com/achangeofcoast"> @achangeofcoast</a>
+       </div>
+
+       <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
+        <p> Product </p>
+              <div>
+                   <img src = "Ben.png" height = "100px">
+              </div>
+            </br>
+           
+            <a href="https://twitter.com/bshyong"> @bshyong</a>
+       </div>
+
+       <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
+        <p> Product </p>
+              <div>
+                   <img src = "Bondi2.png" height = "100px">
+              </div>
+            </br>
+            <em> bondi</em>
+       </div>
+
+         <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
+         <p> Full Stack </p>
+              <div>
+                   <img src = "Gamamia_Dark.png" height = "100px">
+              </div>
+            </br>
+            <a href="https://twitter.com/jay_hoffmann"> @jay_hoffmann</a>
+       </div>
+
+       <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
+        <p> Full Stack <p>
+              <div>
+                   <img src = "Gamamia_Dark.png" height = "100px">
+              </div>
+            </br>
+            <a href="https://twitter.com/jay_hoffmann"> @TheReibel</a>
+       </div>
+
+       
+        
+
+   
+
+    </div>
 
      
+     
       </div>
+
       <div class="modal-footer is-center">
 
         <a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78">  
@@ -600,25 +685,10 @@ li {
 
 
 
-<div class="footer-wrapper">
-
-    <div class="pure-menu-horizontal" id = "footer">
-
-        <ul class = "footer-list">
-            
-
-            <li data-toggle="modal" data-target="#aboutModal"> About </li>
-           <a href = "mailto:support@gamamia.com"> <li>  Contact </li> </a>
-            
-        </ul>
-    </div>
-
-</div>
 
 
 
-
-
+	
 
 
 </body>
