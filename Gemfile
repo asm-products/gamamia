@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.1.8'
 group :development, :test do 
 	gem 'sqlite3'
+	gem 'faker'
 end
 
 # Heroku requisição
