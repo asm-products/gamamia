@@ -1,0 +1,16 @@
+<h1>Listing games</h1>
+ 
+  <% @games.each do |game| %>
+  <h3><a href="<%= game.link %>"><%= game.title %></a></h3>
+      <img src="<%= game.thumbnail %>">
+      <p><%= game.description %></p>
+  <div class="meta">
+    <p class="platform"><%= game.platform %></p>
+    <p class="votes"><%= game.votes %></p>
+    	<p class="comments">Comments: <%= game.comments.count %></p>
+  </div>
+  <div class="video">
+  		<p class="Videos">Videos: <%= game.videos.count %></p>
+  </div>
+  <% end %>
+</table>
