@@ -69,7 +69,7 @@ ActiveRecord::Schema.define(version: 20141219200437) do
   create_table "videos", force: true do |t|
     t.string   "title"
     t.string   "thumbnail"
-    t.string   "type"
+    t.string   "category"
     t.string   "embed"
     t.integer  "game_id"
     t.datetime "created_at"
