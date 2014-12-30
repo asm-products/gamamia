@@ -1,9 +1,9 @@
 class CreateVideos < ActiveRecord::Migration
-  def change
+  def up
     create_table :videos do |t|
       t.string :title
       t.string :thumbnail
-      t.string :type
+      t.string :category
       t.string :embed
       t.references :game, index: true
 
