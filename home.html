@@ -17,9 +17,13 @@
 
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 
+   <link rel="stylesheet/less" type="text/css" href="styles.less" />
+
    <script src = "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"> </script>
 
    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.1.0/less.min.js"></script>
 
    <script>
        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -29,6 +33,79 @@
       
        ga('create', 'UA-58072770-2', 'auto');
        ga('send', 'pageview');
+
+
+ $(document).ready(function(){
+
+       ( function($) {
+  /**
+   * Our trigger event for opening the overlay. This class
+   * should exist on the overlay trigger, as well as an
+   * attribute (data-overlay) to adentify the overlay to open.
+  */
+  $( '.overlay-trigger' ).on( 'click', function( event ) {
+    event.preventDefault();
+
+    /**
+     * Set the overlay variable based on the data provided
+     * by the overlay trigger.
+     */
+    var overlay = $( this ).data( 'overlay' );
+
+    /**
+     * If the overlay variable is not defined, give a message
+     * and return.
+    */
+    if ( ! overlay ) {
+      console.log( 'You must provide the overlay id in the trigger. (data-overlay="overlay-id").' );
+      return;
+    }
+
+    /**
+     * If we've made it this far, we should have the data
+     * needed to open a overlay. Here we set the id variable
+     * based on overlay variable.
+     */
+    var id = '#' + overlay;
+
+    /**
+     * Let's open up the overlay and prevent the body from
+     * scrolling, both by adding a simple class. The rest
+     * is handled by CSS (awesome).
+     */
+    $( id ).addClass( 'overlay-open' );
+    $( 'body' ).addClass( 'overlay-view' );
+
+    /**
+     * When the overlay outer wrapper or `overlay-close`
+     * triger is clicked, lets remove the classes from
+     * the current overlay and body. Removal of these
+     * classes restores the current state of the user
+     * experience. Again, all handled by CSS (awesome).
+     */
+    $( id ).on( 'click', function( event ) {
+      // Verify that only the outer wrapper was clicked.
+      if ( event.target.id == overlay ) {
+        $( id ).removeClass( 'overlay-open' );
+        $( 'body' ).removeClass( 'overlay-view' );
+      }
+    });
+
+    /**
+     * Closes the overlay when the esc key is pressed. See
+     * comment above on closing the overlay for more info
+     * on how this is accomplished.
+     */
+    $( document ).keyup( function( event ) {
+      // Verify that the esc key was pressed.
+      if ( event.keyCode == 27 ) {
+        $( id ).removeClass( 'overlay-open' );
+        $( 'body' ).removeClass( 'overlay-view' );
+      }
+    });
+  });
+}) (jQuery);
+});
 
    </script>
 
@@ -241,6 +318,13 @@ strong{
 .content-text p{
 
   letter-spacing: 0.05em;
+
+}
+
+.sign-me-up-button{
+  text-align: center;
+  padding-top: 6em;
+  padding-bottom: 6em;
 }
 
 /* This is the class used for the footer */
@@ -254,7 +338,8 @@ strong{
 
 .footer p{
  
-  margin-left: -2em;
+  margin-left: 0em;
+  font-size: 80%;
 }
 .footer a{
  
@@ -268,9 +353,6 @@ strong{
 .footer a:hover{
 
   border-bottom:  solid white;
-
-
-
 }
 
 .team-pics > .portrait{
@@ -289,6 +371,31 @@ strong{
 
   color: #2F3650;
 }
+
+.form-control{
+
+
+     background-image: none;
+     box-shadow: none;
+     border: none;
+     text-align: center;
+    
+     border-radius: 0.2em;
+ 
+
+
+}
+
+.about-wrapper,.submit-wrapper{
+  
+    padding: 1em;
+    padding-bottom: 3em;
+
+}
+
+
+
+
 /*
  * -- TABLET (AND UP) MEDIA QUERIES --
  */
@@ -338,6 +445,13 @@ strong{
   color: white;
   text-decoration: none;
   font-weight: 600;
+}
+
+.about-wrapper, .submit-wrapper{
+  
+    padding: 5em;
+    padding-bottom: 3em;
+
 }
 
 
@@ -476,16 +590,21 @@ strong{
     </div>
 
 
-     <div class = "l-box-lrg is-center">
+     <div class = "is-center pure-u-1 sign-me-up-button">
               <button class = "pure-button button-large"> Sign me up! </button>
      </div>
 
       <div class = "footer l-box is-center">
-              <p>
-                <a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78">  Subscribe </a>
-                <a href="">Submit</a>
-                <a data-toggle="modal" data-target="#aboutModal"> About </a>  
-                <a href="mailto:support@gamamia.com"> Contact</a>
+          <p>
+               <a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78">  Subscribe </a>
+          
+          <a class="overlay-trigger" data-overlay="overlay-submit">Submit</a>
+    
+          <img src = "Logo.png" height = "30px"> 
+          
+          <a class="overlay-trigger" data-overlay="overlay-about"> About </a>
+          
+          <a href="mailto:support@gamamia.com"> Contact</a>
              </p>
           
       </div>
@@ -569,11 +688,11 @@ strong{
         <p>
           <a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78">  Subscribe </a>
           
-          <a href="">Submit</a>
+          <a class="overlay-trigger" data-overlay="overlay-submit">Submit</a>
     
           <img src = "Logo.png" height = "30px"> 
           
-          <a data-toggle="modal" data-target="#aboutModal"> About </a>
+          <a class="overlay-trigger" data-overlay="overlay-about"> About </a>
           
           <a href="mailto:support@gamamia.com"> Contact</a>
        </p>
@@ -581,119 +700,133 @@ strong{
      </div>
 
 </div>
-
-
-
-<!-- Modal -->
-<div class="modal custom fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-
-        <h4 class="modal-title is-center" id="myModalLabel">About</h4>
-
-      </div>
-      <div class="modal-body is-center">
-        <h4>Gamamia</h4>
-       
-      <p> Gamamia is a weekly newsletter focused on independent and non-AAA titles. 
-      </br>
-          The games that don't have million dollar marketing budgets but are more than worthy of our time.
-      </p>
-
-    </br>
-  
-
-      <h4> Future Plans </h4>
-      <p> We're working hard on making Gamamia a web app that will be curated the community. If you're interested
-        in joining us, check us out on <a href = "https://assembly.com/gamamia" target ="_blank"> Assembly. </a> 
-</br>
-</br>
-      <h4 class = "is-center"> Team </h4> 
-    </br>
-
-      <div class = "team-pics is-center">
-
-       <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
-        <p> Illustration | UI <p>
-              <div>
-                   <img src = "Maggie.png" height = "100px">
-              </div>
-            </br>
-           
-            <a href="https://twitter.com/mappletons"> @mappletons</a>
-       </div>
-
-       <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
-       <p> UX | Front-End </p>
-              <div>
-                   <img src = "Alberto.png" height = "100px">
-              </div>
-            </br>
-           
-            <a href="https://twitter.com/achangeofcoast"> @achangeofcoast</a>
-       </div>
-
-       <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
-        <p> Product </p>
-              <div>
-                   <img src = "Ben.png" height = "100px">
-              </div>
-            </br>
-           
-            <a href="https://twitter.com/bshyong"> @bshyong</a>
-       </div>
-
-       <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
-        <p> Product </p>
-              <div>
-                   <img src = "Bondi2.png" height = "100px">
-              </div>
-            </br>
-            <em> bondi</em>
-       </div>
-
-         <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
-         <p> Full Stack </p>
-              <div>
-                   <img src = "Gamamia_Dark.png" height = "100px">
-              </div>
-            </br>
-            <a href="https://twitter.com/jay_hoffmann"> @jay_hoffmann</a>
-       </div>
-
-       <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
-        <p> Full Stack <p>
-              <div>
-                   <img src = "Gamamia_Dark.png" height = "100px">
-              </div>
-            </br>
-            <a href="https://twitter.com/jay_hoffmann"> @TheReibel</a>
-       </div>
-
-       
-        
-
    
+      <div id="overlay-about" class="overlay">
 
-    </div>
+        <div class="overlay-inner about-wrapper is-center">
+             <h4>Gamamia</h4>  
+              <p> Gamamia is a weekly newsletter focused on independent and non-AAA titles. 
+              </br>
+                  The games that don't have million dollar marketing budgets but are more than worthy of our time.
+              </p>
+              </br>
+              <h4> Future Plans </h4>
+              <p> We're working hard on making Gamamia a web app that will be curated the community. If you're interested in joining us, check us out on <a href = "https://assembly.com/gamamia" target ="_blank"> Assembly. </a> 
+              </br>
+              </br>
+              <h4 class = "is-center"> Team </h4> 
+              </br>
+      
+               <div class = "team-pics is-center">
+         
+                <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
+                 <p> Illustration | UI <p>
+                       <div>
+                            <img src = "Maggie.png" height = "100px">
+                       </div>
+                     </br>
+                    
+                     <a href="https://twitter.com/mappletons"> @mappletons</a>
+                </div>
+         
+                <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
+                <p> UX | Front-End </p>
+                       <div>
+                            <img src = "Alberto.png" height = "100px">
+                       </div>
+                     </br>
+                    
+                     <a href="https://twitter.com/achangeofcoast"> @achangeofcoast</a>
+                </div>
+         
+                <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
+                 <p> Product </p>
+                       <div>
+                            <img src = "Ben.png" height = "100px">
+                       </div>
+                     </br>
+                    
+                     <a href="https://twitter.com/bshyong"> @bshyong</a>
+                </div>
+         
+                <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
+                 <p> Product </p>
+                       <div>
+                            <img src = "Bondi2.png" height = "100px">
+                       </div>
+                     </br>
+                     <em> bondi</em>
+                </div>
+         
+                  <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
+                  <p> Full Stack </p>
+                       <div>
+                            <img src = "Jay.png" height = "100px">
+                       </div>
+                     </br>
+                     <a href="https://twitter.com/jay_hoffmann"> @jay_hoffmann</a>
+                </div>
+         
+                <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
+                 <p> Full Stack <p>
+                       <div>
+                            <img src = "MRB.png" height = "100px">
+                       </div>
+                     </br>
+                     <a href="https://twitter.com/thereibel"> @TheReibel</a>
+                </div>
+         
 
-     
-     
-      </div>
+         
+                   
+                 </div>
+              </div>
+            </div>
 
-      <div class="modal-footer is-center">
 
-        <a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78">  
-          <button type="button" class="pure-button">Subscribe</button>
-        </a>
-      </div>
-    </div>
-  </div>
+<div id="overlay-submit" class="overlay">
+
+        <div class="overlay-inner submit-wrapper">
+
+             <h1> Submit a Game </h1>
+
+                  <p> We're always looking for awesome games, so if you know of any or if you're developing on yourself please
+                    send it our way. We only ask that the game </p>
+
+                    <ul>
+                      <li> Be playable (a demo works!) </li>
+                      <li> Be totally rad </li>
+                    </ul>
+
+            <p>If your game is both of these then just fill out the form below and send it our way! We'll shoot you an email as soon as we play it </p>
+          </br>
+          </br>
+          </br>
+
+  
+             <form action="//formspree.io/axc8857@rit.edu" method="POST">
+
+                  <div class = "submit-form">
+                  
+                      <input class = "form-control" type="text" name="name" value = "game link (site or online store)" required>       
+                      <input class = "form-control" type="email" name="_replyto" value = "your email" required>
+
+                  </div>
+
+                  <div class = "is-center l-box">
+                      <input class="pure-button" type="submit" value="Submit">
+                  </div>
+             </form>
+
+
+
+                   
+                 
+       </div>
 </div>
-
-
-
+         
+         
+      
 
 
 
