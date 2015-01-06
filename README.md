@@ -1,6 +1,6 @@
 # Gamamia
 
-## Crowdsourced Game Reviews, Ratings and Recommendations
+## An independent game discovery platform
 
 This is a product being built by the Assembly community. You can help push this idea forward by visiting [https://assembly.com/gamamia](https://assembly.com/gamamia).
 
