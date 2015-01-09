@@ -1,5 +1,5 @@
 <h1>Listing games</h1>
- 
+  <%= link_to "Add Game", new_game_path %>
   <% @games.each do |game| %>
   <h3><a href="<%= game.link %>"><%= game.title %></a></h3>
       <img src="<%= game.thumbnail %>">
