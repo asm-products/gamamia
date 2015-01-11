@@ -1,4 +1,4 @@
-<h1>Listing games</h1>
+  <h1>Listing games</h1>
   <%= link_to "Add Game", new_game_path %>
   <% @games.each do |game| %>
   <h3><a href="<%= game.link %>"><%= game.title %></a></h3>
@@ -6,8 +6,16 @@
       <p><%= game.description %></p>
   <div class="meta">
     <p class="platform"><%= game.platform %></p>
-    <p class="votes"><%= game.votes %></p>
-    	<p class="comments">Comments: <%= game.comments.count %></p>
+    <p class="votes">
+      up: <%= game.get_upvotes.size %> / down: <%= game.get_downvotes.size %>
+      <% if current_user %>
+        <%= link_to "up", vote_game_path(game, direction: "up") %>
+        <%= link_to "down", vote_game_path(game, direction: "down") %>
+      <% else %>
+        You need to be logged in, for voting.
+      <% end %>
+    </p>
+    <p class="comments">Comments: <%= game.comments.count %></p>
   </div>
   <div class="video">
   		<p class="Videos">Videos: <%= game.videos.count %></p>
