@@ -7,7 +7,7 @@
   <div class="meta">
     <p class="platform"><%= game.platform %></p>
     <p class="votes">
-      up: <%= game.get_upvotes.size %> / down: <%= game.get_downvotes.size %>
+      up: <%= game.cached_votes_up %> / down: <%= game.cached_votes_down %>
       <% if current_user %>
         <%= link_to "up", vote_game_path(game, direction: "up") %>
         <%= link_to "down", vote_game_path(game, direction: "down") %>
