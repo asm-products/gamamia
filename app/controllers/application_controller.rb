@@ -21,4 +21,16 @@ class ApplicationController < ActionController::Base
          root_path
       end
   end
+
+  def user_is_admin?
+    current_user && current_user.is_admin?
+  end
+  helper_method :user_is_admin?
+
+  def check_admin
+    unless user_is_admin?
+      flash[:error] = "You do not have the permission for this site."
+      redirect_to root_path
+    end
+  end
 end

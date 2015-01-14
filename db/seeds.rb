@@ -18,6 +18,11 @@ User.create!(email:         "person@email.com",
              name:          "Joe Smith",
              occupation:    "Developer")
 
+User.create!(email:         "admin@email.com",
+             password:      "foobarfoo",
+             name:          "Joe Smith",
+             occupation:    "admin")
+
 Comment.create!(content:    "Example comment, which would reference a game somewhere",
             user_id:        1,
             game_id:        1)

@@ -1,4 +1,6 @@
 class GamesController < ApplicationController
+  before_filter :check_admin, only: [:new, :create]
+
   def index
     @games = Game.all
   end
