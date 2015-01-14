@@ -16,7 +16,7 @@
   </div>
   <div class="field">
     <%= f.label :thumbnail %><br>
-    <%= f.text_field :thumbnail %>
+    <%= f.file_field :thumbnail %>
   </div>
   <div class="field">
     <%= f.label :description %><br>
@@ -24,7 +24,7 @@
   </div>
   <div class="field">
     <%= f.label :status %><br>
-    <%= f.text_field :status %>
+    <%= f.select(:status, Game::STATUS_TYPES) %>
   </div>
   <div class="field">
     <%= f.label :link %><br>
@@ -32,7 +32,7 @@
   </div>
   <div class="field">
     <%= f.label :platform %><br>
-    <%= f.text_field :platform %>
+    <%= f.select(:platform, Game::PLATFORM_TYPES) %>
   </div>
     <%= f.submit %>
 <% end %>

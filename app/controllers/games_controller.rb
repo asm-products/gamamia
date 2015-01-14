@@ -22,6 +22,13 @@ class GamesController < ApplicationController
     redirect_to games_path
   end
 
+  def upload
+    uploaded_io = params[:game][:thumbnail]
+    File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
+      file.write(uploaded_io.read)
+    end
+  end
+
   private
   def vote_param
     params.require(:direction)
