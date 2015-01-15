@@ -5,12 +5,12 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Game.create!(title:  		     "Example Game",
+Game.create!(title:          "Example Game",
              description:    "Example description of a game, which would include a short summary of what this is all about",
-             status: 		     "released",
-             link: 			     "http://example.com",
-             platform: 		   "Xbox",
-             votes: 		     0)
+             status:         "released",
+             link:           "http://example.com",
+             platform:       "Xbox",
+             votes:          0)
 
 User.create!(email:         "person@email.com",
              password:      "foobarfoo",
@@ -33,12 +33,6 @@ Video.create!(
             embed:          "https://www.youtube.com/watch?v=9ZyQK6kUdWQ",
             game_id:        1)
 
-# Game.all.each { |game| game.thumbnail = File.open(Dir.glob(File.join(Rails.root, 'sampleimages', '*')).sample); game.save! }
-
-Game.find_each do |game|
-  
-end
-
 
 99.times do |n|
   title  = Faker::App.name
@@ -52,12 +46,12 @@ end
   name = Faker::Name.name
   occupation = ["Developer", "Gamer", "Publisher"].sample
 
-  Game.create!(title:  		  title,
+  Game.create!(title:       title,
              description:   description,
-             status: 		    status,
-             link: 			    "http://example.com",
-             platform: 		  platform,
-             votes: 		    votes,
+             status:        status,
+             link:          "http://example.com",
+             platform:      platform,
+             votes:         votes,
              created_at:    created_at,
              updated_at:    created_at)
   User.create!(email:       email,
