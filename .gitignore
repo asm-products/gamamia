@@ -17,3 +17,5 @@
 
 # Ignore uploaded files
 public/uploads/game/thumbnail/*
+
+.DS_Store
