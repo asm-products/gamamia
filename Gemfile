@@ -3,9 +3,11 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.8'
-group :development, :test do 
-	gem 'sqlite3'
-	gem 'faker'
+group :development, :test do
+  gem 'sqlite3'
+  gem 'faker'
+  gem 'rspec-rails', '~> 3.1.0'
+  gem 'fabrication'
 end
 
 # Heroku requisição
