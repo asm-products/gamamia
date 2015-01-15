@@ -14,3 +14,8 @@
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /tmp
+
+# Ignore uploaded files
+public/uploads/game/thumbnail/*
+
+.DS_Store
