@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       if @user.update(user_params)
         sign_in(@user == current_user ? @user : current_user, :bypass => true)
         flash[:notice] = ""
-        redirect_to root_url
+        redirect_to games_url
       else
         # If user already exist with that e-mail tell the user that
         # TODO Improve this flow. What should actually happen when the following happens:

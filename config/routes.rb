@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }
+  devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }, skip: :registrations
 
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
 
@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'games#index'
+  root 'static_pages#home'
   resources :games, only: [:index, :new, :create] do
     member do
       get 'vote'

@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
       if resource_or_scope.sign_in_count == 1
          finish_signup_path(resource_or_scope)
       else
-         root_path
+         games_path
       end
   end
 
