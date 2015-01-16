@@ -5,6 +5,8 @@
 <head>
 	<meta charset = "utf-8" />
 	<meta name = "viewport" content = "width = device-width, initial scale = 1.0">
+  <meta name="description" content="A free weekly newsletter of independent and non-AAA games">
+  <meta name="keywords" content="Indiegames, Indie Games, Games, Indie, Game Development, Game Newsletter, Indie Newsletter"> 
 
 
 	 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
@@ -17,13 +19,17 @@
 
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
 
-   <link rel="stylesheet/less" type="text/css" href="styles.less" />
+   <link rel="stylesheet/less" type="text/css" href="styles.less"/>
 
    <script src = "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"> </script>
 
    <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.1.0/less.min.js"></script>
+
+
+
+
 
    <script>
        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -33,6 +39,9 @@
       
        ga('create', 'UA-58072770-2', 'auto');
        ga('send', 'pageview');
+
+
+      
 
 
  $(document).ready(function(){
@@ -248,7 +257,15 @@ strong{
 
 }
 
+.twitter-follow-button{
 
+}
+
+
+.social-likes{
+
+  padding: 1em;
+}
 /*
  * -- SPLASH STYLES --
  * The header, call to action & first image you see
@@ -321,11 +338,6 @@ strong{
 
 }
 
-.sign-me-up-button{
-  text-align: center;
-  padding-top: 6em;
-  padding-bottom: 6em;
-}
 
 /* This is the class used for the footer */
 .footer {
@@ -383,6 +395,12 @@ strong{
      border-radius: 0.2em;
  
 
+
+}
+
+.sign-me-up-button{
+
+  padding: 6em;
 
 }
 
@@ -475,8 +493,15 @@ strong{
 <body>
 
 <!--mobile splash-->
+<script src="social-likes.min.js"></script>
+
+
 
 <div class="splash-container mobile">
+  <div class="social-likes" data-counters="no">
+  <div class="facebook" title="Share link on Facebook"></div>
+  <div class="twitter" data-via="GamamiaPlaylist" title="Share link on Twitter"></div>
+</div>
     <div class="splash is-center less-top-padding">
 
        <div class = "title-image pure-u-1 is-center">
@@ -489,7 +514,7 @@ strong{
 
              <h1 class = "is-center"> Gamamia </h1>
 
-             <p>  A weekly list of fantastic games from new developers and indie favorites. </p>
+             <p>  A free weekly newsletter of fantastic games from new developers and indie favorites. </p>
 
              <a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78">  
              <button type="button" class="pure-button">Subscribe</button> </a>
@@ -501,13 +526,17 @@ strong{
 <!--regular splash-->
 
 <div class="splash-container regular">
+
+
     <div class="splash">
+
+
 
        <div class = "title pure-u-md-1-2">
 
             <h1> Gamamia </h1>
 
-            <p>  A weekly list of fantastic games from new developers and indie favorites. </p>
+            <p>  A free weekly newsletter of fantastic games from new developers and indie favorites. </p>
 
             <a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78">  
              <button type="button" class="pure-button">Subscribe</button> </a>
@@ -543,7 +572,7 @@ strong{
                  <div class="l-box content-text">
                      <h3>The Hunt</h3>
                      <p>
-                        First we look through every nook and cranny of the independent game development world to find the best new games and then we play them (Our favorite part).
+                        First we look through every nook and cranny of the independent game development world to find the best new indie games and then we play them (Our favorite part).
                      </p>
                  </div>
         </div>
@@ -605,7 +634,20 @@ strong{
           <a class="overlay-trigger" data-overlay="overlay-about"> About </a>
           
           <a href="mailto:support@gamamia.com"> Contact</a>
-             </p>
+           </p>
+
+            <div class="social-likes" data-counters="no">
+
+             <a class="facebook" title="Share link on Facebook"> Facebook
+             </a>
+            
+             <a class="twitter" data-via="GamamiaPlaylist" data-related="A free weekly newsletter featuring indie games"  title="Share link on Twitter">Twitter</a>
+            
+             <a class="plusone" title="Share link on Google+">Google+</a>
+
+         </div>
+
+
           
       </div>
           
@@ -684,6 +726,8 @@ strong{
     </div>
 
 
+
+
     <div class = "footer l-box is-center">
         <p>
           <a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78">  Subscribe </a>
@@ -695,6 +739,17 @@ strong{
           <a class="overlay-trigger" data-overlay="overlay-about"> About </a>
           
           <a href="mailto:support@gamamia.com"> Contact</a>
+
+          <div class="social-likes" data-counters="no">
+
+             <a class="facebook" title="Share link on Facebook"> Facebook
+             </a>
+            
+             <a class="twitter" data-via="GamamiaPlaylist" data-related="A free weekly newsletter featuring indie games"  title="Share link on Twitter">Twitter</a>
+            
+             <a class="plusone" title="Share link on Google+">Google+</a>
+
+         </div>
        </p>
     
      </div>
@@ -775,10 +830,7 @@ strong{
                      </br>
                      <a href="https://twitter.com/thereibel"> @TheReibel</a>
                 </div>
-         
-
-         
-                   
+                
                  </div>
               </div>
             </div>
@@ -790,15 +842,14 @@ strong{
 
              <h1> Submit a Game </h1>
 
-                  <p> We're always looking for awesome games, so if you know of any or if you're developing on yourself please
-                    send it our way. We only ask that the game </p>
+                  <p> We're always looking for awesome games, so if you know of any or if you're developing one yourself please send it our way. We only ask that the game </p>
 
                     <ul>
                       <li> Be playable (a demo works!) </li>
                       <li> Be totally rad </li>
                     </ul>
 
-            <p>If your game is both of these then just fill out the form below and send it our way! We'll shoot you an email as soon as we play it </p>
+            <p>If your game is both of these then just fill out the form below and send it our way! We'll shoot you an email as soon as we play it</p>
           </br>
           </br>
           </br>
