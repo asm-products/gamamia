@@ -4,5 +4,5 @@ Fabricator(:game) do
   status { Game::STATUS_TYPES.sample.last }
   link { Faker::Internet.url}
   platform { Game::PLATFORM_TYPES.sample.last }
+  videos(count: 2) { |attrs, i| Fabricate(:video) }
 end
-

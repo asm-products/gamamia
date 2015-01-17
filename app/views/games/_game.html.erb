@@ -1,0 +1,19 @@
+ <h3><a href="<%= game.link %>"><%= game.title %></a></h3>
+      <img src="<%= game.thumbnail %>">
+      <p><%= game.description %></p>
+  <div class="meta">
+    <p class="platform"><%= game.platform %></p>
+    <p class="votes">
+      up: <%= game.cached_votes_up %> / down: <%= game.cached_votes_down %>
+      <% if current_user %>
+        <%= link_to "up", vote_game_path(game, direction: "up") %>
+        <%= link_to "down", vote_game_path(game, direction: "down") %>
+      <% else %>
+        You need to be logged in, for voting.
+      <% end %>
+    </p>
+    <p class="comments">Comments: <%= game.comments_count %></p>
+  </div>
+  <div class="video">
+      <p class="Videos">Videos: <%= game.videos_count %></p>
+  </div>
