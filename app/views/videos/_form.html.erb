@@ -1,0 +1,30 @@
+<%= form_for([@game, @video]) do |f| %>
+  <% if @video.errors.any? %>
+    <div id="form_errors">
+      <h2>Errors while saving:</h2>
+      <ul>
+      <% @video.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :thumbnail %><br>
+    <%= f.text_field :thumbnail %>
+  </div>
+  <div class="field">
+    <%= f.label :category %><br>
+    <%= f.text_field :category %>
+  </div>
+  <div class="field">
+    <%= f.label :embed %><br>
+    <%= f.text_field :embed %>
+  </div>
+    <%= f.submit %>
+<% end %>

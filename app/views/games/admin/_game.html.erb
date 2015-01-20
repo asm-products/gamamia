@@ -1,0 +1,8 @@
+ <tr>
+ <td><%= link_to game.title, game %>(<%= link_to "web", game.link %>)</td>
+<td><%= game.platform %></td>
+<td>up: <%= game.cached_votes_up %> / down: <%= game.cached_votes_down %></td>
+<td><%= game.comments_count %></td>
+<td>Videos: <%= game.videos_count %></td>
+<td><%= link_to "edit", edit_game_path(game) %> <%= link_to "destroy", game, method: :delete%></td>
+</tr>

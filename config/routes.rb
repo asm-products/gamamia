@@ -9,10 +9,11 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'games#index'
-  resources :games, only: [:index, :new, :create] do
+  resources :games do
     member do
       get 'vote'
     end
+    resources :videos, only: [:create]
   end
 
   # Example of regular route:

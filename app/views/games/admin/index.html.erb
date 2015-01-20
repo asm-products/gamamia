@@ -1,0 +1,20 @@
+<h1>Listing games</h1>
+<div class="actions">
+  <%= link_to("Add Game", new_game_path) if user_is_admin? %> <%= link_to "standard view", games_path %>
+</div>
+
+<table>
+<thead>
+  <tr>
+    <th>Title</th>
+    <th>Platform</th>
+    <th>Votes</th>
+    <th>Comments</th>
+    <th>Videos</th>
+    <th>actions</th>
+  </tr>
+</thead>
+<tbody>
+  <%= render partial: 'games/admin/game', collection: @games %>
+</tbody>
+</table>
