@@ -1,8 +1,10 @@
+<!-- TODO When we have the design this should be added to a dropdown menu or something similar (see https://assembly.com/gamamia/bounties/47) -->
+<% if user_signed_in? %>
+<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+<% else %>
+<%= link_to 'Sign in with Facebook', user_omniauth_authorize_path("facebook") %>
+<%= link_to 'Sign in with Twitter', user_omniauth_authorize_path("twitter") %>
+<% end %>
+
 <h1>Gamamia</h1>
 <p>Welcome to the future home of Gamamia</p>
-
-<% if user_signed_in? %>
-	<%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-<% else %>
-	<%= link_to('Login', new_user_session_path)  %>
-<% end %>
