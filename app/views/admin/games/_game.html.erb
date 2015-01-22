@@ -4,5 +4,5 @@
 <td>up: <%= game.cached_votes_up %> / down: <%= game.cached_votes_down %></td>
 <td><%= game.comments_count %></td>
 <td>Videos: <%= game.videos_count %></td>
-<td><%= link_to "edit", edit_game_path(game) %> <%= link_to "destroy", game, method: :delete%></td>
+<td><%= link_to "edit", edit_admin_game_path(game) %> <%= link_to "destroy", [:admin, game], method: :delete%></td>
 </tr>
