@@ -1,4 +1,4 @@
-<%= form_for(@game) do |f| %>
+<%= form_for([:admin, @game]) do |f| %>
   <% if @game.errors.any? %>
     <div id="form_errors">
       <h2>Errors while saving:</h2>
