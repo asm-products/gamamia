@@ -18,6 +18,7 @@ Rails.application.routes.draw do
       get 'vote'
     end
     resources :videos, only: [:create]
+    resources :comments, only: [:create]
   end
 
   # Example of regular route:

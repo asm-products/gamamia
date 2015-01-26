@@ -23,7 +23,7 @@ RSpec.describe GamesController do
       end
 
       it "renders index template for users when trying to access admin template" do
-        get :show, {id: game, layout: 'admin'}
+        get :show, {id: game}
         expect(response).to render_template(:show)
       end
 

@@ -13,12 +13,24 @@
       <% end %>
     </p>
     <p class="comments">Comments: <%= @game.comments_count %></p>
+    <%= render @game.comments %>
+
+    <% if current_user %>
+      <%= form_for [@game, @comment] do |f| %>
+        <div class="field">
+          <%= f.label :content %><br>
+          <%= f.text_field :content %>
+        </div>
+        <%= f.submit %>
+      <% end %>
+    <% end %>
+
   </div>
   <div class="video">
       <p class="Videos">Videos: <%= @game.videos_count %></p>
       <%= render @game.videos %>
   </div>
-  <%= render 'videos/form' if current_user.is_admin? %>
+  <%= render 'videos/form' if user_is_admin? %>
 <div class="actions">
   <%= link_to "back to list", games_path %>
 </div>

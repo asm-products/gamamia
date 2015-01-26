@@ -41,7 +41,7 @@ RSpec.describe Admin::GamesController do
 
     it "redirects to the games list" do
       delete :destroy, {id: game.to_param}
-      expect(response).to redirect_to(games_url(layout: 'admin'))
+      expect(response).to redirect_to(admin_games_url)
     end
   end
 
