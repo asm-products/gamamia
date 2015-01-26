@@ -1,4 +1,4 @@
- <h3><a href="<%= game.link %>"><%= game.title %></a></h3>
+ <h3><%= link_to game.title, game %>(<%= link_to "web", game.link %>)</h3>
       <img src="<%= game.thumbnail %>">
       <p><%= game.description %></p>
   <div class="meta">

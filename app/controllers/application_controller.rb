@@ -22,6 +22,12 @@ class ApplicationController < ActionController::Base
       end
   end
 
+  def user_logged_in?
+    unless current_user.present?
+      redirect_to root_path, error: "You need to be signed in for that action"
+    end
+  end
+
   def user_is_admin?
     current_user && current_user.is_admin?
   end
