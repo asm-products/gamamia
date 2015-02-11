@@ -1,17 +1,15 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Gamamia</title>
-  <%= stylesheet_link_tag    'application', media: 'all' %>
-  <%= javascript_include_tag 'application' %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-	<p class="notice"><%= notice %></p>
-	<p class="alert"><%= alert %></p>
-      <p class="error"><%= flash[:error] %></p>
+  <head>
+    <title>Gamamia</title>
+    <link href="http://d2v52k3cl9vedd.cloudfront.net/basscss/4.2.4/basscss.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <%= stylesheet_link_tag    'application', media: 'all' %>
 
-<%= yield %>
-
-</body>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <%= yield %>
+  </body>
 </html>
