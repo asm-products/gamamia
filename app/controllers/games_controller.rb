@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-    @days = Game.all.group_by{|x| x.created_at.to_date }
+    @days = Game.scheduled.display_order.group_by{|x| x.scheduled_at.to_date }
   end
 
   def show

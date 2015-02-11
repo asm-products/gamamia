@@ -1,20 +1,44 @@
-<h1>Listing games</h1>
-<div class="actions">
-  <%= link_to("Add Game", new_admin_game_path) if user_is_admin? %> <%= link_to "standard view", games_path %>
-</div>
+<%= render 'ui/navbar' %>
 
-<table>
-<thead>
-  <tr>
-    <th>Title</th>
-    <th>Platform</th>
-    <th>Votes</th>
-    <th>Comments</th>
-    <th>Videos</th>
-    <th>actions</th>
-  </tr>
-</thead>
-<tbody>
-  <%= render @games %>
-</tbody>
-</table>
+<div class="container py3">
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th colspan="2"></th>
+        <th>Platform</th>
+        <th>Votes</th>
+        <th>Scheduled</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @games.each do |game| %>
+        <tr>
+          <td><a class="mid-gray" href="<%= edit_admin_game_path(game) %>"><%= icon('pencil') %></a></td>
+          <td>
+            <%= link_to game.title, game %>
+            <p class="mid-gray mb0"><%= game.link %></p>
+          </td>
+          <td><%= game.platform %></td>
+          <td>up: <%= game.cached_votes_up %> / down: <%= game.cached_votes_down %></td>
+          <td>
+            <% if game.scheduled_at? %>
+              <%= format_date(game.scheduled_at) %>
+            <% else %>
+              <%= form_for(game, url: [:admin, game]) do |f| %>
+                <%= f.date_field :scheduled_at, min: Date.today, value: Date.today %>
+                <%= f.submit 'Update' %>
+              <% end %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to [:admin, game], method: :delete, class: 'red' do %>
+             <%= icon 'flag' %>
+            <% end %>
+          </td>
+       </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

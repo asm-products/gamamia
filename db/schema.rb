@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150126081356) do
+ActiveRecord::Schema.define(version: 20150211211712) do
 
   create_table "comments", force: true do |t|
     t.text     "content",    limit: 255
@@ -43,6 +43,7 @@ ActiveRecord::Schema.define(version: 20150126081356) do
     t.float    "cached_weighted_average", default: 0.0
     t.integer  "videos_count",            default: 0
     t.integer  "comments_count",          default: 0
+    t.date     "scheduled_at"
   end
 
   add_index "games", ["cached_votes_down"], name: "index_games_on_cached_votes_down"
