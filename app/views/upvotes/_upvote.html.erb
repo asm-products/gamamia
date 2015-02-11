@@ -1,3 +1,9 @@
-<a class="block bg-blue white px2 py1 rounded" href="#">
-  <%= upvote_count %> <%= render 'ui/icon', icon: 'caret-up' %>
-</a>
+<% if signed_in? && current_user.voted_for?(game) %>
+  <a class="block bg-light-gray white px2 py1 rounded" href="<%= unupvote_game_path(game) %>" data-method="post">
+    <%= game.cached_votes_up %> <%= render 'ui/icon', icon: 'check' %>
+  </a>
+<% else %>
+  <a class="block bg-blue white px2 py1 rounded" href="<%= upvote_game_path(game) %>" data-method="post">
+    <%= game.cached_votes_up %> <%= render 'ui/icon', icon: 'caret-up' %>
+  </a>
+<% end %>

@@ -2,7 +2,7 @@
 
   <div class="clearfix p2">
     <div class="left mr2">
-      <%= render partial: 'upvotes/upvote', locals: {upvote_count: game.cached_votes_up } %>
+      <%= render partial: 'upvotes/upvote', locals: { game: game } %>
     </div>
 
     <div class="right ml2 py1 light-gray">

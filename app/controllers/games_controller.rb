@@ -9,9 +9,17 @@ class GamesController < ApplicationController
     @video = @game.videos.new
   end
 
-  def vote
+  def upvote
+    authenticate_user!
     @game = Game.find(params[:id])
-    @game.vote_by voter: current_user, vote: vote_param
+    @game.upvote_by(current_user)
+    redirect_to games_path
+  end
+
+  def unupvote
+    authenticate_user!
+    @game = Game.find(params[:id])
+    @game.unvote_by(current_user)
     redirect_to games_path
   end
 
@@ -23,10 +31,6 @@ class GamesController < ApplicationController
   end
 
   private
-  def vote_param
-    params.require(:direction)
-  end
-
   def game_params
     params.require(:game).permit(:title, :thumbnail, :description, :status, :link, :platform)
   end

@@ -16,7 +16,8 @@ Rails.application.routes.draw do
 
   resources :games, only: [:index, :show, :new, :create] do
     member do
-      get 'vote'
+      post 'upvote'
+      post 'unupvote'
     end
     resources :videos, only: [:create]
     resources :comments, only: [:create]
