@@ -1,0 +1,4 @@
+<% avatar_path = Digest::MD5.hexdigest("christopher.lloyd@gmail.com".downcase) %>
+<% avatar_url = 'https://gravatar.com/avatar/' + avatar_path %>
+
+<img class="block circle" src="<%= avatar_url %>" width="24" height="24" alt="<%= user.email %>" />

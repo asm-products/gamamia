@@ -1,0 +1,34 @@
+<div class="bg-white">
+  <div class="container clearfix py2">
+
+    <div class="left">
+      <h4 class="mt0 mb0">Gamamia</h4>
+      <p class="mb0 mid-gray">Find, share, and discuss indie games</p>
+    </div>
+
+    <div class="right">
+
+      <ol class="list-reset clearfix mxn1 mb0">
+
+        <% if true || user_is_admin? %>
+          <li class="left">
+            <%= link_to 'Admin' , admin_games_path, class: 'block p1 red' %>
+          </li>
+        <% end %>
+
+        <li class="left">
+          <% if user_signed_in? %>
+              <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'block p1') %>
+          <% else %>
+            <%= link_to('Login', new_user_session_path, class: 'block p1') %>
+          <% end %>
+        </li>
+        <li class="left">
+          <a class="block p1" href="<%= new_admin_game_path %>"><%= render 'ui/icon', icon: 'plus' %></a>
+        </li>
+      </ol>
+
+    </div>
+
+  </div>
+</div>

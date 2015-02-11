@@ -1,13 +1,17 @@
-  <% if user_signed_in? %>
-    <li>
-      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-    </li>
-  <% end %>
+<%= render 'ui/navbar' %>
 
-  <h1>Listing games</h1>
-  <% if user_is_admin? %>
-    <%= link_to("Add Game", new_admin_game_path) %>
-    <%= link_to "Admin view" , admin_games_path %>
-  <% end %>
+<div class="container">
+  <% @days.each do |day, games| %>
 
-  <%= render @games %>
+    <%= render 'days/day', day: day %>
+
+    <div class="clearfix mxn2 mb4">
+      <% games.each do |game| %>
+        <div class="col col-4 p2">
+          <%= render 'games/game', game: game %>
+        </div>
+      <% end %>
+    </div>
+
+  <% end %>
+</div>

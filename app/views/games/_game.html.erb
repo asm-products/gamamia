@@ -1,19 +1,29 @@
- <h3><%= link_to game.title, game %>(<%= link_to "web", game.link %>)</h3>
-      <img src="<%= game.thumbnail %>">
-      <p><%= game.description %></p>
-  <div class="meta">
-    <p class="platform"><%= game.platform %></p>
-    <p class="votes">
-      up: <%= game.cached_votes_up %> / down: <%= game.cached_votes_down %>
-      <% if current_user %>
-        <%= link_to "up", vote_game_path(game, direction: "up") %>
-        <%= link_to "down", vote_game_path(game, direction: "down") %>
-      <% else %>
-        You need to be logged in, for voting.
-      <% end %>
-    </p>
-    <p class="comments">Comments: <%= game.comments_count %></p>
+<div class="rounded highlight-hover bg-white">
+
+  <div class="clearfix p2">
+    <div class="left mr2">
+      <%= render partial: 'upvotes/upvote', locals: {upvote_count: game.cached_votes_up } %>
+    </div>
+
+    <div class="right ml2 py1 light-gray">
+      <div class="clearfix mxn1">
+        <div class="left px1">
+          <%= render 'ui/icon', icon: 'comment' %> <%= game.comments_count %>
+        </div>
+        <div class="left px1">
+          <%= render 'avatars/avatar', user: User.first %>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="video">
-      <p class="Videos">Videos: <%= game.videos_count %></p>
+
+  <img class="block" src="http://placekitten.com/g/325/200" />
+
+  <div class="p2">
+    <h4 class="mt0 mb0">
+      <a class="dark-gray" href="<%= game_path(game) %>"><%= game.title %></a>
+    </h4>
+    <p class="mid-gray mb0" style="min-height:4.5rem"><%= truncate(game.description, length: 100) %></p>
   </div>
+
+</div>

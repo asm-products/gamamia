@@ -33,7 +33,8 @@ RSpec.describe GamesController do
       subject { get :index }
       it "assigns all games as @games" do
         subject
-        expect(assigns(:games)).to eq([game])
+        day = game.created_at.to_date
+        expect(assigns(:days)).to eq({day => [game]})
       end
 
       it "renders index template" do

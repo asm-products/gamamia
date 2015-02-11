@@ -1,6 +1,6 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.all
+    @days = Game.all.group_by{|x| x.created_at.to_date }
   end
 
   def show
