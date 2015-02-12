@@ -4,7 +4,7 @@
 
 
   <div class="bg-white">
-    <div class="p3 bg-dark-gray mid-gray clearfix rounded-top" style="background-image:url(http://placekitten.com/g/800/600);background-size:cover">
+    <div class="p3 bg-dark-gray mid-gray clearfix rounded-top">
 
       <div class="left mr3">
         <%= render partial: 'upvotes/upvote', locals: { game: @game } %>
@@ -33,30 +33,37 @@
     </div>
 
     <% if @game.videos.any? %>
-      <div class="px3 py2 border-bottom">
-        <div class="clearfix mxn1">
-          <% @game.videos.each do |video| %>
-            <div class="col px1">
-              <%= render partial: 'videos/video', locals: { video: video } %>
-            </div>
-          <% end %>
+      <div class="px3 py2">
+        <p class="light-gray mb2">Related links</p>
+
+        <div class="clearfix overflow-hidden mxn3" style="height:10rem;width:80rem;margin-left:-1px">
+          <div style="overflow-x:scroll;width:auto">
+            <% @game.videos.each do |video| %>
+              <div class="inline-block" style="margin-left:1px">
+                <%= render partial: 'videos/video', locals: { video: video } %>
+              </div>
+            <% end %>
+          </div>
         </div>
       </div>
     <% end %>
 
-    <% if user_is_admin? %>
-      <div class="p3">
-        <%= render 'videos/form' %>
+    <% if @game.cached_votes_up > 0 %>
+      <div class="px3 py2">
+        <p class="light-gray mb2"><%= pluralize @game.cached_votes_up, 'upvote' %></p>
+        <% @game.votes_for.up.each do |vote| %>
+          <%= avatar(user: vote.voter) %>
+        <% end %>
       </div>
     <% end %>
 
 
-    <div class="p3">
-      <p class="light-gray mb3"><%= pluralize @game.comments_count, 'comment' %></p>
+    <div class="px3 py2">
+      <p class="light-gray mb2"><%= pluralize @game.comments_count, 'comment' %></p>
 
 
       <% if signed_in? %>
-        <%= form_for [@game, @comment], html: {class: 'form clearfix mb3'} do |f| %>
+        <%= form_for [@game, @comment], html: {class: 'form clearfix mb2'} do |f| %>
           <div class="clearfix">
             <div class="left mr2">
               <%= avatar(user: current_user) %>

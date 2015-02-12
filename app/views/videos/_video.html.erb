@@ -1,22 +1,4 @@
-<%
-  regex = /(https?:\/\/)?(www.)?(youtube\.com\/watch\?v=|youtu\.be\/|youtube\.com\/watch\?feature=player_embedded&v=)([A-Za-z0-9_-]*)(\&\S+)?(\?\S+)?/
-
-  embed_html = video.embed.gsub(regex) do
-    youtube_id = $4
-    width = 160
-    height = 120
-    frameborder = 0
-    wmode = nil
-    autoplay = false
-    hide_related = true
-    src = "https://www.youtube.com/embed/#{youtube_id}"
-    params = []
-    params << "wmode=#{wmode}" if wmode
-    params << "autoplay=1" if autoplay
-    params << "rel=0" if hide_related
-    src += "?#{params.join '&'}" unless params.empty?
-
-    %{<div class="video youtube"><iframe width="#{width}" height="#{height}" src="#{src}" frameborder="#{frameborder}" allowfullscreen></iframe></div>}
-  end.html_safe
-%>
-<%= embed_html %>
+<div class="bg-light-gray px3 py2" style="width:20rem;height:10rem;box-sizing:border-box">
+  <%= icon('link') %>
+  <%= video.embed %>
+</div>
