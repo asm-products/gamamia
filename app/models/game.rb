@@ -8,7 +8,7 @@ class Game < ActiveRecord::Base
 
   scope :unscheduled, -> { where(scheduled_at: nil) }
   scope :scheduled, -> { where('scheduled_at <= ?', Date.today) }
-  scope :display_order, -> { order(:scheduled_at) }
+  scope :display_order, -> { order(:scheduled_at).reverse_order }
 
   acts_as_votable
 
