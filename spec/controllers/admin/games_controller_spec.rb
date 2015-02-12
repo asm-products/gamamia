@@ -31,6 +31,13 @@ RSpec.describe Admin::GamesController do
       }.to change(Game, :count).by(-1)
     end
 
+    it "only soft deletes the game" do
+      expect {
+        delete :destroy, {id: game.to_param}
+        game.reload
+      }.to change(game, :deleted_at).from(nil)
+    end
+
     it "redirects to the games list" do
       delete :destroy, {id: game.to_param}
       expect(response).to redirect_to(admin_games_url)

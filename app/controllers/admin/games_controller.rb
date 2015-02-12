@@ -32,8 +32,8 @@ module Admin
     end
 
     def destroy
-      @game = Game.find(params[:id])
-      @game.destroy
+      @game = Game.find(params.fetch(:id))
+      @game.soft_destroy
       redirect_to admin_games_path, notice: "Destroyed game"
     end
 
