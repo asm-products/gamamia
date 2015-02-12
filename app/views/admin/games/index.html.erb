@@ -2,7 +2,7 @@
 
 <div class="container py3">
 
-  <table class="table">
+  <table class="table-light">
     <thead>
       <tr>
         <th colspan="2"></th>
@@ -15,7 +15,7 @@
     <tbody>
       <% @games.each do |game| %>
         <tr>
-          <td><a class="mid-gray" href="<%= edit_admin_game_path(game) %>"><%= icon('pencil') %></a></td>
+          <td><a class="light-gray" href="javascript:alert('not implemented')"><%= icon('pencil') %></a></td>
           <td>
             <%= link_to game.title, game %>
             <p class="mid-gray mb0"><%= game.link %></p>
@@ -27,8 +27,8 @@
               <%= format_date(game.scheduled_at) %>
             <% else %>
               <%= form_for(game, url: [:admin, game]) do |f| %>
-                <%= f.date_field :scheduled_at, min: Date.today, value: Date.today %>
-                <%= f.submit 'Update' %>
+                <%= f.date_field :scheduled_at, min: Date.today, value: Date.today, class: 'field-light py1 mb0' %>
+                <%= f.button 'Save', class: 'button-blue-outline' %>
               <% end %>
             <% end %>
           </td>
