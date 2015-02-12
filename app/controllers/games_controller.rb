@@ -3,6 +3,19 @@ class GamesController < ApplicationController
     @days = Game.scheduled.display_order.group_by{|x| x.scheduled_at.to_date }
   end
 
+  def new
+    @game = Game.new
+  end
+
+  def create
+    @game = Game.new(game_params)
+    if @game.save
+      redirect_to game_path(@game)
+    else
+      render :new
+    end
+  end
+
   def show
     @game = Game.find(params[:id])
     @comment = Comment.new
