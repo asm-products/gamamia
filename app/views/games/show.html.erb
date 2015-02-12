@@ -1,36 +1,83 @@
- <h3><a href="<%= @game.link %>"><%= @game.title %></a></h3>
-      <img src="<%= @game.thumbnail %>">
-      <p><%= @game.description %></p>
-  <div class="meta">
-    <p class="platform"><%= @game.platform %></p>
-    <p class="votes">
-      up: <%= @game.cached_votes_up %> / down: <%= @game.cached_votes_down %>
-      <% if current_user %>
-        <%= link_to "up", vote_game_path(@game, direction: "up") %>
-        <%= link_to "down", vote_game_path(@game, direction: "down") %>
-      <% else %>
-        You need to be logged in, for voting.
-      <% end %>
-    </p>
-    <p class="comments">Comments: <%= @game.comments_count %></p>
-    <%= render @game.comments %>
+<%= render 'ui/navbar' %>
 
-    <% if current_user %>
-      <%= form_for [@game, @comment] do |f| %>
-        <div class="field">
-          <%= f.label :content %><br>
-          <%= f.text_field :content %>
+<div class="container py3">
+
+
+  <div class="bg-white">
+    <div class="p3 bg-dark-gray mid-gray clearfix rounded-top" style="background-image:url(http://placekitten.com/g/800/600);background-size:cover">
+
+      <div class="left mr3">
+        <%= render partial: 'upvotes/upvote', locals: { game: @game } %>
+      </div>
+
+      <div class="overflow-hidden">
+        <h3 class="mt0 mb0">
+          <a class="white" href="<%= @game.link %>"><%= @game.title %></a>
+        </h3>
+        <!-- <img src="<%= @game.thumbnail %>"> -->
+        <p class="light-gray"><%= @game.description %></p>
+
+        <%= icon 'link' %> <%= @game.link %>
+      </div>
+    </div>
+
+    <div class="px3 py2 border-bottom mid-gray">
+      <div class="clearfix">
+        <div class="left mr1">
+          <%= avatar(user: User.find(101)) %>
         </div>
-        <%= f.submit %>
-      <% end %>
+        <div class="left">
+          posted <%= time_ago_in_words(@game.created_at) %>
+        </div>
+      </div>
+    </div>
+
+    <% if @game.videos.any? %>
+      <div class="px3 py2 border-bottom">
+        <div class="clearfix mxn1">
+          <% @game.videos.each do |video| %>
+            <div class="col px1">
+              <%= render partial: 'videos/video', locals: { video: video } %>
+            </div>
+          <% end %>
+        </div>
+      </div>
     <% end %>
 
+    <% if user_is_admin? %>
+      <div class="p3">
+        <%= render 'videos/form' %>
+      </div>
+    <% end %>
+
+
+    <div class="p3">
+      <p class="light-gray mb3"><%= pluralize @game.comments_count, 'comment' %></p>
+
+
+      <% if signed_in? %>
+        <%= form_for [@game, @comment], html: {class: 'form clearfix mb3'} do |f| %>
+          <div class="clearfix">
+            <div class="left mr2">
+              <%= avatar(user: current_user) %>
+            </div>
+            <div class="overflow-hidden">
+              <%= f.text_area :content, class: 'field-light block full-width mb2', rows: 2 %>
+            </div>
+          </div>
+
+          <div class="right right-align">
+            <%= f.button 'Comment', class: 'button-blue' %>
+          </div>
+        <% end %>
+      <% end %>
+
+      <% @game.comments.each do |comment| %>
+        <div class="mb2">
+          <%= render partial: 'comments/comment', locals: {comment: comment} %>
+        </div>
+      <% end %>
+    </div>
+
   </div>
-  <div class="video">
-      <p class="Videos">Videos: <%= @game.videos_count %></p>
-      <%= render @game.videos %>
-  </div>
-  <%= render 'videos/form' if user_is_admin? %>
-<div class="actions">
-  <%= link_to "back to list", games_path %>
 </div>

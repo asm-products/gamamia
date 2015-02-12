@@ -6,7 +6,7 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @comment = Comment.new
-    @video = @game.videos.new
+    @video = Video.new
   end
 
   def upvote

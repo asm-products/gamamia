@@ -12,7 +12,7 @@
 
   <div class="field">
     <%= f.label :title %><br>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, class: 'field-light' %>
   </div>
   <div class="field">
     <%= f.label :thumbnail %><br>
@@ -26,5 +26,5 @@
     <%= f.label :embed %><br>
     <%= f.text_field :embed %>
   </div>
-    <%= f.submit %>
+    <%= f.submit class: 'button-blue' %>
 <% end %>

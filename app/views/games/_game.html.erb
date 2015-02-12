@@ -8,10 +8,13 @@
     <div class="right ml2 py1 light-gray">
       <div class="clearfix mxn1">
         <div class="left px1">
-          <%= render 'ui/icon', icon: 'comment' %> <%= game.comments_count %>
+          XBox
         </div>
         <div class="left px1">
-          <%= render 'avatars/avatar', user: User.first %>
+          <%= icon('comment') %> <%= game.comments_count %>
+        </div>
+        <div class="left px1">
+          <%= avatar(user: User.first) %>
         </div>
       </div>
     </div>

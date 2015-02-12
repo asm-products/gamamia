@@ -1,4 +1,19 @@
-<div class="comment">
-  <div class="user"><%= comment.user.name %></div>
-  <div class="content"><%= comment.content %></div>
+<div class="clearfix">
+  <div class="left mr2">
+    <%= avatar(user: comment.user) %>
+  </div>
+  <div class="overflow-hidden">
+    <h5 class="mt0 mb0">
+      <%= comment.user.name %>
+      <% if comment.user.is_admin %>
+        <div class="inline-block h6 bg-light-gray circle white regular center" style="width:1rem;line-height:1rem">A</div>
+      <% end %>
+      <span class="light-gray regular ml1"><%= comment.user.occupation %></span>
+    </h5>
+    <%= comment.content %>
+
+    <div class="h6 right-align mt1 light-gray">
+      <%= time_ago_in_words(comment.created_at) %> ago
+    </div>
+  </div>
 </div>
