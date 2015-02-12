@@ -1,18 +1,39 @@
 class GamesController < ApplicationController
   def index
-    @games = Game.all
+    @days = Game.scheduled.display_order.group_by{|x| x.scheduled_at.to_date }
+  end
+
+  def new
+    @game = Game.new
+  end
+
+  def create
+    @game = Game.new(game_params)
+    if @game.save
+      redirect_to game_path(@game)
+    else
+      render :new
+    end
   end
 
   def show
     @game = Game.find(params[:id])
     @comment = Comment.new
-    @video = @game.videos.new
+    @video = Video.new
   end
 
-  def vote
+  def upvote
+    authenticate_user!
     @game = Game.find(params[:id])
-    @game.vote_by voter: current_user, vote: vote_param
-    redirect_to games_path
+    @game.upvote_by(current_user)
+    redirect_to :back
+  end
+
+  def unupvote
+    authenticate_user!
+    @game = Game.find(params[:id])
+    @game.unvote_by(current_user)
+    redirect_to :back
   end
 
   def upload
@@ -23,10 +44,6 @@ class GamesController < ApplicationController
   end
 
   private
-  def vote_param
-    params.require(:direction)
-  end
-
   def game_params
     params.require(:game).permit(:title, :thumbnail, :description, :status, :link, :platform)
   end

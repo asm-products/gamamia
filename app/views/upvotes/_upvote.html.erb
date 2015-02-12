@@ -1,0 +1,11 @@
+<% if signed_in? && current_user.voted_for?(game) %>
+  <a class="block bg-white light-gray px2 py1 rounded" href="<%= unupvote_game_path(game) %>" data-method="post" style="box-shadow:0 0 0 1px rgba(0,0,0,0.1)">
+    <span class="green"><%= icon('check') %></span>
+    <%= game.cached_votes_up %>
+  </a>
+<% else %>
+  <a class="block bg-blue white px2 py1 rounded" href="<%= upvote_game_path(game) %>" data-method="post">
+    <%= icon('caret-up') %>
+    <%= game.cached_votes_up %>
+  </a>
+<% end %>

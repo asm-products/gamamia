@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe GamesController do
-  let!(:game) { Fabricate :game }
+  let!(:game) { Fabricate :game, scheduled_at: Date.yesterday }
   let(:game_params) { Fabricate.attributes_for(:game) }
 
   context "logged in as user" do
@@ -31,9 +31,10 @@ RSpec.describe GamesController do
 
     describe "GET index" do
       subject { get :index }
-      it "assigns all games as @games" do
+      it "assigns scheduled games as @days" do
         subject
-        expect(assigns(:games)).to eq([game])
+        day = game.scheduled_at.to_date
+        expect(assigns(:days)).to eq({day => [game]})
       end
 
       it "renders index template" do
