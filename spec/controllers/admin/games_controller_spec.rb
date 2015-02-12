@@ -17,14 +17,6 @@ RSpec.describe Admin::GamesController do
     end
   end
 
-  describe "GET show" do
-    subject { get :show, {id: game, layout: 'admin'} }
-    it "renders admin/index template for admins" do
-      @user.update_attributes is_admin: true
-      expect(subject).to render_template('admin/games/show')
-    end
-  end
-
   describe "GET index" do
     subject { get :index, layout: 'admin' }
     it "renders admin/index template for admins" do
