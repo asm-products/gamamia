@@ -13,14 +13,14 @@ class GamesController < ApplicationController
     authenticate_user!
     @game = Game.find(params[:id])
     @game.upvote_by(current_user)
-    redirect_to games_path
+    redirect_to :back
   end
 
   def unupvote
     authenticate_user!
     @game = Game.find(params[:id])
     @game.unvote_by(current_user)
-    redirect_to games_path
+    redirect_to :back
   end
 
   def upload
