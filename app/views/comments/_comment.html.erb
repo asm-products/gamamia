@@ -5,9 +5,6 @@
   <div class="overflow-hidden">
     <h5 class="mt0 mb0">
       <%= comment.user.name %>
-      <% if comment.user.is_admin %>
-        <div class="inline-block h6 bg-light-gray circle white regular center" style="width:1rem;line-height:1rem">A</div>
-      <% end %>
       <span class="light-gray regular ml1"><%= comment.user.occupation %></span>
     </h5>
     <%= comment.content %>
