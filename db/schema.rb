@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150212201235) do
+ActiveRecord::Schema.define(version: 20150213001244) do
 
-  create_table "comments", force: true do |t|
-    t.text     "content",    limit: 255
+  create_table "comments", force: :cascade do |t|
+    t.text     "content"
     t.integer  "user_id"
     t.integer  "game_id"
     t.datetime "created_at"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20150212201235) do
   add_index "comments", ["game_id"], name: "index_comments_on_game_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
-  create_table "games", force: true do |t|
+  create_table "games", force: :cascade do |t|
     t.string   "title"
     t.string   "thumbnail"
     t.string   "description"
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 20150212201235) do
     t.integer  "comments_count",          default: 0
     t.date     "scheduled_at"
     t.datetime "deleted_at"
+    t.integer  "user_id"
   end
 
   add_index "games", ["cached_votes_down"], name: "index_games_on_cached_votes_down"
@@ -54,8 +55,9 @@ ActiveRecord::Schema.define(version: 20150212201235) do
   add_index "games", ["cached_weighted_average"], name: "index_games_on_cached_weighted_average"
   add_index "games", ["cached_weighted_score"], name: "index_games_on_cached_weighted_score"
   add_index "games", ["cached_weighted_total"], name: "index_games_on_cached_weighted_total"
+  add_index "games", ["user_id"], name: "index_games_on_user_id"
 
-  create_table "identities", force: true do |t|
+  create_table "identities", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "provider"
     t.string   "uid"
@@ -65,7 +67,7 @@ ActiveRecord::Schema.define(version: 20150212201235) do
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id"
 
-  create_table "users", force: true do |t|
+  create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "reset_password_token"
@@ -86,7 +88,7 @@ ActiveRecord::Schema.define(version: 20150212201235) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
-  create_table "videos", force: true do |t|
+  create_table "videos", force: :cascade do |t|
     t.string   "title"
     t.string   "thumbnail"
     t.string   "category"
@@ -98,7 +100,7 @@ ActiveRecord::Schema.define(version: 20150212201235) do
 
   add_index "videos", ["game_id"], name: "index_videos_on_game_id"
 
-  create_table "votes", force: true do |t|
+  create_table "votes", force: :cascade do |t|
     t.integer  "votable_id"
     t.string   "votable_type"
     t.integer  "voter_id"
