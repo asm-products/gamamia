@@ -24,7 +24,7 @@ p {
 }
 
 body {
-  background-color: #F7F7F7;
+  background-color: #F4F4F4;
   color: #3C3C3C;
 }
 
@@ -78,4 +78,59 @@ body {
 
 .day-header {
 	font-size: 2em;
+}
+
+.upvote-block {
+	font-size: 2em;
+}
+
+.upvote-block:hover {
+	text-decoration: none;
+}
+
+.upvote-block:hover {
+	color: #71D8EC;
+}
+
+.upvote-block.-voted {
+	color: #71D8EC;
+}
+
+.speech-bubble {
+	position: relative;
+	padding: 3px 10px 3px 10px;
+	border: 1px solid #71D8EC;
+	border-radius: 6px;
+	color: #71D8EC;
+	font-size: 0.9em;
+	margin-top: 0.2em;
+}
+
+.speech-bubble:before {
+	content: '';
+	position: absolute;
+	bottom: -10px;
+	left: 10px;
+	border-width: 10px 6px 0;
+	border-style: solid;
+	border-color: #71D8EC transparent;
+	display: block;
+	width: 0;
+
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	bottom: -9px;
+	left: 11px;
+	border-width: 9px 5px 0;
+	border-style: solid;
+	border-color: #fff transparent;
+	display: block;
+	width: 0;
+}
+
+.game-meta {
+	box-shadow: 0 2px 2px 0 rgba(53, 53, 53, 0.21);
 }

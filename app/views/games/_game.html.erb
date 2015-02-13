@@ -1,21 +1,16 @@
 <div class="rounded highlight-hover bg-white">
 
-  <div class="clearfix p2">
+  <div class="clearfix p2 game-meta">
     <div class="left mr2">
       <%= render partial: 'upvotes/upvote', locals: { game: game } %>
     </div>
 
-    <div class="right ml2 py1 light-gray">
+    <div class="right mr2 py1">
       <div class="clearfix mxn1">
-        <div class="left px1">
-          <%= game.platform %>
+        <div class="left speech-bubble">
+          <%= game.comments_count %>
         </div>
-        <div class="left px1">
-          <%= icon('comment') %> <%= game.comments_count %>
-        </div>
-        <div class="left px1">
-          <%= avatar(user: game.user) %>
-        </div>
+
       </div>
     </div>
   </div>
