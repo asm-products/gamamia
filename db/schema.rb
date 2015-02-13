@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20150213001244) do
     t.integer  "votes"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "deleted_at"
     t.integer  "cached_votes_total",      default: 0
     t.integer  "cached_votes_score",      default: 0
     t.integer  "cached_votes_up",         default: 0
@@ -44,7 +45,6 @@ ActiveRecord::Schema.define(version: 20150213001244) do
     t.integer  "videos_count",            default: 0
     t.integer  "comments_count",          default: 0
     t.date     "scheduled_at"
-    t.datetime "deleted_at"
     t.integer  "user_id"
   end
 
