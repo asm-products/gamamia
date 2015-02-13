@@ -51,4 +51,4 @@ gem 'omniauth-twitter'
 gem 'acts_as_votable', '~> 0.10.0'
 
 # CarrierWave for uploads
-gem 'carrierwave'
+gem 'carrierwave-aws'
