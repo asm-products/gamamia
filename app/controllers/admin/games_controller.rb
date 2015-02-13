@@ -9,19 +9,6 @@ module Admin
       @video = @game.videos.new
     end
 
-    def new
-      @game = Game.new
-    end
-
-    def create
-      @game = Game.new(game_params)
-      if @game.save
-        redirect_to admin_games_path
-      else
-        render 'new'
-      end
-    end
-
     def update
       @game = Game.find(params.fetch(:id))
       if @game.update_attributes(game_params)

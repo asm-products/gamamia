@@ -47,6 +47,14 @@ RSpec.describe GamesController do
       end
     end
 
+    describe "POST create" do
+      it "should create game" do
+        expect {
+          post :create, game: game_params
+        }.to change(Game, :count).by(1)
+      end
+    end
+
   end
 
   context "not logged in" do

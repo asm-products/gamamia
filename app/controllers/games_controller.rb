@@ -9,8 +9,7 @@ class GamesController < ApplicationController
 
   def create
     authenticate_user!
-    @game = Game.new(game_params)
-    @game.user = current_user
+    @game = current_user.games.new(game_params)
     if @game.save
       redirect_to game_path(@game)
     else
