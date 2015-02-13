@@ -14,8 +14,6 @@ class AddCacheColumnsForVotingOnGames < ActiveRecord::Migration
     add_index  :games, :cached_weighted_score
     add_index  :games, :cached_weighted_total
     add_index  :games, :cached_weighted_average
-
-    Game.find_each(&:update_cached_votes)
   end
 
   def self.down

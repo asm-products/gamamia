@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+
+<html lang = "en">
+
+<head>
+	<meta charset = "utf-8" />
+	<meta name = "viewport" content = "width = device-width, initial scale = 1.0">
+  <meta name="description" content="A free weekly newsletter of independent and non-AAA games">
+  <meta name="keywords" content="Indiegames, Indie Games, Games, Indie, Game Development, Game Newsletter, Indie Newsletter"> 
+
+
+	 <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
+
+   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/grids-responsive-min.css">
+
+   <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
+
+   <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css">
+
+   <link rel="stylesheet/less" type="text/css" href="styles.less"/>
+
+   <script src = "//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.js"> </script>
+
+   <script src="//netdna.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/2.1.0/less.min.js"></script>
+
+
+
+
+
+   <script>
+       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+      
+       ga('create', 'UA-58072770-2', 'auto');
+       ga('send', 'pageview');
+
+
+      
+
+
+ $(document).ready(function(){
+
+       ( function($) {
+  /**
+   * Our trigger event for opening the overlay. This class
+   * should exist on the overlay trigger, as well as an
+   * attribute (data-overlay) to adentify the overlay to open.
+  */
+  $( '.overlay-trigger' ).on( 'click', function( event ) {
+    event.preventDefault();
+
+    /**
+     * Set the overlay variable based on the data provided
+     * by the overlay trigger.
+     */
+    var overlay = $( this ).data( 'overlay' );
+
+    /**
+     * If the overlay variable is not defined, give a message
+     * and return.
+    */
+    if ( ! overlay ) {
+      console.log( 'You must provide the overlay id in the trigger. (data-overlay="overlay-id").' );
+      return;
+    }
+
+    /**
+     * If we've made it this far, we should have the data
+     * needed to open a overlay. Here we set the id variable
+     * based on overlay variable.
+     */
+    var id = '#' + overlay;
+
+    /**
+     * Let's open up the overlay and prevent the body from
+     * scrolling, both by adding a simple class. The rest
+     * is handled by CSS (awesome).
+     */
+    $( id ).addClass( 'overlay-open' );
+    $( 'body' ).addClass( 'overlay-view' );
+
+    /**
+     * When the overlay outer wrapper or `overlay-close`
+     * triger is clicked, lets remove the classes from
+     * the current overlay and body. Removal of these
+     * classes restores the current state of the user
+     * experience. Again, all handled by CSS (awesome).
+     */
+    $( id ).on( 'click', function( event ) {
+      // Verify that only the outer wrapper was clicked.
+      if ( event.target.id == overlay ) {
+        $( id ).removeClass( 'overlay-open' );
+        $( 'body' ).removeClass( 'overlay-view' );
+      }
+    });
+
+    /**
+     * Closes the overlay when the esc key is pressed. See
+     * comment above on closing the overlay for more info
+     * on how this is accomplished.
+     */
+    $( document ).keyup( function( event ) {
+      // Verify that the esc key was pressed.
+      if ( event.keyCode == 27 ) {
+        $( id ).removeClass( 'overlay-open' );
+        $( 'body' ).removeClass( 'overlay-view' );
+      }
+    });
+  });
+}) (jQuery);
+});
+
+   </script>
+
+
+
+	<style>
+
+	* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+        }       
+
+/*
+ * -- BASE STYLES --
+ * Most of these are inherited from Base, but I want to change a few.
+ */
+
+a{
+    color: #333333;
+    text-decoration: none;
+}
+
+
+body {
+
+    font-family: 'Open Sans', sans-serif;
+
+     -webkit-font-smoothing: antialiased;
+    
+   
+}
+
+h1,h2,h3,h4,h5,h6,label {
+    
+}
+
+
+strong{
+    font-weight: bold;
+    font-size: 0.85em;
+}
+
+/*
+ * -- LAYOUT STYLES --
+ * These are some useful classes which I will need
+ */
+.l-box {
+    padding: 1em;
+}
+
+.l-box-lrg {
+    margin-top: 3em;
+    margin-bottom: 1em;
+
+    padding: 8em;
+
+
+}
+
+.is-center {
+    text-align: center;
+}
+
+.text-dark{
+  color: #333;
+}
+
+.text-light{
+  color: #fff;
+}
+
+.text-right{
+  text-align: right;
+}
+
+.text-left{
+  text-align: left;
+}
+
+.button-large{
+  font-size: 125%;
+}
+
+.float-bottom{
+  padding-top: 8em;
+}
+
+.margin-right{
+  margin-right: -3em;
+}
+
+/* Needed for Large screens */
+.regular{
+  display: none;
+}
+
+/* MODAL STYLINE */
+.modal.custom {
+    outline:none;
+}
+.modal.custom .modal-dialog {
+
+  margin-left: 10%;
+  margin-right: 10%;
+  width:80%;
+  margin-top: 5em;
+    
+}
+.modal-dialog{
+  border-radius: 10em;
+}
+.modal-img{
+  width: 100%;
+  padding: 2em;
+}
+
+
+/*Button Styling */
+.pure-button{
+  padding: 0.7em;
+  padding-left: 1.6em;
+  padding-right: 1.6em;
+  letter-spacing: 0.1em;
+  border-radius: 0.2em;
+  background-color: rgb(250,90,90);
+  font-weight: 600;
+  color: white;
+
+  -webkit-font-smoothing: antialiased;
+  -webkit-transition: background-color linear 0.2s; 
+   transition: background-color linear 0.2s;
+}
+
+.pure-button:hover{
+    color: white;
+    background-color: #37AADB;
+    background-image: none;
+    box-shadow: none;
+
+}
+
+.twitter-follow-button{
+
+}
+
+
+.social-likes{
+
+  padding: 1em;
+}
+/*
+ * -- SPLASH STYLES --
+ * The header, call to action & first image you see
+ */
+
+.splash-container {
+    z-index: 1;
+    overflow: hidden;
+    /* The following styles are required for the "scroll-over" effect */
+    width: 100%;
+    height:100%;
+    top: 0;
+    left: 0;
+    position: fixed !important; 
+
+
+}
+
+.splash {
+    max-width: 65em;
+    height: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 5em;
+    padding-right: 5em;
+    position: absolute; 
+    top: 5em; left: 0; bottom: 0; right: 0;
+
+    color: #555;
+    font-weight: 400;
+     -webkit-font-smoothing: antialiased;
+}
+
+.splash >.title h1{
+  padding-bottom: 0.5em; 
+}
+
+
+/*
+ * -- CONTENT STYLES --
+ * This represents the content area (everything below the splash)
+ */
+.content-wrapper {
+  /* These styles are required for the "scroll-over" effect */
+  position: absolute; 
+  top: 92%;
+  width: 100%;
+  min-height: 10%;
+  z-index: 2; 
+  background: white;
+  /* Pure.css likes to override my fonts */
+  font-family: 'Open Sans', sans-serif;
+   -webkit-font-smoothing: antialiased;
+   color: #555;
+}
+
+.content-wrapper > .learn-more{
+    padding: 1em;
+
+}
+.content{
+  
+  padding-top: 5em;
+  padding: 1em;
+
+}
+.content-text p{
+
+  letter-spacing: 0.05em;
+
+}
+
+
+/* This is the class used for the footer */
+.footer {
+
+    background: rgb(250,90,90);
+    color: #333333;
+    padding-left: 0em;
+    padding-right: 0em;
+}
+
+.footer p{
+ 
+  margin-left: 0em;
+  font-size: 80%;
+}
+.footer a{
+ 
+  letter-spacing: 0.05em;
+  padding: 1em;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer a:hover{
+
+  border-bottom:  solid white;
+}
+
+.team-pics > .portrait{
+
+  padding: 1em;
+}
+
+.team-pics > .portrait a{
+  text-decoration: none;
+  color: #4A90E2;
+  transition: color ease 0.3s;
+
+}
+
+.team-pics > .portrait a:hover{
+
+  color: #2F3650;
+}
+
+.form-control{
+
+
+     background-image: none;
+     box-shadow: none;
+     border: none;
+     text-align: center;
+    
+     border-radius: 0.2em;
+ 
+
+
+}
+
+.sign-me-up-button{
+
+  padding: 6em;
+
+}
+
+.about-wrapper,.submit-wrapper{
+  
+    padding: 1em;
+    padding-bottom: 3em;
+
+}
+
+
+
+
+/*
+ * -- TABLET (AND UP) MEDIA QUERIES --
+ */
+@media (min-width: 48em) {
+
+.mobile{
+  display: none;
+}
+
+.regular{
+  display: inline;
+}
+
+.splash{
+   top: 10em; left: 0; bottom: 0; right: 0;
+}
+.splash >.title{
+  padding-top: 7em;
+  padding-right: 5em;
+  float: left;
+  text-align: left;
+}
+
+.splash >.title h1{
+  padding-bottom: 0.5em; 
+}
+
+.content{
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 5em;
+  padding-right: 5em;
+  padding-top: 5em;
+  max-width: 70em;
+}
+
+.footer p{
+  padding: 1em;
+  margin-left: -2em;
+}
+
+.footer a{
+ 
+  letter-spacing: 0.05em;
+
+  padding: 2em;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.about-wrapper, .submit-wrapper{
+  
+    padding: 5em;
+    padding-bottom: 3em;
+
+}
+
+
+}
+
+@media (min-width: 78em) {
+
+ 
+
+ 
+}
+
+
+
+		
+	</style>
+
+</head>
+
+
+<body>
+
+<!--mobile splash-->
+<script src="social-likes.min.js"></script>
+
+
+
+<div class="splash-container mobile">
+  <div class="social-likes" data-counters="no">
+  <div class="facebook" title="Share link on Facebook"></div>
+  <div class="twitter" data-via="GamamiaPlaylist" title="Share link on Twitter"></div>
+</div>
+    <div class="splash is-center less-top-padding">
+
+       <div class = "title-image pure-u-1 is-center">
+
+              <img src = "1.png" height = "200px">
+
+       </div>
+
+       <div class = "title pure-u-1">
+
+             <h1 class = "is-center"> Gamamia </h1>
+
+             <p>  A free weekly newsletter of fantastic games from new developers and indie favorites. </p>
+
+             <a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78">  
+             <button type="button" class="pure-button">Subscribe</button> </a>
+ 
+       </div>
+  </div>
+</div>
+
+<!--regular splash-->
+
+<div class="splash-container regular">
+
+
+    <div class="splash">
+
+
+
+       <div class = "title pure-u-md-1-2">
+
+            <h1> Gamamia </h1>
+
+            <p>  A free weekly newsletter of fantastic games from new developers and indie favorites. </p>
+
+            <a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78">  
+             <button type="button" class="pure-button">Subscribe</button> </a>
+
+        </div>
+
+         <div class = "title-image pure-u-md-1-2 text-left">
+
+            <img src = "1.png" height = "500px">
+
+        </div>
+  
+    </div>
+</div>
+
+
+
+<!--mobile content wrapper -->
+
+<div class="content-wrapper mobile">
+
+  <p class = "learn-more is-center"> Learn More </p>
+
+   <div class ="content pure-g">
+
+         <div class="pure-u-1 is-center">
+                 <div class="l-box">
+                     <img src = "2.png" height = "200px">
+                 </div>
+        </div>
+
+        <div class="pure-u-1 is-center">
+                 <div class="l-box content-text">
+                     <h3>The Hunt</h3>
+                     <p>
+                        First we look through every nook and cranny of the independent game development world to find the best new indie games and then we play them (Our favorite part).
+                     </p>
+                 </div>
+        </div>
+             <!--fffff-->
+
+        <div class="pure-u-1 is-center">
+                 <div class="l-box">
+                    
+                     <h5>
+                         <img src = "3.png" height = "200px">
+                     </h5>
+                 </div>
+        </div>
+
+        <div class="pure-u-1 is-center">
+                 <div class="l-box content-text">
+                     <h3>The Debate</h3>
+                     <p>
+                       Then we meet in a secret cave and decide on the ones we think you would love.
+                     </p>
+                 </div>
+       </div>
+
+             <!--ffff-->
+
+        <div class="pure-u-1 is-center">
+                 <div class="l-box">
+                     <h5>
+                        <img src = "4.png" height = "200px">
+                       
+                     </h5>
+                 </div>
+        </div>
+
+         <div class="pure-u-1 is-center">
+                 <div class="l-box content-text">
+                     <h3>The Weekend</h3>
+                     <p>
+                       Finally we put the very best together and send them right to your email in time for you to play them all weekend (Your favorite part).   
+                       
+                     </p>
+                 </div>
+        </div>
+    </div>
+
+
+     <div class = "is-center pure-u-1 sign-me-up-button">
+              <button class = "pure-button button-large"> Sign me up! </button>
+     </div>
+
+      <div class = "footer l-box is-center">
+          <p>
+               <a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78">  Subscribe </a>
+          
+          <a class="overlay-trigger" data-overlay="overlay-submit">Submit</a>
+    
+          <img src = "Logo.png" height = "30px"> 
+          
+          <a class="overlay-trigger" data-overlay="overlay-about"> About </a>
+          
+          <a href="mailto:support@gamamia.com"> Contact</a>
+           </p>
+
+            <div class="social-likes" data-counters="no">
+
+             <a class="facebook" title="Share link on Facebook"> Facebook
+             </a>
+            
+             <a class="twitter" data-via="GamamiaPlaylist" data-related="A free weekly newsletter featuring indie games"  title="Share link on Twitter">Twitter</a>
+            
+             <a class="plusone" title="Share link on Google+">Google+</a>
+
+         </div>
+
+
+          
+      </div>
+          
+</div>
+          
+
+
+<!-- normal content wrapper -->
+<div class="content-wrapper regular">
+
+  <p class = "learn-more is-center"> Learn More </p>
+
+   <div class ="content pure-g">
+            <div class="pure-u-1 pure-u-md-1-2">
+                 <div class="l-box float-bottom content-text">
+                     <h3>The Hunt</h3>
+                     <p>
+                        First we look through every nook and cranny of the independent game development world to find the best new games and then we play them (Our favorite part).
+                     </p>
+                 </div>
+           </div>
+
+             <div class="pure-u-1 pure-u-md-1-2 is-center">
+                 <div class="l-box text-right">
+                     <img src = "2.png" height = "300px">
+                 </div>
+             </div>
+
+             <!--fffff-->
+
+             <div class="pure-u-1 pure-u-md-1-2 is-center">
+                 <div class="l-box text-left">
+                    
+                     <h5>
+                         <img src = "3.png" height = "300px">
+                     </h5>
+                 </div>
+             </div>
+
+             <div class="pure-u-1 pure-u-md-1-2">
+                 <div class="l-box float-bottom content-text">
+                     <h3>The Debate</h3>
+                     <p>
+                       Then we meet in a secret cave and decide on the ones we think you would love.
+                       
+                     </p>
+                 </div>
+             </div>
+
+             <!--ffff-->
+
+             <div class="pure-u-1 pure-u-md-1-2">
+                 <div class="l-box float-bottom content-text">
+                     <h3>The Weekend</h3>
+                     <p>
+                       Finally we put the very best together and send them right to your email in time for you to play them all weekend (Your favorite part).   
+                       
+                     </p>
+                 </div>
+             </div>
+
+             <div class="pure-u-1 pure-u-md-1-2 is-center">
+                 <div class="l-box text-right">
+                 
+                     <h5>
+                        <img src = "4.png" height = "300px">
+                       
+                     </h5>
+                 </div>
+             </div>
+    </div>
+
+
+    <div class = "l-box-lrg is-center">
+     <a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78"> <button class = "pure-button button-large"> Sign me up! </button> </a>
+    </div>
+
+
+
+
+    <div class = "footer l-box is-center">
+        <p>
+          <a href="http://gamamia.us9.list-manage.com/subscribe?u=458396ad3c696185fe544661a&id=a2accafc78">  Subscribe </a>
+          
+          <a class="overlay-trigger" data-overlay="overlay-submit">Submit</a>
+    
+          <img src = "Logo.png" height = "30px"> 
+          
+          <a class="overlay-trigger" data-overlay="overlay-about"> About </a>
+          
+          <a href="mailto:support@gamamia.com"> Contact</a>
+
+          <div class="social-likes" data-counters="no">
+
+             <a class="facebook" title="Share link on Facebook"> Facebook
+             </a>
+            
+             <a class="twitter" data-via="GamamiaPlaylist" data-related="A free weekly newsletter featuring indie games"  title="Share link on Twitter">Twitter</a>
+            
+             <a class="plusone" title="Share link on Google+">Google+</a>
+
+         </div>
+       </p>
+    
+     </div>
+
+</div>
+   
+      <div id="overlay-about" class="overlay">
+
+        <div class="overlay-inner about-wrapper is-center">
+             <h4>Gamamia</h4>  
+              <p> Gamamia is a weekly newsletter focused on independent and non-AAA titles. 
+              </br>
+                  The games that don't have million dollar marketing budgets but are more than worthy of our time.
+              </p>
+              </br>
+              <h4> Future Plans </h4>
+              <p> We're working hard on making Gamamia a web app that will be curated the community. If you're interested in joining us, check us out on <a href = "https://assembly.com/gamamia" target ="_blank"> Assembly. </a> 
+              </br>
+              </br>
+              <h4 class = "is-center"> Team </h4> 
+              </br>
+      
+               <div class = "team-pics is-center">
+         
+                <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
+                 <p> Illustration | UI <p>
+                       <div>
+                            <img src = "Maggie.png" height = "100px">
+                       </div>
+                     </br>
+                    
+                     <a href="https://twitter.com/mappletons"> @mappletons</a>
+                </div>
+         
+                <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
+                <p> UX | Front-End </p>
+                       <div>
+                            <img src = "Alberto.png" height = "100px">
+                       </div>
+                     </br>
+                    
+                     <a href="https://twitter.com/achangeofcoast"> @achangeofcoast</a>
+                </div>
+         
+                <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
+                 <p> Product </p>
+                       <div>
+                            <img src = "Ben.png" height = "100px">
+                       </div>
+                     </br>
+                    
+                     <a href="https://twitter.com/bshyong"> @bshyong</a>
+                </div>
+         
+                <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
+                 <p> Product </p>
+                       <div>
+                            <img src = "Bondi2.png" height = "100px">
+                       </div>
+                     </br>
+                     <em> bondi</em>
+                </div>
+         
+                  <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
+                  <p> Full Stack </p>
+                       <div>
+                            <img src = "Jay.png" height = "100px">
+                       </div>
+                     </br>
+                     <a href="https://twitter.com/jay_hoffmann"> @jay_hoffmann</a>
+                </div>
+         
+                <div class = "portrait pure-u-sm-1-3 pure-u-md-1-5">
+                 <p> Full Stack <p>
+                       <div>
+                            <img src = "MRB.png" height = "100px">
+                       </div>
+                     </br>
+                     <a href="https://twitter.com/thereibel"> @TheReibel</a>
+                </div>
+                
+                 </div>
+              </div>
+            </div>
+
+
+<div id="overlay-submit" class="overlay">
+
+        <div class="overlay-inner submit-wrapper">
+
+             <h1> Submit a Game </h1>
+
+                  <p> We're always looking for awesome games, so if you know of any or if you're developing one yourself please send it our way. We only ask that the game </p>
+
+                    <ul>
+                      <li> Be playable (a demo works!) </li>
+                      <li> Be totally rad </li>
+                    </ul>
+
+            <p>If your game is both of these then just fill out the form below and send it our way! We'll shoot you an email as soon as we play it</p>
+          </br>
+          </br>
+          </br>
+
+  
+             <form action="//formspree.io/axc8857@g.rit.edu" method="POST">
+
+                  <div class = "submit-form">
+                  
+                      <input class = "form-control" type="text" name="name" value = "game link (site or online store)" required>       
+                      <input class = "form-control" type="email" name="_replyto" value = "your email" required>
+
+                  </div>
+
+                  <div class = "is-center l-box">
+                      <input class="pure-button" type="submit" value="Submit">
+                  </div>
+             </form>
+
+
+
+                   
+                 
+       </div>
+</div>
+         
+         
+      
+
+
+
+	
+
+
+</body>
+
+
+</html>
+
+

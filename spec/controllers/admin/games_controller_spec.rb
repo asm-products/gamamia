@@ -9,14 +9,6 @@ RSpec.describe Admin::GamesController do
     sign_in(@user)
   end
 
-  describe "POST create" do
-    it "should create game" do
-      expect {
-        post :create, game: game_params
-      }.to change(Game, :count).by(1)
-    end
-  end
-
   describe "GET index" do
     subject { get :index, layout: 'admin' }
     it "renders admin/index template for admins" do
@@ -59,14 +51,6 @@ RSpec.describe Admin::GamesController do
       it "redirects to the games list" do
         delete :destroy, {id: game.to_param}
         expect(response).to redirect_to(root_url)
-      end
-    end
-
-    describe "POST create" do
-      it "should not create game" do
-        expect {
-          post :create, game: game_params
-        }.to change(Game, :count).by(0)
       end
     end
 

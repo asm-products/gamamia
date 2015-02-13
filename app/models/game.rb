@@ -5,6 +5,7 @@ class Game < ActiveRecord::Base
 
   has_many :videos
   has_many :comments
+  belongs_to :user
 
   default_scope -> { where(deleted_at: nil) }
 

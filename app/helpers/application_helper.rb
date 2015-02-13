@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-  def avatar(attrs)
+  def avatar(attrs={})
     render partial: 'avatars/avatar',
             locals: { user: attrs.fetch(:user), size: attrs[:size] }
   end

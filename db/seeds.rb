@@ -5,14 +5,8 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-Game.create!(title:          "Example Game",
-             description:    "Example description of a game, which would include a short summary of what this is all about",
-             status:         "released",
-             link:           "http://example.com",
-             platform:       "Xbox",
-             votes:          0)
 
-User.create!(email:         "person@email.com",
+admin = User.create!(email:         "person@email.com",
              password:      "foobarfoo",
              name:          "Joe Smith",
              occupation:    "Developer")
@@ -22,6 +16,14 @@ User.create!(email:         "admin@email.com",
              name:          "Joe Smith",
              occupation:    "admin",
              is_admin: true)
+
+Game.create!(title:          "Example Game",
+            description:    "Example description of a game, which would include a short summary of what this is all about",
+            status:         "released",
+            link:           "http://example.com",
+            platform:       "Xbox",
+            votes:          0,
+            user: admin)
 
 Comment.create!(content:    "Example comment, which would reference a game somewhere",
             user_id:        1,
@@ -47,6 +49,13 @@ Video.create!(
   name = Faker::Name.name
   occupation = ["Developer", "Gamer", "Publisher"].sample
 
+  user = User.create!(
+    email:      email,
+    password:   "foobarfoo",
+    name:       name,
+    occupation: occupation
+  )
+
   Game.create!(title:       title,
              description:   description,
              status:        status,
@@ -54,11 +63,8 @@ Video.create!(
              platform:      platform,
              votes:         votes,
              created_at:    created_at,
-             updated_at:    created_at)
-  User.create!(email:       email,
-             password:      "foobarfoo",
-             name:          name,
-             occupation:    occupation)
+             updated_at:    created_at,
+             user:          user)
 end
 
 199.times do |n|
