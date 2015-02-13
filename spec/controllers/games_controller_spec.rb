@@ -58,6 +58,25 @@ RSpec.describe GamesController do
   end
 
   context "not logged in" do
+    describe "POST create" do
+      it "should redirect to root" do
+        post :create
+        expect(response).to redirect_to(root_path)
+      end
+    end
 
+    describe "POST unupvote" do
+      it "should redirect to root" do
+        post :unupvote, id: game.id
+        expect(response).to redirect_to(root_path)
+      end
+    end
+
+    describe "POST upvote" do
+      it "should redirect to root" do
+        post :upvote, id: game.id
+        expect(response).to redirect_to(root_path)
+      end
+    end
   end
 end

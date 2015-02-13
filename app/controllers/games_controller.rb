@@ -1,4 +1,5 @@
 class GamesController < ApplicationController
+  before_filter :auth_user, only: [:upvote, :unupvote, :create]
   def index
     @days = Game.scheduled.display_order.group_by{|x| x.scheduled_at.to_date }
   end
@@ -8,7 +9,6 @@ class GamesController < ApplicationController
   end
 
   def create
-    authenticate_user!
     @game = current_user.games.new(game_params)
     if @game.save
       redirect_to game_path(@game)
@@ -24,14 +24,12 @@ class GamesController < ApplicationController
   end
 
   def upvote
-    authenticate_user!
     @game = Game.find(params[:id])
     @game.upvote_by(current_user)
     redirect_to :back
   end
 
   def unupvote
-    authenticate_user!
     @game = Game.find(params[:id])
     @game.unvote_by(current_user)
     redirect_to :back
