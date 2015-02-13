@@ -4,4 +4,6 @@
   avatar_url = "https://gravatar.com/avatar/#{avatar_path}.png?s=#{size}&d=monsterid"
 %>
 
-<img class="block circle" src="<%= avatar_url %>" width="24" height="24" alt="<%= user.email %>" />
+<a class="block" title="<%= user.name %>">
+  <img class="block circle" src="<%= avatar_url %>" width="24" height="24" alt="<%= user.name %>" />
+</a>
