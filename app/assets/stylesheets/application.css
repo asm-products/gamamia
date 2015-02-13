@@ -1,8 +1,76 @@
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Ubuntu Light'), local('Ubuntu-Light'), url(http://fonts.gstatic.com/s/ubuntu/v7/_aijTyevf54tkVDLy-dlnJBw1xU1rKptJj_0jans920.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Ubuntu'), url(http://fonts.gstatic.com/s/ubuntu/v7/zvCUQcxqeoKhyOlbifSAaevvDin1pK8aKteLpeZ5c0A.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
 h1, h2, h3, h4, h5, h6,
 body {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Ubuntu', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+p {
+	font-weight: 300;
 }
 
 body {
   background-color: #F7F7F7;
+}
+
+.vertically-center {
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.logo-bar {
+	max-height: 100px;
+	color: #FA5555;
+}
+
+.logo-bar .logo {
+	max-height: 100px;
+	width: auto;
+}
+
+.logo-bar .textbox {
+	height: 100px;
+}
+
+.logo-bar a {
+	color: #FA5555;
+	text-decoration: none;
+}
+
+.logotext {
+	text-transform: uppercase;
+	font-size: 1.375em;
+}
+
+.logocaption {
+	font-size: 1em;
+}
+
+.nav-bar a {
+	color: #FA5555;
+}
+
+.nav-bar .addicon {
+	max-width: 25px;
+}
+
+.nav-bar .logtext {
+	margin-left: 0.5em;
 }

@@ -1,15 +1,15 @@
 <div class="bg-white">
-  <div class="container clearfix py2">
+  <div class="container clearfix">
 
-    <div class="left">
+    <div class="left logo-bar">
       <a class="clearfix block" href="<%= root_path %>">
 
         <div class="left h2 mr2 red">
-          <%= render 'ui/icon', icon: 'gamepad' %>
+          <%= image_tag 'Gamamia_Logo.png', :class => 'logo' %>
         </div>
-        <div class="overflow-hidden">
-          <h4 class="mt0 mb0 dark-gray">Gamamia</h4>
-          <p class="mb0 mid-gray">Find, share, and discuss indie games</p>
+        <div class="overflow-hidden textbox">
+          <h1 class="logotext mb0">Gamamia</h4>
+          <p class="logocaption">Find, share, and discuss indie games</p>
         </div>
 
       </a>
@@ -18,7 +18,11 @@
 
     <div class="right">
 
-      <ol class="list-reset clearfix mxn1 mb0">
+      <ol class="list-reset clearfix mxn1 mt2 nav-bar">
+
+        <li class="left">
+          <a class="block p1" href="<%= new_game_path %>"><%= image_tag 'Line.svg', :class => 'addicon' %></a>
+        </li>
 
         <% if user_is_admin? %>
           <li class="left">
@@ -28,13 +32,10 @@
 
         <li class="left">
           <% if user_signed_in? %>
-              <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'block p1') %>
+              <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'block p1 logtext') %>
           <% else %>
-            <%= link_to('Login', user_omniauth_authorize_path("twitter"), class: 'block p1') %>
+            <%= link_to('Login', user_omniauth_authorize_path("twitter"), class: 'block p1 logtext') %>
           <% end %>
-        </li>
-        <li class="left">
-          <a class="block p1" href="<%= new_game_path %>"><%= render 'ui/icon', icon: 'plus' %></a>
         </li>
       </ol>
 
