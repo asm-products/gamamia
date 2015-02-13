@@ -51,9 +51,13 @@
     <% if @game.cached_votes_up > 0 %>
       <div class="px3 py2">
         <p class="light-gray mb2"><%= pluralize @game.cached_votes_up, 'upvote' %></p>
-        <% @game.votes_for.up.each do |vote| %>
-          <%= avatar(user: vote.voter) %>
-        <% end %>
+        <ul class="list-reset clearfix mxn1" style="margin-top:-.5rem;margin-bottom:-.5rem">
+          <% @game.votes_for.up.each do |vote| %>
+            <li class="left p1">
+              <%= avatar(user: vote.voter) %>
+            </li>
+          <% end %>
+        </ul>
       </div>
     <% end %>
 
