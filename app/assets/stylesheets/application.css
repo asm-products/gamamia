@@ -25,6 +25,7 @@ p {
 
 body {
   background-color: #F7F7F7;
+  color: #3C3C3C;
 }
 
 .vertically-center {
@@ -73,4 +74,8 @@ body {
 
 .nav-bar .logtext {
 	margin-left: 0.5em;
+}
+
+.day-header {
+	font-size: 2em;
 }
