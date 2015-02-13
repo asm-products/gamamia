@@ -19,13 +19,29 @@ body {
   font-family: 'Ubuntu', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
+h4 {
+	font-size: 2em;
+	font-weight: 300;
+}
+
 p {
 	font-weight: 300;
+	font-size: 0.875em;
+	color: #A5A5A5;
+	line-height: 1.25;
 }
 
 body {
   background-color: #F4F4F4;
   color: #3C3C3C;
+}
+
+.dark-gray {
+	color: #3C3C3C;
+}
+
+.small {
+	font-size: 0.65em;
 }
 
 .vertically-center {
@@ -133,4 +149,10 @@ body {
 
 .game-meta {
 	box-shadow: 0 2px 2px 0 rgba(53, 53, 53, 0.21);
+}
+
+.gameplatform {
+	position: absolute;
+	top: 0.5em;
+	right: 0.5em;
 }

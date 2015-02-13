@@ -1,4 +1,4 @@
-<div class="rounded highlight-hover bg-white">
+<div class="rounded highlight-hover bg-white relative">
 
   <div class="clearfix p2 game-meta">
     <div class="left mr2">
@@ -18,10 +18,18 @@
   <img class="block" src="http://placekitten.com/g/325/200" />
 
   <div class="p2">
-    <h4 class="mt0 mb0">
-      <a class="dark-gray" href="<%= game_path(game) %>"><%= game.title %></a>
-    </h4>
-    <p class="mid-gray mb0" style="min-height:4.5rem"><%= truncate(game.description, length: 100) %></p>
+    <header class="clearfix">
+      <h4 class="mt0 left">
+        <a class="dark-gray" href="<%= game_path(game) %>"><%= game.title %></a>
+      </h4>
+      <div class="right">
+        <%= avatar(user: game.user) %>
+      </div>
+    </header>
+    <p class="mb0" style="min-height:4.5rem"><%= truncate(game.description, length: 100) %></p>
+    <footer>
+        <p class="small dark-gray bold"><%= game.platform %></p>
+    </footer>
   </div>
 
 </div>
