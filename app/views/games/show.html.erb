@@ -12,12 +12,12 @@
 
       <div class="overflow-hidden">
         <h3 class="mt0 mb0">
-          <a class="white" href="<%= @game.link %>"><%= @game.title %></a>
+          <a class="white" href="<%= @game.link %>" target="_blank"><%= @game.title %></a>
         </h3>
         <!-- <img src="<%= @game.thumbnail %>"> -->
         <p class="light-gray"><%= @game.description %></p>
 
-        <%= icon 'link' %> <%= @game.link %>
+        <a class="mid-gray" href="<%= @game.link %>" target="_blank"><%= icon 'link' %> <%= @game.link %></a>
       </div>
     </div>
 
