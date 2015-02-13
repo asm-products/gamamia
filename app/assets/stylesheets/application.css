@@ -40,6 +40,10 @@ body {
 	color: #3C3C3C;
 }
 
+.light-gray {
+	color: #BFBFBF;
+}
+
 .small {
 	font-size: 0.65em;
 }
@@ -97,11 +101,16 @@ body {
 }
 
 .upvote-block {
-	font-size: 2em;
+	font-size: 1.25em;
+	border: 1px solid #BFBFBF;
+	border-radius: 5px;
 }
 
 .upvote-block:hover {
 	text-decoration: none;
+	background: #71D8EC;
+	color: white !important;
+	border-color: #71D8EC;
 }
 
 .upvote-block:hover {
@@ -109,7 +118,9 @@ body {
 }
 
 .upvote-block.-voted {
-	color: #71D8EC;
+	background: #71D8EC;
+	color: white;
+	border-color: #71D8EC;
 }
 
 .speech-bubble {
