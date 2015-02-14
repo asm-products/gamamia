@@ -9,6 +9,10 @@ module Admin
       @video = @game.videos.new
     end
 
+    def edit
+      @game = Game.find(params[:id])
+    end
+
     def update
       @game = Game.find(params.fetch(:id))
       if @game.update_attributes(game_params)

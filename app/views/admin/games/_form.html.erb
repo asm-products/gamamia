@@ -1,0 +1,42 @@
+<%= form_for([:admin, game]) do |f| %>
+  <% if game.errors.any? %>
+    <div id="form_errors">
+      <h2>Errors while saving:</h2>
+      <ul>
+      <% game.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="mb3">
+    <%= f.label :title %><br>
+    <%= f.text_field :title, class: 'field-light block full-width' %>
+  </div>
+
+  <div class="mb3">
+    <%= f.label :link, 'URL' %><br>
+    <%= f.text_field :link, class: 'field-light block full-width' %>
+  </div>
+
+  <div class="mb3">
+    <%= f.label :description %><br>
+    <%= f.text_area :description, class: 'field-light block full-width', rows: 2 %>
+  </div>
+
+  <div class="clearfix mb3 mxn2">
+    <div class="col col-6 px2">
+      <%= f.label :thumbnail %><br>
+      <%= f.file_field :thumbnail %>
+    </div>
+    <div class="col col-6 px2">
+      <%= f.label :platform %><br>
+      <%= f.select(:platform, Game::PLATFORMS) %>
+    </div>
+  </div>
+
+  <div class="right-align">
+    <%= f.button 'Submit Game', class: 'button-blue' %>
+  </div>
+<% end %>

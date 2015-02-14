@@ -15,7 +15,7 @@
     <tbody>
       <% @games.each do |game| %>
         <tr>
-          <td><a class="light-gray" href="javascript:alert('not implemented')"><%= icon('pencil') %></a></td>
+          <td><a class="light-gray" href="<%= edit_admin_game_path(game) %>"><%= icon('pencil') %></a></td>
           <td>
             <%= link_to game.title, game %>
             <p class="mid-gray mb0"><%= game.link %></p>
