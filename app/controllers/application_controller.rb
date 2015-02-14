@@ -16,17 +16,18 @@ class ApplicationController < ActionController::Base
 
   def auth_user
     unless current_user.present?
+      session[:referrer_url] = request.referrer
       flash[:error] = "You need to be signed in for that action. Please click Login above to sign in or register."
       redirect_to root_path
     end
   end
 
   def after_sign_in_path_for(resource_or_scope)
-      if resource_or_scope.sign_in_count == 1
-         finish_signup_path(resource_or_scope)
-      else
-         root_path
-      end
+    if resource_or_scope.sign_in_count == 1
+      finish_signup_path(resource_or_scope)
+    else
+      session[:referrer_url] || request.env['omniauth.origin'] || stored_location_for(resource) || root_path
+    end
   end
 
   def user_is_admin?
