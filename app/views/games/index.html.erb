@@ -4,14 +4,12 @@
   <% @days.each do |day, games| %>
 
     <%= render 'days/day', day: day %>
-
-    <div class="clearfix mxn2 mb4">
+    
       <% games.each do |game| %>
-        <div class="col col-4 p2">
-          <%= render 'games/game', game: game %>
-        </div>
+        <div class="clearfix mxn2 mt3 mb3 table">
+            <%= render 'games/game', game: game %>
+          </div>
       <% end %>
-    </div>
 
   <% end %>
 </div>

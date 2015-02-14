@@ -21,7 +21,6 @@ body {
 
 h4 {
 	font-size: 2em;
-	font-weight: 300;
 }
 
 p {
@@ -97,30 +96,30 @@ body {
 }
 
 .day-header {
-	font-size: 2em;
+	font-size: 1.25em;
+	font-weight: 300;
 }
 
 .upvote-block {
-	font-size: 1.25em;
-	border: 1px solid #BFBFBF;
-	border-radius: 5px;
+	font-size: 2em;
+	text-align: center;
 }
 
 .upvote-block:hover {
 	text-decoration: none;
-	background: #71D8EC;
 	color: white !important;
-	border-color: #71D8EC;
 }
 
 .upvote-block:hover {
 	color: #71D8EC;
 }
 
-.upvote-block.-voted {
-	background: #71D8EC;
-	color: white;
-	border-color: #71D8EC;
+.upvote-block.-voted > p {
+	color: #71D8EC;
+}
+
+.upvote-block > .voteicon {
+	margin-bottom: 0;
 }
 
 .speech-bubble {
@@ -129,28 +128,27 @@ body {
 	border: 1px solid #71D8EC;
 	border-radius: 6px;
 	color: #71D8EC;
-	font-size: 0.9em;
+	font-size: 0.6em;
 	margin-top: 0.2em;
 }
 
 .speech-bubble:before {
 	content: '';
 	position: absolute;
-	bottom: -10px;
-	left: 10px;
+	bottom: -9px;
+	left: 8px;
 	border-width: 10px 6px 0;
 	border-style: solid;
 	border-color: #71D8EC transparent;
 	display: block;
 	width: 0;
-
 }
 
 .speech-bubble:after {
 	content: '';
 	position: absolute;
-	bottom: -9px;
-	left: 11px;
+	bottom: -8px;
+	left: 9px;
 	border-width: 9px 5px 0;
 	border-style: solid;
 	border-color: #fff transparent;
@@ -159,7 +157,8 @@ body {
 }
 
 .game-meta {
-	box-shadow: 0 2px 2px 0 rgba(53, 53, 53, 0.21);
+	color: #CCC;
+	font-size: 0.8em;
 }
 
 .gameplatform {

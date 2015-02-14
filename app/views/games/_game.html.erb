@@ -1,35 +1,30 @@
-<div class="rounded highlight-hover bg-white relative">
+<div class="col-2 table-cell">
+  <%= render partial: 'upvotes/upvote', locals: { game: game } %>
+</div>
 
-  <div class="clearfix p2 game-meta">
-    <div class="left mr2">
-      <%= render partial: 'upvotes/upvote', locals: { game: game } %>
-    </div>
+<div class="rounded bg-white relative col col-10 clearfix">
 
-    <div class="right mr2 py1">
-      <div class="clearfix mxn1">
-        <div class="left speech-bubble">
-          <%= game.comments_count %>
-        </div>
+  <div class="col col-4 p2">
 
-      </div>
-    </div>
-  </div>
+    <h4 class="mt0">
+      <a class="dark-gray" href="<%= game_path(game) %>"><%= game.title %></a>
+    </h4>
+    <p class="mb0 dark-gray"><%= truncate(game.description, length: 100) %></p>
 
-  <div class="bg-mid-gray" style="background-image:url(<%= image_path(game.thumbnail) %>);background-size:cover;background-position:center;width:100%;height:15rem"></div>
+    <footer class="clearfix mt4 game-meta">
 
-  <div class="p2">
-    <header class="clearfix">
-      <h4 class="mt0 left">
-        <a class="dark-gray" href="<%= game_path(game) %>"><%= game.title %></a>
-      </h4>
-      <div class="right">
-        <%= avatar(user: game.user) %>
-      </div>
-    </header>
-    <p class="mb0" style="min-height:4.5rem"><%= truncate(game.description, length: 100) %></p>
-    <footer>
-        <p class="small dark-gray bold"><%= game.platform %></p>
+      <p class="left mb0"><%= game.platform %></p>
+
+          <div class="right light-gray mb0">
+            <%= icon('comment') %> <%= game.comments_count %>
+          </div>
+
     </footer>
+
   </div>
+
+  <div class="bg-mid-gray col col-8" style="background-image:url(<%= image_path(game.thumbnail) %>);background-size:cover;background-position:0 0;height:14em"></div>
 
 </div>
+
+
