@@ -36,6 +36,10 @@ body {
   color: #3C3C3C;
 }
 
+textarea {
+  resize: vertical; /* Fix to avoid ugly resizing of textareas only allowing vertical resize */
+}
+
 .dark-gray {
 	color: #3C3C3C;
 }
