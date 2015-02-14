@@ -1,9 +1,10 @@
 <%= render 'ui/navbar' %>
 
 <div class="container">
-  <% @weeks.each do |week, games| %>
 
-    <%= render 'weeks/week', week: week %>
+  <% @weeks.each_with_index do |(week, games), i| %>
+
+    <%= render 'weeks/week', week: week, i: i %>
     
       <% games.each do |game| %>
         <div class="clearfix m2 table game-block">
