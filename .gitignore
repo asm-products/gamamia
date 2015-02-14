@@ -18,4 +18,7 @@
 # Ignore uploaded files
 public/uploads/game/thumbnail/*
 
+# Ignore compiled assets
+public/assets/
+
 .DS_Store
