@@ -43,3 +43,7 @@
 
   </div>
 </div>
+
+<% if flash[:error] -%>
+  <p class='error red center mt2'><%=h flash[:error] %></p>
+<% end -%>
