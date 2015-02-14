@@ -44,6 +44,10 @@ GEM
       uuidtools (~> 2.1)
     bcrypt (3.1.10)
     builder (3.2.2)
+    byebug (3.5.1)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
+      slop (~> 3.6)
     carrierwave (0.10.0)
       activemodel (>= 3.2.0)
       activesupport (>= 3.2.0)
@@ -52,6 +56,9 @@ GEM
     carrierwave-aws (0.3.2)
       aws-sdk (>= 1.8.0)
       carrierwave (>= 0.7.0)
+    coderay (1.1.0)
+    columnize (0.9.0)
+    debugger-linecache (1.2.0)
     devise (3.4.1)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -60,6 +67,9 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    dotenv (1.0.2)
+    dotenv-rails (1.0.2)
+      dotenv (= 1.0.2)
     erubis (2.7.0)
     execjs (2.2.2)
     fabrication (2.11.1)
@@ -86,6 +96,7 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.3)
       mime-types (>= 1.16, < 3)
+    method_source (0.8.2)
     mime-types (2.4.3)
     mini_portile (0.6.2)
     minitest (5.5.1)
@@ -119,8 +130,17 @@ GEM
       omniauth-oauth (~> 1.0)
     orm_adapter (0.5.0)
     pg (0.17.1)
+    pry (0.10.1)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    pry-byebug (2.0.0)
+      byebug (~> 3.4)
+      pry (~> 0.10)
     puma (2.7.1)
       rack (>= 1.1, < 2.0)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
     rack (1.6.0)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -183,6 +203,7 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    slop (3.6.0)
     spring (1.2.0)
     sprockets (2.12.3)
       hike (~> 1.2)
@@ -213,6 +234,7 @@ DEPENDENCIES
   acts_as_votable (~> 0.10.0)
   carrierwave-aws
   devise
+  dotenv-rails
   fabrication
   faker
   friendly_id (~> 5.0.0)
@@ -222,7 +244,9 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-twitter
   pg
+  pry-byebug
   puma
+  quiet_assets
   rails (= 4.2.0)
   rails_12factor
   rspec-rails (~> 3.1.0)
