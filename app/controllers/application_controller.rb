@@ -14,6 +14,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def auth_user
+    unless user_signed_in?
+      flash[:error] = "You need to be signed in for that action"
+      redirect_to root_path
+    end
+  end
+
   def after_sign_in_path_for(resource_or_scope)
       if resource_or_scope.sign_in_count == 1
          finish_signup_path(resource_or_scope)
