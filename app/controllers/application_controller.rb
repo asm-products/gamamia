@@ -15,7 +15,7 @@ class ApplicationController < ActionController::Base
   end
 
   def auth_user
-    unless user_signed_in?
+    unless current_user.present?
       flash[:error] = "You need to be signed in for that action. Please click Login above to sign in or register."
       redirect_to root_path
     end
@@ -27,12 +27,6 @@ class ApplicationController < ActionController::Base
       else
          root_path
       end
-  end
-
-  def user_logged_in?
-    unless current_user.present?
-      redirect_to root_path, error: "You need to be signed in for that action"
-    end
   end
 
   def user_is_admin?
