@@ -6,6 +6,8 @@ require 'rails/all'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+STDOUT.sync = true
+
 module Gamamia
   class Application < Rails::Application
 

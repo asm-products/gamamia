@@ -22,3 +22,5 @@ public/uploads/game/thumbnail/*
 public/assets/
 
 .DS_Store
+
+/.env
