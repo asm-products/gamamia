@@ -3,6 +3,6 @@ Fabricator(:game) do
   description { Faker::Lorem.sentence }
   status { Game::STATUS_TYPES.sample.last }
   link { Faker::Internet.url}
-  platform { Game::PLATFORM_TYPES.sample.last }
+  platform { Game::PLATFORMS.sample }
   videos(count: 2) { |attrs, i| Fabricate(:video) }
 end
