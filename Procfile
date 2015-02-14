@@ -1,1 +1,1 @@
-web: bin/rails server --port $PORT
+web: bin/rails server Puma --port $PORT
