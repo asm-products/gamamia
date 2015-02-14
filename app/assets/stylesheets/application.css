@@ -185,3 +185,29 @@ body {
 .gamecaption {
 	font-size: 0.875em;
 }
+
+.signup {
+	background: #FA5A5A;
+	color: white;
+	padding: 1em 3em 1em 3em;
+	width: 79.5%;
+}
+
+.submit {
+	position: absolute;
+	right: 3em;
+	border: 5px solid white;
+	background: #FA5A5A;
+	text-transform: lowercase;
+	color: white;
+	font-size: 0.875em;
+}
+
+.email, input[type=email] {
+	border: none;
+	height: 44px;
+}
+
+.emaillabel {
+	line-height: 44px;
+}
