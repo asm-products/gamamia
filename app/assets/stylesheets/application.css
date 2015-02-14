@@ -1,8 +1,8 @@
 @font-face {
-  font-family: 'Ubuntu';
+  font-family: 'Open Sans';
   font-style: normal;
-  font-weight: 300;
-  src: local('Ubuntu Light'), local('Ubuntu-Light'), url(http://fonts.gstatic.com/s/ubuntu/v7/_aijTyevf54tkVDLy-dlnJBw1xU1rKptJj_0jans920.woff2) format('woff2');
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(http://fonts.gstatic.com/s/opensans/v10/cJZKeOuBrn4kERxqtaUH3ZBw1xU1rKptJj_0jans920.woff2) format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
 
@@ -16,7 +16,7 @@
 
 h1, h2, h3, h4, h5, h6,
 body {
-  font-family: 'Ubuntu', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 h4 {
@@ -31,16 +31,16 @@ p {
 }
 
 body {
-  background-color: #F4F4F4;
-  color: #3C3C3C;
+  background-color: #F9F9F9;
+  color: #4A4A4A;
 }
 
 .dark-gray {
-	color: #3C3C3C;
+	color: #4A4A4A;
 }
 
 .light-gray {
-	color: #BFBFBF;
+	color: #9B9B9B;
 }
 
 .small {
@@ -55,18 +55,9 @@ body {
 	transform: translateY(-50%);
 }
 
-.logo-bar {
-	max-height: 100px;
-	color: #FA5555;
-}
-
 .logo-bar .logo {
-	max-height: 100px;
+	max-height: 60px;
 	width: auto;
-}
-
-.logo-bar .textbox {
-	height: 100px;
 }
 
 .logo-bar a {
@@ -75,24 +66,23 @@ body {
 }
 
 .logotext {
-	text-transform: uppercase;
-	font-size: 1.375em;
-}
-
-.logocaption {
 	font-size: 1em;
 }
 
+.logocaption {
+	font-size: 0.75em;
+}
+
+.nav-bar {
+	padding-top: 0.5em;
+}
+
 .nav-bar a {
-	color: #FA5555;
+	color: #4A4A4A;
 }
 
 .nav-bar .addicon {
 	max-width: 25px;
-}
-
-.nav-bar .logtext {
-	margin-left: 0.5em;
 }
 
 .day-header {
