@@ -1,9 +1,9 @@
 <%= render 'ui/navbar' %>
 
 <div class="container">
-  <% @days.each do |day, games| %>
+  <% @weeks.each do |week, games| %>
 
-    <%= render 'days/day', day: day %>
+    <%= render 'weeks/week', week: week %>
     
       <% games.each do |game| %>
         <div class="clearfix m2 table game-block">
