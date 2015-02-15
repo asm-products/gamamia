@@ -83,7 +83,7 @@
 
       <% @game.comments.each do |comment| %>
         <div class="mb2">
-          <%= render partial: 'comments/comment', locals: {comment: comment} %>
+          <%= comment_component comment: comment %>
         </div>
       <% end %>
     </div>
