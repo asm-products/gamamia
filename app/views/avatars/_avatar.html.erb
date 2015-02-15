@@ -1,7 +1,5 @@
 <%
   size ||= 24
-  avatar_path = Digest::MD5.hexdigest(user.email.downcase)
-  avatar_url = "https://gravatar.com/avatar/#{avatar_path}.png?s=#{size}&d=monsterid"
 %>
 
 <a class="block" title="<%= user.name %>">

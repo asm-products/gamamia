@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213001244) do
+ActiveRecord::Schema.define(version: 20150214011203) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -34,7 +34,6 @@ ActiveRecord::Schema.define(version: 20150213001244) do
     t.integer  "votes"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "deleted_at"
     t.integer  "cached_votes_total",      default: 0
     t.integer  "cached_votes_score",      default: 0
     t.integer  "cached_votes_up",         default: 0
@@ -45,6 +44,7 @@ ActiveRecord::Schema.define(version: 20150213001244) do
     t.integer  "videos_count",            default: 0
     t.integer  "comments_count",          default: 0
     t.date     "scheduled_at"
+    t.datetime "deleted_at"
     t.integer  "user_id"
   end
 
@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20150213001244) do
     t.string   "name"
     t.string   "occupation"
     t.boolean  "is_admin"
+    t.text     "avatar_url"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

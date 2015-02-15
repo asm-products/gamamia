@@ -36,14 +36,12 @@
       <div class="px3 py2">
         <p class="light-gray mb2">Related links</p>
 
-        <div class="clearfix overflow-hidden mxn3" style="height:10rem;width:80rem;margin-left:-1px">
-          <div style="overflow-x:scroll;width:auto">
+        <div class="clearfix">
             <% @game.videos.each do |video| %>
-              <div class="inline-block" style="margin-left:1px">
+              <div class="inline-block col col-4 p1 video-block">
                 <%= render partial: 'videos/video', locals: { video: video } %>
               </div>
             <% end %>
-          </div>
         </div>
       </div>
     <% end %>
