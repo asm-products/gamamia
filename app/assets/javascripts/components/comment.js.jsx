@@ -5,7 +5,7 @@ var Comment = React.createClass({
     var comment = this.props.comment
 
     return (
-      <div className="clearfix" id={comment.anchor}>
+      <div className="clearfix visible-hover-wrapper" id={comment.anchor}>
         <div className="left mr2">
           <User user={comment.user} />
         </div>
@@ -16,7 +16,7 @@ var Comment = React.createClass({
           </h5>
           {comment.content}
 
-          <div className="h6 mt1 light-gray">
+          <div className="h6 mt1 light-gray visible-hover">
             {moment(comment.created_at).fromNow()}
           </div>
         </div>
