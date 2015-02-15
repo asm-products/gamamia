@@ -5,7 +5,7 @@ var Comment = React.createClass({
     var comment = this.props.comment
 
     return (
-      <div className="clearfix">
+      <div className="clearfix" id={comment.anchor}>
         <div className="left mr2">
           <User user={comment.user} />
         </div>

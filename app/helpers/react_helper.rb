@@ -30,4 +30,32 @@ module ReactHelper
     )
   end
 
+  def upvote_component(props)
+    game = props.fetch(:game)
+
+    react_component(
+      'Upvote',
+      {
+        game: GameSerializer.new(game),
+        hasCurrentUserVotedForGame: signed_in? && current_user.voted_for?(game)
+      },
+      RENDER_OPTS
+    )
+  end
+
+  def avatar(attrs={})
+    user = attrs.fetch(:user)
+
+    react_component(
+      'User',
+      {
+        user: UserSerializer.new(user)
+      }, RENDER_OPTS
+    )
+  end
+
+  def icon(icon)
+    react_component 'Icon', icon: icon
+  end
+
 end

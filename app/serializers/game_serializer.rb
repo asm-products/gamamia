@@ -1,8 +1,7 @@
-class GameSerializer < ActiveModel::Serializer
+class GameSerializer < ApplicationSerializer
   attributes :title, :description, :platform, :link
   attributes :thumbnail
   attributes :link
-  attributes :url
   attributes :comments_count, :votes_up
 
   has_one :user
