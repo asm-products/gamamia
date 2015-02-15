@@ -211,3 +211,11 @@ body {
 .emaillabel {
 	line-height: 44px;
 }
+
+.video-link {
+	word-wrap: break-word;
+}
+
+.video-block:nth-of-type(3n+1) {
+	padding-left: 0;
+	}
