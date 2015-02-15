@@ -42,6 +42,10 @@ body {
 	max-width: 55em;
 }
 
+textarea {
+  resize: vertical;
+}
+
 .dark-gray {
 	color: #4A4A4A;
 }
