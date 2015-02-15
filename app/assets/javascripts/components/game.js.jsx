@@ -1,3 +1,5 @@
+//= require lib/truncate
+
 var Game = React.createClass({
 
   propTypes: {
@@ -29,7 +31,7 @@ var Game = React.createClass({
               <a className="dark-gray" href={game.link}>{game.title}</a>
             </h4>
 
-            <p className="mb0 light-gray gamecaption">{game.description}</p>
+            <p className="mb0 light-gray gamecaption">{truncate(game.description, 100)}</p>
             <footer className="clearfix mt3 game-meta">
               <p className="left mb0">{game.platform}</p>
               <div className="right light-gray mb0 comments">
