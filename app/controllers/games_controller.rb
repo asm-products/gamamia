@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
   before_filter :auth_user, only: [:upvote, :unupvote, :create]
   def index
-    @days = Game.scheduled.display_order.group_by{|x| x.scheduled_at.to_date }
+    @weeks = Game.scheduled.display_order.group_by{|x| x.scheduled_at.beginning_of_week }.sort.reverse
   end
 
   def new
