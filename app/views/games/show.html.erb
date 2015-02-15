@@ -7,7 +7,7 @@
     <div class="p3 bg-dark-gray mid-gray clearfix rounded-top">
 
       <div class="left mr3">
-        <%= render partial: 'upvotes/upvote', locals: { game: @game } %>
+        <%= upvote_component game: @game %>
       </div>
 
       <div class="overflow-hidden">
@@ -83,7 +83,7 @@
 
       <% @game.comments.each do |comment| %>
         <div class="mb2">
-          <%= render partial: 'comments/comment', locals: {comment: comment} %>
+          <%= comment_component comment: comment %>
         </div>
       <% end %>
     </div>

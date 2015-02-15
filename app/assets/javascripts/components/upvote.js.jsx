@@ -12,14 +12,14 @@ var Upvote = React.createClass({
 
     if (this.props.hasCurrentUserVotedForGame) {
       return (
-        <a className="upvote-block -voted block px2 py1" href={game.url + '/unupvote'} data-method="post">
+        <a className="upvote-block block px2 py1" href={game.url + '/unupvote'} data-method="post">
           <p className="voteicon">▲</p>
           <p className="m0">{game.votes_up}</p>
         </a>
       )
     } else {
       return (
-        <a className="upvote-block block px2 py1 light-gray" href={game.url + '/upvote'} data-method="post">
+        <a className="upvote-block -voted block px2 py1 light-gray" href={game.url + '/upvote'} data-method="post">
           <p className="voteicon">▲</p>
           <p className="m0">{game.votes_up}</p>
         </a>
