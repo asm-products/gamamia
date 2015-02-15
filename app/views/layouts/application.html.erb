@@ -4,13 +4,12 @@
     <title>Gamamia</title>
     <link href="http://d2v52k3cl9vedd.cloudfront.net/basscss/4.2.4/basscss.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-
-    <%= javascript_include_tag 'application' %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= csrf_meta_tags %>
   </head>
   <body>
     <%= yield %>
+    <%= javascript_include_tag 'application' %>
 
     <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
   </body>
