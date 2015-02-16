@@ -1,6 +1,6 @@
 class UserSerializer < ApplicationSerializer
 
-  attributes :name, :avatar_url
+  attributes :name, :avatar_url, :occupation
 
   def avatar_url
     if object.avatar_url.nil?

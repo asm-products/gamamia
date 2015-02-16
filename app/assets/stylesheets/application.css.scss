@@ -133,6 +133,7 @@ textarea {
 	margin-left: -2em;
 	width: 34px;
 	border: 2px solid #71D8EC;
+	border-radius: 3px;
 	padding: 0.5rem 1rem 0.5rem 1rem;
 }
 
@@ -295,7 +296,7 @@ div[data-react-class="Icon"]{ display: inline; }
 
 	.upvote-block {
 		position: absolute;
-		top: 1em;
+		top: 2em;
 		right: 1em;
 	}
 }
@@ -337,4 +338,10 @@ div[data-react-class="Icon"]{ display: inline; }
 		margin-right: 10px;
 	}
 	
+}
+
+.comment-posted {
+	position: absolute;
+	top: 1em;
+	right: 1em;
 }
