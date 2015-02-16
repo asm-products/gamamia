@@ -17,6 +17,7 @@ gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
 gem 'sass-rails', '~> 4.0.3'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'uglifier', '>= 1.3.0'
+gem 'acts-as-taggable-on', '~> 3.4'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-moment', '~> 2.9'
@@ -29,6 +30,7 @@ group :development, :test do
   gem 'fabrication'
   gem 'pry-byebug'
   gem 'dotenv-rails'
+  gem 'capybara'
 end
 
 group :development do

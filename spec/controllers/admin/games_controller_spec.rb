@@ -9,6 +9,13 @@ RSpec.describe Admin::GamesController do
     sign_in(@user)
   end
 
+  describe "PATCH update" do
+    it "should save tags" do
+      patch :update, {id: game.id, game: game_params.merge(platform_list: ["iOS", "Mac", "Windows"])}
+      expect(game.reload.platform_list).to eq(["iOS", "Mac", "Windows"])
+    end
+  end
+
   describe "GET index" do
     subject { get :index, layout: 'admin' }
     it "renders admin/index template for admins" do
