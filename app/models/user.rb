@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :games
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
+  validates :email, presence: true
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
 

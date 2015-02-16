@@ -31,10 +31,10 @@ RSpec.describe GamesController do
 
     describe "GET index" do
       subject { get :index }
-      it "assigns scheduled games as @days" do
+      it "assigns scheduled games as @weeks" do
         subject
-        day = game.scheduled_at.to_date
-        expect(assigns(:days)).to eq({day => [game]})
+        week = game.scheduled_at.beginning_of_week
+        expect(assigns(:weeks)).to eq([[week,[game]]])
       end
 
       it "renders index template" do
