@@ -18,6 +18,20 @@ module ReactHelper
     )
   end
 
+  def show_component(props)
+    game = props.fetch(:game)
+    has_current_user_voted_for_game = props.fetch(:has_current_user_voted_for_game)
+
+    react_component(
+      'Show',
+      {
+        game: GameSerializer.new(game),
+        hasCurrentUserVotedForGame: has_current_user_voted_for_game
+      },
+      RENDER_OPTS
+    )
+  end
+
   def comment_component(props)
     comment = props.fetch(:comment)
 
