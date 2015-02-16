@@ -33,7 +33,7 @@ var Game = React.createClass({
 
             <p className="mb0 light-gray gamecaption">{truncate(game.description, 100)}</p>
             <footer className="clearfix mt3 game-meta">
-              <p className="left mb0">{game.platform}</p>
+              <p className="left mb0">{game.platform_list}</p>
               <div className="right light-gray mb0 comments">
                 <Icon icon="comment" /> {game.comments_count}
               </div>

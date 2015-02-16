@@ -53,6 +53,12 @@ RSpec.describe GamesController do
           post :create, game: game_params
         }.to change(Game, :count).by(1)
       end
+
+      it "should save tags" do
+        post :create, game: game_params.merge(platform_list: ["iOS", "Mac", "Windows"])
+        expect(Game.last.platform_list).to eq(["iOS", "Mac", "Windows"])
+      end
+
     end
 
   end

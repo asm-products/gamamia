@@ -1,10 +1,15 @@
 class GameSerializer < ApplicationSerializer
-  attributes :title, :description, :platform, :link
+  attributes :title, :description, :link
   attributes :thumbnail
   attributes :link
+  attributes :platform_list
   attributes :comments_count, :votes_up
 
   has_one :user
+
+  def platform_list
+    object.platform_list.join(", ")
+  end
 
   def thumbnail
     object.thumbnail.url
