@@ -1,9 +1,9 @@
 <div id="add-email" class="container">
   <h1>Add Email</h1>
-  <%= form_for(current_user, :as => 'user', :url => finish_signup_path(current_user), :html => { role: 'form'}) do |f| %>
-    <% if @show_errors && current_user.errors.any? %>
+  <%= form_for(@user, :as => 'user', :url => finish_signup_path(@user), :html => { role: 'form'}) do |f| %>
+    <% if @user.errors.any? %>
       <div id="error_explanation">
-        <% current_user.errors.full_messages.each do |msg| %>
+        <% @user.errors.full_messages.each do |msg| %>
           <%= msg %><br>
         <% end %>
       </div>
@@ -11,8 +11,8 @@
     <div class="form-group">
       <%= f.label :email %>
       <div class="controls">
-        <% if current_user.email %>
-          <%= f.text_field :email, :autofocus => true, :value => current_user.email, class: '' %>
+        <% if @user.email %>
+          <%= f.text_field :email, :autofocus => true, :value => @user.email, class: '' %>
         <% else %>
           <%= f.text_field :email, :autofocus => true, :value => '', class: '', placeholder: 'Example: email@me.com' %>
         <% end %>
@@ -20,10 +20,17 @@
         <p class="help-block">Please confirm your email address. No spam.</p>
       </div>
 
+    <div class="form-group">
+      <div class="controls">
+        <%= f.check_box :receive_newsletter %> Signup for our Newsletter
+
+        <p class="help-block">Subscribe to our weekly newsletter. Unsubscribe at any time.</p>
+      </div>
+
       <div class="form-group">
         <%= f.label :occupation %>
         <div class="controls">
-          <%= f.text_field :occupation, :value => current_user.occupation, class: '', placeholder: 'Occupation' %>
+          <%= f.text_field :occupation, :value => @user.occupation, class: '', placeholder: 'Occupation' %>
         </div>
     </div>
     <div class="actions">

@@ -27,8 +27,8 @@ class UsersController < ApplicationController
 
   # GET/PATCH /users/:id/finish_signup
   def finish_signup
-
     #authorize! :update, @user
+    @user.email = nil if !@user.email_verified?
     if request.patch? && params[:user]
       if @user.update(user_params)
         sign_in(@user == current_user ? @user : current_user, :bypass => true)
@@ -61,11 +61,11 @@ class UsersController < ApplicationController
 
   private
     def set_user
-      @user = User.find(params[:id])
+      @user = current_user
     end
 
     # This checks which parameters are permitted for change. Remember to update it if new parameters are introduced
     def user_params
-      params.require(:user).permit(:name,:email,:password,:password_confirmation,:occupation)
+      params.require(:user).permit(:name,:email,:password,:password_confirmation,:occupation, :receive_newsletter)
     end
 end
