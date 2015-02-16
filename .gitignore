@@ -26,3 +26,4 @@ public/assets/
 /.env
 
 .ruby-version
+.vagrant/**
