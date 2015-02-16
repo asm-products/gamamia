@@ -21,6 +21,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @comment = Comment.new
     @video = Video.new
+    @related_games = @game.find_related_platforms.first(3)
   end
 
   def upvote
