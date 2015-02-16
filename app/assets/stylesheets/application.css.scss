@@ -73,6 +73,11 @@ textarea {
 	color: #9B9B9B;
 }
 
+.bg-black {
+	background: #000;
+	color: white;
+}
+
 .small {
 	font-size: 0.65em;
 }
@@ -344,4 +349,50 @@ div[data-react-class="Icon"]{ display: inline; }
 	position: absolute;
 	top: 1em;
 	right: 1em;
+}
+
+.related-games {
+	margin-top: -1em;
+	text-align: center;
+
+	p {
+		color: white;
+		font-weight: bold;
+	}
+}
+
+.rg-header {
+	text-align: center;
+	font-size: 0.75em;
+	text-transform: uppercase;
+	display: inline-block;
+	letter-spacing: 1px;
+	margin: 2em auto;
+	border-bottom: 1px solid #fff;
+}
+
+.rg-block {
+	text-align: left;
+}
+
+.rg-link {
+	color: white;
+
+	&:hover {
+		text-decoration: none;
+	}
+
+	&:hover p {
+		color: #ccc;
+	}
+}
+
+.rg-thumbnail {
+	max-height: 8.5em;
+}
+
+.rg-votes {
+	font-size: 0.75em;
+	position: relative;
+	top: 3px;
 }
