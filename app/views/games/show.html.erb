@@ -87,5 +87,18 @@
 
 </div>
 
-<div class="bg-black">
+<div class="bg-black related-games">
+  <h3 class="rg-header py1">More Games</h3>
+  <div class="rg-block clearfix container">
+    <%
+    related_games = @game.find_related_platforms.first(3)
+   related_games.each do |related_game| %>
+      <div class="col col-4 px3 relative">
+        <a class="rg-link" href="<%= related_game.link %>">
+          <img class="rg-thumbnail" src="<%= related_game.thumbnail %>">
+          <p class="rg-title col-12"><%= related_game.title %>  <span class="right rg-votes">▲ <%= related_game.cached_votes_up %></span></p>
+        </a>
+      </div>
+    <% end %>
+  </ul>
 </div>
