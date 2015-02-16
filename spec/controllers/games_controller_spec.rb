@@ -64,6 +64,17 @@ RSpec.describe GamesController do
   end
 
   context "not logged in" do
+    describe "GET show" do
+      it "should assign related_games" do
+        game1 = Fabricate(:game, platform_list: ["ios", "web"])
+        game2 = Fabricate(:game, platform_list: ["pc"])
+        game.update_attributes platform_list: ["ios", "android"]
+
+        get :show, id: game.id
+        expect(assigns(:related_games)).to eq([game1])
+      end
+    end
+
     describe "POST create" do
       it "should redirect to root" do
         post :create
