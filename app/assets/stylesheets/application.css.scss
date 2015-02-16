@@ -16,9 +16,22 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
 }
 
-h1, h2, h3, h4, h5, h6,
+/* latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Montserrat-Bold'), url(http://fonts.gstatic.com/s/montserrat/v6/IQHow_FEYlDC4Gzy_m8fcmaVI6zN22yiurzcBKxPjFE.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Monsterrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+}
+
 body {
-  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -44,6 +57,10 @@ body {
 	max-width: 58em;
 }
 
+hr {
+	border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
 textarea {
   resize: vertical;
 }
@@ -66,6 +83,15 @@ textarea {
 	-webkit-transform: translateY(-50%);
 	-ms-transform: translateY(-50%);
 	transform: translateY(-50%);
+}
+
+.opacity-half {
+	opacity: 0.5;
+}
+
+.small-header {
+	text-transform: uppercase;
+	letter-spacing: 1px;
 }
 
 .logo-bar .logo {
@@ -105,27 +131,44 @@ textarea {
 	font-size: 1.125em;
 	text-align: center;
 	margin-left: -2em;
+	width: 34px;
+	border: 2px solid #71D8EC;
+	padding: 0.5rem 1rem 0.5rem 1rem;
 }
 
 .upvote-block > p {
 	font-size: 1.125em;
+	color: #71D8EC;
 }
 
 .upvote-block:hover {
 	text-decoration: none;
-	color: white !important;
+	background: #71D8EC;
 }
 
 .upvote-block:hover {
 	color: #71D8EC;
+
+	.voteicon {
+		color: white;
+	}
+
+	p {
+		color: white;
+	}
 }
 
-.upvote-block.-voted > p {
-	color: #71D8EC;
+.upvote-block.-voted {
+	background: #71D8EC;
+}
+
+.upvote-block.-voted > p, .upvote-block.-voted > .voteicon {
+	color: white;
 }
 
 .upvote-block > .voteicon {
 	margin-bottom: 0;
+	color: #71D8EC;
 }
 
 .speech-bubble {
@@ -227,3 +270,71 @@ textarea {
 }
 
 div[data-react-class="Icon"]{ display: inline; }
+
+.imageblur {
+	filter: blur(15px);
+	-webkit-filter: blur(15px);
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.sb-gameinfo {
+	position: relative;
+	p {
+		color: white;
+	}
+
+	a {
+		color: white;
+	}
+
+	.upvote-block {
+		position: absolute;
+		top: 1em;
+		right: 1em;
+	}
+}
+
+.bglayer {
+	background: rgba(0, 0, 0, .25);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.sb-title {
+	font-size: 3em;
+}
+
+.sb-platforms {
+	font-size: 0.75em;
+	margin-top: 9em;
+
+	li {
+		display: inline-block;
+		margin-right: 0.5em;
+		color: white;
+		text-transform: uppercase;
+		border-bottom: 1px solid #71D8EC;
+	}
+}
+
+.sb-avatar {
+	position: absolute;
+	bottom: 3em;
+	right: 1em;
+
+	p {
+		font-size: 0.65em;
+		text-align: right;
+		margin-right: 10px;
+	}
+	
+}

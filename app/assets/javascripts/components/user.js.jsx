@@ -12,7 +12,7 @@ var User = React.createClass({
 
     return (
       <a className="block" title={user.name}>
-        <img className="block circle" src={user.avatar_url} alt={user.name} width="24" height="24" />
+        <img className="block" src={user.avatar_url} alt={user.name} width="24" height="24" />
       </a>
     )
   }
