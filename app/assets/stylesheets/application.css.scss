@@ -224,4 +224,6 @@ textarea {
 
 .video-block:nth-of-type(3n+1) {
 	padding-left: 0;
-	}
+}
+
+div[data-react-class="Icon"]{ display: inline; }
