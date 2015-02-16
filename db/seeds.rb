@@ -22,7 +22,6 @@ Game.create!(title:          "Example Game",
             description:    "Example description of a game, which would include a short summary of what this is all about",
             status:         "released",
             link:           "http://example.com",
-            platform:       "Xbox",
             votes:          0,
             user: admin)
 
@@ -61,7 +60,6 @@ Video.create!(
              description:   description,
              status:        status,
              link:          "http://example.com",
-             platform:      platform,
              votes:         votes,
              created_at:    created_at,
              updated_at:    created_at,

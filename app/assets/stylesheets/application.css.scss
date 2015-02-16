@@ -41,7 +41,7 @@ body {
 }
 
 .container {
-	max-width: 55em;
+	max-width: 58em;
 }
 
 textarea {
@@ -160,6 +160,10 @@ textarea {
 	border-color: #fff transparent;
 	display: block;
 	width: 0;
+}
+
+.game-block {
+	cursor: pointer;
 }
 
 .game-meta {
