@@ -11,7 +11,7 @@
             <a class="white" href="<%= @game.link %>" target="_blank"><%= @game.title %></a>
           </h3>
 
-          <p><%= @game.description %></p>
+          <p class="col-9"><%= @game.description %></p>
 
           <%= upvote_component game: @game %>        
           <a href="<%= @game.link %>" target="_blank"><%= icon 'link' %> <%= @game.link %></a>
