@@ -26,3 +26,5 @@ public/assets/
 /.env
 
 .ruby-version
+# vim backup files
+.swp
