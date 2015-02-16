@@ -87,15 +87,12 @@
 
 </div>
 
-<%
-related_games = @game.find_related_platforms.first(3)
-if related_games.any? %>
+<% if @related_games.any? %>
 
 <div class="bg-black related-games">
   <h3 class="rg-header py1">More Games</h3>
   <div class="rg-block clearfix container">
-    <%
-   related_games.each do |related_game| %>
+    <% @related_games.each do |related_game| %>
       <div class="col col-4 px3 relative">
         <a class="rg-link" href="<%= game_path(related_game) %>">
           <img class="rg-thumbnail" src="<%= related_game.thumbnail %>">
