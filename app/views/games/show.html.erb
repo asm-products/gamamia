@@ -97,7 +97,7 @@ if related_games.any? %>
     <%
    related_games.each do |related_game| %>
       <div class="col col-4 px3 relative">
-        <a class="rg-link" href="<%= related_game.link %>">
+        <a class="rg-link" href="<%= game_path(related_game) %>">
           <img class="rg-thumbnail" src="<%= related_game.thumbnail %>">
           <p class="rg-title col-12"><%= related_game.title %>  <span class="right rg-votes">▲ <%= related_game.cached_votes_up %></span></p>
         </a>
