@@ -91,9 +91,6 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
-    dotenv (1.0.2)
-    dotenv-rails (1.0.2)
-      dotenv (= 1.0.2)
     erubis (2.7.0)
     execjs (2.2.2)
     fabrication (2.11.1)
@@ -261,7 +258,6 @@ DEPENDENCIES
   capybara
   carrierwave-aws
   devise
-  dotenv-rails
   fabrication
   faker
   friendly_id (~> 5.0.0)
