@@ -15,11 +15,11 @@ var Game = React.createClass({
           backgroundImage: 'url(' + game.thumbnail + ')',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
-          height: '12em'
+          height: '10em'
         }} />
 
     return (
-      <div className="table" onClick={this.handleClick}>
+      <div className="table game-block" onClick={this.handleClick}>
         <div className="col-1 table-cell">
           <Upvote game={game}
             hasCurrentUserVotedForGame={this.props.hasCurrentUserVotedForGame} />
