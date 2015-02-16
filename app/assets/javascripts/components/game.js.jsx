@@ -28,7 +28,7 @@ var Game = React.createClass({
 
           <div className="col col-4 p2">
             <h4 className="mt0">
-              <a className="dark-gray" href={game.link}>{game.title}</a>
+              <a className="dark-gray" href={game.url}>{game.title}</a>
             </h4>
 
             <p className="mb0 light-gray gamecaption">{truncate(game.description, 100)}</p>
