@@ -31,10 +31,10 @@ RSpec.describe GamesController do
 
     describe "GET index" do
       subject { get :index }
-      it "assigns scheduled games as @days" do
+      it "assigns scheduled games as @weeks" do
         subject
-        day = game.scheduled_at.to_date
-        expect(assigns(:days)).to eq({day => [game]})
+        week = game.scheduled_at.beginning_of_week
+        expect(assigns(:weeks)).to eq([[week,[game]]])
       end
 
       it "renders index template" do
@@ -53,11 +53,28 @@ RSpec.describe GamesController do
           post :create, game: game_params
         }.to change(Game, :count).by(1)
       end
+
+      it "should save tags" do
+        post :create, game: game_params.merge(platform_list: ["iOS", "Mac", "Windows"])
+        expect(Game.last.platform_list).to eq(["iOS", "Mac", "Windows"])
+      end
+
     end
 
   end
 
   context "not logged in" do
+    describe "GET show" do
+      it "should assign related_games" do
+        game1 = Fabricate(:game, platform_list: ["ios", "web"])
+        game2 = Fabricate(:game, platform_list: ["pc"])
+        game.update_attributes platform_list: ["ios", "android"]
+
+        get :show, id: game.id
+        expect(assigns(:related_games)).to eq([game1])
+      end
+    end
+
     describe "POST create" do
       it "should redirect to root" do
         post :create

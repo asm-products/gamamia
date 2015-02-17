@@ -1,0 +1,398 @@
+@import 'utilities/*';
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(http://fonts.gstatic.com/s/opensans/v10/cJZKeOuBrn4kERxqtaUH3ZBw1xU1rKptJj_0jans920.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(http://fonts.gstatic.com/s/opensans/v10/MTP_ySUJH_bn48VBG8sNShampu5_7CjHW5spxoeN3Vs.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+/* latin */
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Montserrat-Bold'), url(http://fonts.gstatic.com/s/montserrat/v6/IQHow_FEYlDC4Gzy_m8fcmaVI6zN22yiurzcBKxPjFE.woff2) format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2212, U+2215, U+E0FF, U+EFFD, U+F000;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Monsterrat', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-weight: 700;
+}
+
+body {
+	font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-weight: 600;
+}
+
+h4 {
+	font-size: 1.5em;
+}
+
+p {
+	font-weight: 300;
+	color: #A5A5A5;
+	line-height: 1.25;
+}
+
+body {
+  background-color: #F9F9F9;
+  color: #4A4A4A;
+}
+
+.container {
+	max-width: 58em;
+}
+
+hr {
+	border-bottom-color: rgba(0, 0, 0, 0.1);
+}
+
+textarea {
+  resize: vertical;
+}
+
+.dark-gray {
+	color: #4A4A4A;
+}
+
+.light-gray {
+	color: #9B9B9B;
+}
+
+.bg-black {
+	background: #000;
+	color: white;
+}
+
+.small {
+	font-size: 0.65em;
+}
+
+.vertically-center {
+	position: relative;
+	top: 50%;
+	-webkit-transform: translateY(-50%);
+	-ms-transform: translateY(-50%);
+	transform: translateY(-50%);
+}
+
+.opacity-half {
+	opacity: 0.5;
+}
+
+.small-header {
+	text-transform: uppercase;
+	letter-spacing: 1px;
+}
+
+.logo-bar .logo {
+	max-height: 60px;
+	width: auto;
+}
+
+.logo-bar a {
+	color: #FA5555;
+	text-decoration: none;
+}
+
+.logotext {
+	font-size: 1em;
+}
+
+.logocaption {
+	font-size: 0.75em;
+}
+
+.nav-bar {
+	padding-top: 0.5em;
+}
+
+.nav-bar a {
+	color: #4A4A4A;
+}
+
+.day-header {
+	font-size: 1.125em;
+	margin-top: 2.778em;
+	margin-bottom: 2.778em;
+	font-weight: 300;
+}
+
+.upvote-block {
+	font-size: 1.125em;
+	text-align: center;
+	margin-left: -2em;
+	width: 34px;
+	border: 2px solid #71D8EC;
+	border-radius: 3px;
+	padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.upvote-block > p {
+	font-size: 1.125em;
+	color: #71D8EC;
+}
+
+.upvote-block:hover {
+	text-decoration: none;
+	background: #71D8EC;
+}
+
+.upvote-block:hover {
+	color: #71D8EC;
+
+	.voteicon {
+		color: white;
+	}
+
+	p {
+		color: white;
+	}
+}
+
+.upvote-block.-voted {
+	background: #71D8EC;
+}
+
+.upvote-block.-voted > p, .upvote-block.-voted > .voteicon {
+	color: white;
+}
+
+.upvote-block > .voteicon {
+	margin-bottom: 0;
+	color: #71D8EC;
+}
+
+.speech-bubble {
+	position: relative;
+	padding: 3px 10px 3px 10px;
+	border: 1px solid #71D8EC;
+	border-radius: 6px;
+	color: #71D8EC;
+	font-size: 0.6em;
+	margin-top: 0.2em;
+}
+
+.speech-bubble:before {
+	content: '';
+	position: absolute;
+	bottom: -9px;
+	left: 8px;
+	border-width: 10px 6px 0;
+	border-style: solid;
+	border-color: #71D8EC transparent;
+	display: block;
+	width: 0;
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	bottom: -8px;
+	left: 9px;
+	border-width: 9px 5px 0;
+	border-style: solid;
+	border-color: #fff transparent;
+	display: block;
+	width: 0;
+}
+
+.game-block {
+	cursor: pointer;
+}
+
+.game-meta {
+	font-size: 0.875em;
+	position: absolute;
+	bottom: 0.5em;
+	width: 28%;
+}
+
+.game-meta > p, .game-meta > div {
+	font-size: 0.875em;
+	color: #9B9B9B;
+}
+
+.game-meta > .comments {
+	color: #D8D8D8;
+}
+
+.gameplatform {
+	position: absolute;
+	top: 0.5em;
+	right: 0.5em;
+}
+
+.gamecaption {
+	font-size: 0.875em;
+}
+
+.signup {
+	background: #FA5A5A;
+	color: white;
+	padding: 1em 3em 1em 3em;
+	width: 79.5%;
+}
+
+.submit {
+	position: absolute;
+	right: 3em;
+	border: 5px solid white;
+	background: #FA5A5A;
+	text-transform: lowercase;
+	color: white;
+	font-size: 0.875em;
+}
+
+.email, input[type=email] {
+	border: none;
+	height: 44px;
+}
+
+.emaillabel {
+	line-height: 44px;
+}
+
+.video-link {
+	word-wrap: break-word;
+}
+
+.video-block:nth-of-type(3n+1) {
+	padding-left: 0;
+}
+
+div[data-react-class="Icon"]{ display: inline; }
+
+.imageblur {
+	filter: blur(15px);
+	-webkit-filter: blur(15px);
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+	z-index: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.sb-gameinfo {
+	position: relative;
+	p {
+		color: white;
+	}
+
+	a {
+		color: white;
+	}
+
+	.upvote-block {
+		position: absolute;
+		top: 2em;
+		right: 1em;
+	}
+}
+
+.bglayer {
+	background: rgba(0, 0, 0, .25);
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.sb-title {
+	font-size: 3em;
+}
+
+.sb-platforms {
+	font-size: 0.75em;
+	margin-top: 9em;
+
+	li {
+		display: inline-block;
+		margin-right: 0.5em;
+		color: white;
+		text-transform: uppercase;
+		border-bottom: 1px solid #71D8EC;
+	}
+}
+
+.sb-avatar {
+	position: absolute;
+	bottom: 3em;
+	right: 1em;
+
+	p {
+		font-size: 0.65em;
+		text-align: right;
+		margin-right: 10px;
+	}
+	
+}
+
+.comment-posted {
+	position: absolute;
+	top: 1em;
+	right: 1em;
+}
+
+.related-games {
+	margin-top: -1em;
+	text-align: center;
+
+	p {
+		color: white;
+		font-weight: bold;
+	}
+}
+
+.rg-header {
+	text-align: center;
+	font-size: 0.75em;
+	text-transform: uppercase;
+	display: inline-block;
+	letter-spacing: 1px;
+	margin: 2em auto;
+	border-bottom: 1px solid #fff;
+}
+
+.rg-block {
+	text-align: left;
+}
+
+.rg-link {
+	color: white;
+
+	&:hover {
+		text-decoration: none;
+	}
+
+	&:hover p {
+		color: #ccc;
+	}
+}
+
+.rg-thumbnail {
+	max-height: 8.5em;
+}
+
+.rg-votes {
+	font-size: 0.75em;
+	position: relative;
+	top: 3px;
+}

@@ -1,56 +1,45 @@
 <%= render 'ui/navbar' %>
 
-<div class="container py3">
+<div class="show-block bg-white">
 
+  <div class="relative">
+      <div class="imageblur" style="background-image:url(<%= @game.thumbnail %>);background-size:cover;"></div>
+      <div class="bglayer"></div>
+      <div class="p3 clearfix relative sb-gameinfo container sb-bg">
 
-  <div class="bg-white">
-    <div class="p3 bg-dark-gray mid-gray clearfix rounded-top">
+          <h3 class="mt0 mb0 sb-title">
+            <a class="white" href="<%= @game.link %>" target="_blank"><%= @game.title %></a>
+          </h3>
 
-      <div class="left mr3">
-        <%= render partial: 'upvotes/upvote', locals: { game: @game } %>
-      </div>
+          <p class="col-9"><%= @game.description %></p>
 
-      <div class="overflow-hidden">
-        <h3 class="mt0 mb0">
-          <a class="white" href="<%= @game.link %>" target="_blank"><%= @game.title %></a>
-        </h3>
-        <!-- <img src="<%= @game.thumbnail %>"> -->
-        <p class="light-gray"><%= @game.description %></p>
+          <%= upvote_component game: @game %>        
+          <a href="<%= @game.link %>" target="_blank"><%= icon 'link' %> <%= @game.link %></a>
 
-        <%= icon 'link' %> <a class="mid-gray" href="<%= @game.link %>" target="_blank"><%= @game.link %></a>
-      </div>
-    </div>
-
-    <div class="px3 py2 border-bottom mid-gray">
-      <div class="clearfix">
-        <div class="left mr1">
-          <%= avatar(user: @game.user) %>
-        </div>
-        <div class="left">
-          posted <%= time_ago_in_words(@game.created_at) %>
-        </div>
-      </div>
-    </div>
-
-    <% if @game.videos.any? %>
-      <div class="px3 py2">
-        <p class="light-gray mb2">Related links</p>
-
-        <div class="clearfix overflow-hidden mxn3" style="height:10rem;width:80rem;margin-left:-1px">
-          <div style="overflow-x:scroll;width:auto">
-            <% @game.videos.each do |video| %>
-              <div class="inline-block" style="margin-left:1px">
-                <%= render partial: 'videos/video', locals: { video: video } %>
-              </div>
+          <ul class="list-reset sb-platforms">
+            <% @game.platform_list.each do |platform| %>
+              <li><%= platform %>
             <% end %>
-          </div>
-        </div>
+          </ul>
+
+            <div class="sb-avatar clearfix">
+              <div class="left">
+                <p class="mb0">POSTED</p> 
+                <p class="mb0"><%= time_ago_in_words(@game.created_at) %> ago</p>
+              </div>
+              <div class="left mr1">
+                <%= avatar(user: @game.user) %>
+              </div>
+        
+            </div>
+
       </div>
-    <% end %>
+  </div>
+
+  <div class="container">
 
     <% if @game.cached_votes_up > 0 %>
-      <div class="px3 py2">
-        <p class="light-gray mb2"><%= pluralize @game.cached_votes_up, 'upvote' %></p>
+        <h5 class="small-header mb2 mt2"><%= pluralize @game.cached_votes_up, 'upvote' %></h5>
         <ul class="list-reset clearfix mxn1" style="margin-top:-.5rem;margin-bottom:-.5rem">
           <% @game.votes_for.up.each do |vote| %>
             <li class="left p1">
@@ -58,37 +47,60 @@
             </li>
           <% end %>
         </ul>
-      </div>
     <% end %>
 
-
-    <div class="px3 py2">
-      <p class="light-gray mb2"><%= pluralize @game.comments_count, 'comment' %></p>
+    <hr>
 
 
-      <% if signed_in? %>
-        <%= form_for [@game, @comment], html: {class: 'form clearfix mb2'} do |f| %>
-          <div class="clearfix">
-            <div class="left mr2">
-              <%= avatar(user: current_user) %>
+    <div class="clearfix">
+
+        <div class="col col-9 mb4">
+          <h5 class="small-header mb2"><%= pluralize @game.comments_count, 'comment' %></h5>
+
+
+          <% if signed_in? %>
+            <%= form_for [@game, @comment], html: {class: 'form clearfix mb2'} do |f| %>
+              <div class="clearfix">
+                <div class="left mr2">
+                  <%= avatar(user: current_user) %>
+                </div>
+                <div class="overflow-hidden">
+                  <%= f.text_area :content, class: 'field-light block full-width mb2', rows: 2 %>
+                </div>
+              </div>
+
+              <div class="right right-align">
+                <%= f.button 'Comment', class: 'button-blue' %>
+              </div>
+            <% end %>
+          <% end %>
+          <% @game.comments.each do |comment| %>
+            <div class="mb3 mt3">
+              <%= comment_component comment: comment %>
             </div>
-            <div class="overflow-hidden">
-              <%= f.text_area :content, class: 'field-light block full-width mb2', rows: 2 %>
-            </div>
-          </div>
-
-          <div class="right right-align">
-            <%= f.button 'Comment', class: 'button-blue' %>
-          </div>
-        <% end %>
-      <% end %>
-
-      <% @game.comments.each do |comment| %>
-        <div class="mb2">
-          <%= render partial: 'comments/comment', locals: {comment: comment} %>
+          <% end %>
         </div>
-      <% end %>
+
     </div>
 
   </div>
+
 </div>
+
+<% if @related_games.any? %>
+
+<div class="bg-black related-games">
+  <h3 class="rg-header py1">More Games</h3>
+  <div class="rg-block clearfix container">
+    <% @related_games.each do |related_game| %>
+      <div class="col col-4 px3 relative">
+        <a class="rg-link" href="<%= game_path(related_game) %>">
+          <img class="rg-thumbnail" src="<%= related_game.thumbnail %>">
+          <p class="rg-title col-12"><%= related_game.title %>  <span class="right rg-votes">▲ <%= related_game.cached_votes_up %></span></p>
+        </a>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<% end %>

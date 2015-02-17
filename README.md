@@ -1,6 +1,7 @@
 # Gamamia
 
 <a href="https://assembly.com/gamamia/bounties?utm_campaign=assemblage&utm_source=gamamia&utm_medium=repo_badge"><img src="http://badger.asm.co/gamamia/badges/tasks.svg" height="24px" alt="Open Tasks" /></a>
+[![Build Status](https://travis-ci.org/asm-products/gamamia.svg)](https://travis-ci.org/asm-products/gamamia)
 
 ## An independent game discovery platform
 

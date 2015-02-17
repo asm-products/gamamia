@@ -6,10 +6,11 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-admin = User.create!(email:         "person@email.com",
-             password:      "foobarfoo",
+admin = User.create!(email:         "admin@example.com",
+             password:      "password",
              name:          "Joe Smith",
-             occupation:    "Developer")
+             occupation:    "Developer",
+             is_admin: true)
 
 User.create!(email:         "admin@email.com",
              password:      "foobarfoo",
@@ -21,7 +22,6 @@ Game.create!(title:          "Example Game",
             description:    "Example description of a game, which would include a short summary of what this is all about",
             status:         "released",
             link:           "http://example.com",
-            platform:       "Xbox",
             votes:          0,
             user: admin)
 
@@ -60,11 +60,11 @@ Video.create!(
              description:   description,
              status:        status,
              link:          "http://example.com",
-             platform:      platform,
              votes:         votes,
              created_at:    created_at,
              updated_at:    created_at,
-             user:          user)
+             user:          user,
+             scheduled_at:  rand(4).weeks.from_now)
 end
 
 199.times do |n|

@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :set_game
-  before_filter :user_logged_in?
+  before_filter :auth_user
 
   def create
     comment = @game.comments.new(comment_params)

@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   has_many :games
 
   validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
+  validates :email, presence: true
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
@@ -44,7 +45,8 @@ class User < ActiveRecord::Base
           name: auth.extra.raw_info.name,
           #username: auth.info.nickname || auth.uid,
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
-          password: Devise.friendly_token[0,20]
+          password: Devise.friendly_token[0,20],
+          avatar_url: auth.info.image
         )
         user.save!
       end

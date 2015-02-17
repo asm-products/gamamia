@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
   before_filter :auth_user, only: [:upvote, :unupvote, :create]
   def index
-    @days = Game.scheduled.display_order.group_by{|x| x.scheduled_at.to_date }
+    @weeks = Game.includes(:user, :platforms).scheduled.display_order.group_by{|x| x.scheduled_at.beginning_of_week }.sort.reverse
   end
 
   def new
@@ -21,6 +21,7 @@ class GamesController < ApplicationController
     @game = Game.find(params[:id])
     @comment = Comment.new
     @video = Video.new
+    @related_games = @game.find_related_platforms.first(3)
   end
 
   def upvote
@@ -44,6 +45,6 @@ class GamesController < ApplicationController
 
   private
   def game_params
-    params.require(:game).permit(:title, :thumbnail, :description, :status, :link, :platform)
+    params.require(:game).permit(:title, :thumbnail, :description, :status, :link, platform_list: [])
   end
 end

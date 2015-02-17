@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150213001244) do
+ActiveRecord::Schema.define(version: 20150216180703) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -30,11 +30,9 @@ ActiveRecord::Schema.define(version: 20150213001244) do
     t.string   "description"
     t.string   "status"
     t.string   "link"
-    t.string   "platform"
     t.integer  "votes"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.datetime "deleted_at"
     t.integer  "cached_votes_total",      default: 0
     t.integer  "cached_votes_score",      default: 0
     t.integer  "cached_votes_up",         default: 0
@@ -45,6 +43,7 @@ ActiveRecord::Schema.define(version: 20150213001244) do
     t.integer  "videos_count",            default: 0
     t.integer  "comments_count",          default: 0
     t.date     "scheduled_at"
+    t.datetime "deleted_at"
     t.integer  "user_id"
   end
 
@@ -67,6 +66,26 @@ ActiveRecord::Schema.define(version: 20150213001244) do
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id"
 
+  create_table "taggings", force: :cascade do |t|
+    t.integer  "tag_id"
+    t.integer  "taggable_id"
+    t.string   "taggable_type"
+    t.integer  "tagger_id"
+    t.string   "tagger_type"
+    t.string   "context",       limit: 128
+    t.datetime "created_at"
+  end
+
+  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true
+  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context"
+
+  create_table "tags", force: :cascade do |t|
+    t.string  "name"
+    t.integer "taggings_count", default: 0
+  end
+
+  add_index "tags", ["name"], name: "index_tags_on_name", unique: true
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
@@ -83,6 +102,8 @@ ActiveRecord::Schema.define(version: 20150213001244) do
     t.string   "name"
     t.string   "occupation"
     t.boolean  "is_admin"
+    t.text     "avatar_url"
+    t.boolean  "receive_newsletter"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

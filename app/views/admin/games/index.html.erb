@@ -20,7 +20,7 @@
             <%= link_to game.title, game %>
             <p class="mid-gray mb0"><%= game.link %></p>
           </td>
-          <td><%= game.platform %></td>
+          <td><%= game.platform_list.join(", ") %></td>
           <td>up: <%= game.cached_votes_up %> / down: <%= game.cached_votes_down %></td>
           <td>
             <% if game.scheduled_at? %>

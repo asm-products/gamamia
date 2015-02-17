@@ -1,0 +1,17 @@
+language: ruby
+
+rvm:
+  - 2.2.0
+
+cache:
+  - bundler
+
+deploy:
+  provider: heroku
+  api_key:
+    secure: CviROOYbjzJLCQUp6AfzhyNFbFiaXirgnF9x9LAtJ8epNMuB4FNft5sRdC5nFBbhlGlUHkbKrf3CcFWj7SNF2ZH7bqb8Q88ui+4nGDebE9RGgwS4UKjORj57GLOLQEtZ6/SbcBzcqPE8RwJ7zPDjOwK9JNwcpQIArU14b9WCY3Y=
+  app: gamamia
+  run: "rake db:migrate"
+  skip_cleanup: true
+  on:
+    repo: asm-products/gamamia

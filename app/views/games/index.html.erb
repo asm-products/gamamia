@@ -1,17 +1,48 @@
 <%= render 'ui/navbar' %>
 
 <div class="container">
-  <% @days.each do |day, games| %>
 
-    <%= render 'days/day', day: day %>
+  <% @weeks.each_with_index do |(week, games), i| %>
 
-    <div class="clearfix mxn2 mb4">
-      <% games.each do |game| %>
-        <div class="col col-4 p2">
-          <%= render 'games/game', game: game %>
+    <%= render 'weeks/week', week: week, i: i %>
+
+      <% games.each_with_index do |game, index| %>
+
+      <% if i == 0 and index == 3 %>
+
+        <div id="mc_embed_signup" class="relative signup right mt2 mb2">
+
+        <form action="//gamamia.us9.list-manage.com/subscribe/post?u=458396ad3c696185fe544661a&amp;id=a2accafc78" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+
+          <div id="mc_embed_signup_scroll">
+
+            <div class="mc-field-group clearfix">
+              <label for="mce-EMAIL" class="col col-5 emaillabel">Want these in your email every week? </label>
+              <input type="email" value="" name="EMAIL" class="required email col col-7" id="mce-EMAIL">
+              <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button submit"></div>
+            </div>
+            <div id="mce-responses" class="clear">
+              <div class="response" id="mce-error-response" style="display:none"></div>
+              <div class="response" id="mce-success-response" style="display:none"></div>
+            </div>
+            <div style="position: absolute; left: -5000px;"><input type="text" name="b_458396ad3c696185fe544661a_a2accafc78" tabindex="-1" value=""></div>
+
+          </div>
+
+        </form>
+
+        </div>
+
+      <% end %>
+        <div class="clearfix m2">
+          <%=
+            game_component(
+              game: game,
+              has_current_user_voted_for_game: signed_in? && current_user.voted_for?(game)
+            )
+          %>
         </div>
       <% end %>
-    </div>
 
   <% end %>
 </div>
