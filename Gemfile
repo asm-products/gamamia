@@ -33,7 +33,7 @@ group :development, :test do
   gem 'capybara'
 end
 
-em "codeclimate-test-reporter", group: :test, require: nil
+gem "codeclimate-test-reporter", group: :test, require: nil
 
 group :development do
   gem 'spring'
