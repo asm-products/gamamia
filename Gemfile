@@ -34,6 +34,8 @@ group :development, :test do
   gem 'shoulda-matchers'
 end
 
+gem "codeclimate-test-reporter", group: :test, require: nil
+
 group :development do
   gem 'spring'
 end
