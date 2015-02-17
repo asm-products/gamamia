@@ -8,7 +8,7 @@ class GameSerializer < ApplicationSerializer
   has_one :user
 
   def platform_list
-    object.platform_list.join(", ")
+    object.platforms.map(&:name).join(", ")
   end
 
   def thumbnail
