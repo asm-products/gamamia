@@ -29,7 +29,6 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.1.0'
   gem 'fabrication'
   gem 'pry-byebug'
-  gem 'dotenv-rails'
   gem 'capybara'
 end
 
