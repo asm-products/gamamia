@@ -31,6 +31,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem 'dotenv-rails'
   gem 'capybara'
+  gem 'shoulda-matchers'
 end
 
 group :development do

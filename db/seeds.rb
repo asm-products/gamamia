@@ -9,12 +9,14 @@
 admin = User.create!(email:         "admin@example.com",
              password:      "password",
              name:          "Joe Smith",
+             username: "joe-smith",
              occupation:    "Developer",
              is_admin: true)
 
 User.create!(email:         "admin@email.com",
              password:      "foobarfoo",
              name:          "Joe Smith",
+             username: "joe-smith2",
              occupation:    "admin",
              is_admin: true)
 
@@ -36,7 +38,6 @@ Video.create!(
             embed:          "https://www.youtube.com/watch?v=9ZyQK6kUdWQ",
             game_id:        1)
 
-
 99.times do |n|
   title  = Faker::App.name
   description = Faker::Lorem.sentence
@@ -53,6 +54,7 @@ Video.create!(
     email:      email,
     password:   "foobarfoo",
     name:       name,
+    username: "user-#{n}",
     occupation: occupation
   )
 
