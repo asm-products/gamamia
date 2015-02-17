@@ -78,6 +78,8 @@ GEM
     carrierwave-aws (0.3.2)
       aws-sdk (>= 1.8.0)
       carrierwave (>= 0.7.0)
+    codeclimate-test-reporter (0.4.6)
+      simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
     coffee-script-source (1.8.0)
     columnize (0.9.0)
@@ -91,6 +93,7 @@ GEM
       thread_safe (~> 0.1)
       warden (~> 1.2.3)
     diff-lcs (1.2.5)
+    docile (1.1.5)
     dotenv (1.0.2)
     dotenv-rails (1.0.2)
       dotenv (= 1.0.2)
@@ -224,6 +227,11 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
+    simplecov (0.9.1)
+      docile (~> 1.1.0)
+      multi_json (~> 1.0)
+      simplecov-html (~> 0.8.0)
+    simplecov-html (0.8.0)
     slop (3.6.0)
     spring (1.2.0)
     sprockets (2.12.3)
@@ -260,6 +268,7 @@ DEPENDENCIES
   bundler (>= 1.7.0)
   capybara
   carrierwave-aws
+  codeclimate-test-reporter
   devise
   dotenv-rails
   fabrication
