@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_filter :auth_user, only: [:upvote, :unupvote, :create]
+  before_filter :auth_user, only: [:upvote, :unupvote, :new, :create]
   def index
     @weeks = Game.includes(:user, :platforms).scheduled.display_order.group_by{|x| x.scheduled_at.beginning_of_week }.sort.reverse
   end

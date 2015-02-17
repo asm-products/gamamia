@@ -9,12 +9,20 @@
       </div>
     <% end %>
     <div class="form-group">
+
+      <%= f.label :username %>
+      <div class="controls">
+        <%= f.text_field :username, :autofocus => true, class: '' %>
+
+        <p class="help-block">Username should only contain letters, numbers, and "-", "_".</p>
+      </div>
+
       <%= f.label :email %>
       <div class="controls">
         <% if @user.email %>
-          <%= f.text_field :email, :autofocus => true, :value => @user.email, class: '' %>
+          <%= f.text_field :email, :value => @user.email, class: '' %>
         <% else %>
-          <%= f.text_field :email, :autofocus => true, :value => '', class: '', placeholder: 'Example: email@me.com' %>
+          <%= f.text_field :email, :value => '', class: '', placeholder: 'Example: email@me.com' %>
         <% end %>
 
         <p class="help-block">Please confirm your email address. No spam.</p>
