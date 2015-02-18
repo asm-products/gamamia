@@ -18,6 +18,7 @@ RSpec.describe Admin::GamesController do
       end
 
       it "should send notification email when scheduled" do
+        game.update_attributes scheduled_at: nil
         expect {
           patch :update, {id: game.id, game: game_params.merge(scheduled_at: Date.today)}
         }.to change { ActionMailer::Base.deliveries.count }.by(1)

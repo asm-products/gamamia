@@ -26,6 +26,17 @@ RSpec.describe GamesController do
         get :show, {id: game}
         expect(response).to render_template(:show)
       end
+
+      it "should see the users games" do
+        game.update_attributes scheduled_at: nil
+        expect(subject).to render_template(:show)
+      end
+
+      it "should not see other users games" do
+        pending "not working right now"
+        game.update_attributes scheduled_at: nil, user_id: Fabricate(:user).id
+        expect(subject).to_not render_template(:show)
+      end
     end
 
     describe "GET index" do
@@ -100,6 +111,12 @@ RSpec.describe GamesController do
 
         get :show, id: game.id
         expect(assigns(:related_games)).to eq([game1])
+      end
+
+      it "should not show unpublished games" do
+        game.update_attributes scheduled_at: nil
+        get :show, id: game.id
+        expect(response).to redirect_to(root_path)
       end
     end
 
