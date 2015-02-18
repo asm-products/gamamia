@@ -19,6 +19,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'uglifier', '>= 1.3.0'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'newrelic_rpm'
+gem 'rollbar', '~> 1.2.7'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-moment', '~> 2.9'

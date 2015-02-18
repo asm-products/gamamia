@@ -202,6 +202,8 @@ GEM
     react-source (0.12.2)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    rollbar (1.2.13)
+      multi_json (~> 1.3)
     rspec-core (3.1.7)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.2)
@@ -288,6 +290,7 @@ DEPENDENCIES
   rails-assets-moment (~> 2.9)!
   rails_12factor
   react-rails (~> 1.0.0.pre)!
+  rollbar (~> 1.2.7)
   rspec-rails (~> 3.1.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
