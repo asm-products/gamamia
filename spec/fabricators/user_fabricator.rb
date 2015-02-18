@@ -8,5 +8,5 @@ Fabricator(:user) do
 end
 
 Fabricator(:admin_user, from: :user) do
-  is_admin true
+  role "admin"
 end

@@ -1,3 +1,5 @@
 class Admin::ApplicationController < ApplicationController
-  before_filter :check_admin
+  def current_ability
+    @current_ability ||= AdminAbility.new(current_user)
+  end
 end

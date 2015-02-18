@@ -15,13 +15,21 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def auth_user
-    unless current_user.present?
-      session[:referrer_url] = request.referrer
-      flash[:error] = "You need to be signed in for that action. Please click Login above to sign in or register."
-      redirect_to root_path
+  rescue_from CanCan::AccessDenied do |exception|
+    session[:referrer_url] = request.referrer
+    flash[:error] = if current_user
+      exception.message
+    else
+      "You need to be signed in for that action. Please click Login above to sign in or register."
     end
+
+    redirect_to back_or_root_path
   end
+
+  def user_is_admin?
+    current_user && current_user.role == "admin"
+  end
+  helper_method :user_is_admin?
 
   def after_sign_in_path_for(resource_or_scope)
     if resource_or_scope.sign_in_count == 1
@@ -31,15 +39,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def user_is_admin?
-    current_user && current_user.is_admin?
-  end
-  helper_method :user_is_admin?
-
-  def check_admin
-    unless user_is_admin?
-      flash[:error] = "You do not have the permission for this site."
-      redirect_to root_path
-    end
+  def back_or_root_path
+    session[:referrer_url] || root_path
   end
 end
