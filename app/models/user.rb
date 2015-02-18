@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   TEMP_EMAIL_PREFIX = 'change@me'
   TEMP_EMAIL_REGEX = /\Achange@me/
 
+  ROLES = ["admin"]
+
   # enable reverse functionality for vots
   acts_as_voter
 
@@ -24,6 +26,10 @@ class User < ActiveRecord::Base
                 format: { with: /\A[a-zA-Z0-9\-\_]+\Z/ },
                 presence: true,
                 uniqueness: true
+
+  def is_admin?
+    self.role == "admin"
+  end
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
 

@@ -1,11 +1,10 @@
 class CommentsController < ApplicationController
-  before_filter :set_game
-  before_filter :auth_user
+  load_and_authorize_resource :game
+  load_and_authorize_resource through: :game
 
   def create
-    comment = @game.comments.new(comment_params)
-    comment.user = current_user
-    if comment.save
+    @comment.user = current_user
+    if @comment.save
       redirect_to @game
     else
       render 'games/show'
@@ -13,9 +12,6 @@ class CommentsController < ApplicationController
   end
 
   private
-  def set_game
-    @game = Game.find(params[:game_id])
-  end
 
   def comment_params
     params.require(:comment).permit(:content)
