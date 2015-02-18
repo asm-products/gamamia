@@ -13,7 +13,7 @@
 
           <p class="col-9"><%= @game.description %></p>
 
-          <%= upvote_component game: @game %>        
+          <%= upvote_component game: @game %>
           <a href="<%= @game.link %>" target="_blank"><%= icon 'link' %> <%= @game.link %></a>
 
           <ul class="list-reset sb-platforms">
@@ -24,13 +24,13 @@
 
             <div class="sb-avatar clearfix">
               <div class="left">
-                <p class="mb0">POSTED</p> 
+                <p class="mb0">POSTED</p>
                 <p class="mb0"><%= time_ago_in_words(@game.created_at) %> ago</p>
               </div>
               <div class="left mr1">
                 <%= avatar(user: @game.user) %>
               </div>
-        
+
             </div>
 
       </div>
@@ -58,7 +58,7 @@
           <h5 class="small-header mb2"><%= pluralize @game.comments_count, 'comment' %></h5>
 
 
-          <% if signed_in? %>
+          <% if can? :create, @comment %>
             <%= form_for [@game, @comment], html: {class: 'form clearfix mb2'} do |f| %>
               <div class="clearfix">
                 <div class="left mr2">

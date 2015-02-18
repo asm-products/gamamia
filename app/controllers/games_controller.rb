@@ -1,15 +1,14 @@
 class GamesController < ApplicationController
-  before_filter :auth_user, only: [:upvote, :unupvote, :new, :create]
+  load_and_authorize_resource
   def index
-    @weeks = Game.includes(:user, :platforms).scheduled.display_order.group_by{|x| x.scheduled_at.beginning_of_week }.sort.reverse
+    @weeks = @games.includes(:user, :platforms).scheduled.display_order.group_by{|x| x.scheduled_at.beginning_of_week }.sort.reverse
   end
 
   def new
-    @game = Game.new
   end
 
   def create
-    @game = current_user.games.new(game_params)
+    @game.user = current_user
     if @game.save
       redirect_to game_path(@game)
     else
@@ -18,20 +17,17 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:id])
     @comment = Comment.new
     @video = Video.new
     @related_games = @game.find_related_platforms.first(3)
   end
 
   def upvote
-    @game = Game.find(params[:id])
     @game.upvote_by(current_user)
     redirect_to :back
   end
 
   def unupvote
-    @game = Game.find(params[:id])
     @game.unvote_by(current_user)
     redirect_to :back
   end
