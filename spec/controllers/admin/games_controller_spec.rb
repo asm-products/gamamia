@@ -14,6 +14,32 @@ RSpec.describe Admin::GamesController do
       patch :update, {id: game.id, game: game_params.merge(platform_list: ["iOS", "Mac", "Windows"])}
       expect(game.reload.platform_list).to eq(["iOS", "Mac", "Windows"])
     end
+
+    it "should send notification email when scheduled" do
+      expect {
+        patch :update, {id: game.id, game: game_params.merge(scheduled_at: Date.today)}
+      }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
+
+    it "should not send notification email when scheduled to admin users" do
+      game.user.update_attributes is_admin: true
+      expect {
+        patch :update, {id: game.id, game: game_params.merge(scheduled_at: Date.today)}
+      }.to change { ActionMailer::Base.deliveries.count }.by(0)
+    end
+
+    it "should not send notification email when already scheduled" do
+      game.update_attributes scheduled_at: Date.yesterday
+      expect {
+        patch :update, {id: game.id, game: game_params.merge(schedeuled_at: Date.today)}
+      }.to change { ActionMailer::Base.deliveries.count }.by(0)
+    end
+
+    it "should not send notification email not scheduled" do
+      expect {
+        patch :update, {id: game.id, game: game_params.merge(title: "test")}
+      }.to change { ActionMailer::Base.deliveries.count }.by(0)
+    end
   end
 
   describe "GET index" do

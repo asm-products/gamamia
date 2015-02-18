@@ -15,7 +15,11 @@ module Admin
 
     def update
       @game = Game.find(params.fetch(:id))
+      scheduled_before = @game.scheduled_at?
       if @game.update_attributes(game_params)
+        if !scheduled_before && @game.reload.scheduled_at?
+          UserMailer.game_scheduled(@game).deliver_later
+        end
         redirect_to admin_games_path
       else
         render 'new'
