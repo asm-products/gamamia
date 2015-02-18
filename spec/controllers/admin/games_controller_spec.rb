@@ -84,6 +84,11 @@ RSpec.describe Admin::GamesController do
       expect(response).to_not render_template(:index)
     end
 
+    it "should not access index" do
+      get :index
+      expect(response).to redirect_to(root_path)
+    end
+
     it "should not access edit" do
       get :edit, id: game.id
       expect(response).to_not render_template(:edit)
