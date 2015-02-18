@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
                 presence: true,
                 uniqueness: true
 
+  def is_admin?
+    self.role == "admin"
+  end
+
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
     # Get the identity and user if they exist

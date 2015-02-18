@@ -24,7 +24,8 @@ RSpec.describe Admin::GamesController do
       end
 
       it "should not send notification email when scheduled to admin users" do
-        game.user.update_attributes is_admin: true
+        game.user = Fabricate(:admin_user)
+        game.save
         expect {
           patch :update, {id: game.id, game: game_params.merge(scheduled_at: Date.today)}
         }.to change { ActionMailer::Base.deliveries.count }.by(0)

@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
   end
 
   def user_is_admin?
-    current_user && current_user.role == "admin"
+    current_user && current_user.is_admin?
   end
   helper_method :user_is_admin?
 
