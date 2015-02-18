@@ -10,15 +10,13 @@ admin = User.create!(email:         "admin@example.com",
              password:      "password",
              name:          "Joe Smith",
              username: "joe-smith",
-             occupation:    "Developer",
-             is_admin: true)
+             occupation:    "Developer")
 
 User.create!(email:         "admin@email.com",
              password:      "foobarfoo",
              name:          "Joe Smith",
              username: "joe-smith2",
-             occupation:    "admin",
-             is_admin: true)
+             occupation:    "admin")
 
 Game.create!(title:          "Example Game",
             description:    "Example description of a game, which would include a short summary of what this is all about",
