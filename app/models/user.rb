@@ -15,8 +15,15 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :games
 
-  validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
-  validates :email, presence: true
+  validates :email,
+                format: { without: TEMP_EMAIL_REGEX, on: :update},
+                presence: true,
+                uniqueness: true
+
+  validates :username,
+                format: { with: /\A[a-zA-Z0-9\-\_]+\Z/ },
+                presence: true,
+                uniqueness: true
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
@@ -41,9 +48,10 @@ class User < ActiveRecord::Base
 
       # Create the user if it's a new registration
       if user.nil?
+
         user = User.new(
           name: auth.extra.raw_info.name,
-          #username: auth.info.nickname || auth.uid,
+          username: create_username_from(auth.info.nickname || auth.uid),
           email: email ? email : "#{TEMP_EMAIL_PREFIX}-#{auth.uid}-#{auth.provider}.com",
           password: Devise.friendly_token[0,20],
           avatar_url: auth.info.image
@@ -58,6 +66,16 @@ class User < ActiveRecord::Base
       identity.save!
     end
     user
+  end
+
+  def self.create_username_from name
+    username = n = ""
+    loop do
+      username = name.parameterize + n.to_s
+      n = n.to_i + 1
+      break unless User.exists?(username: username)
+    end
+    username
   end
 
   def email_verified?

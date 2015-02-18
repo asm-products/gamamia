@@ -1,6 +1,7 @@
 Fabricator(:user) do
   email { Faker::Internet.email }
   name { Faker::Name.name }
+  username { Faker::Name.name.parameterize }
   occupation { Faker::Lorem.word }
   password "foobar123"
   password_confirmation "foobar123"
