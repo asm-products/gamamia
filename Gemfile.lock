@@ -64,6 +64,7 @@ GEM
       columnize (~> 0.8)
       debugger-linecache (~> 1.2)
       slop (~> 3.6)
+    cancancan (1.10.1)
     capybara (2.4.4)
       mime-types (>= 1.16)
       nokogiri (>= 1.3.3)
@@ -202,6 +203,8 @@ GEM
     react-source (0.12.2)
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
+    rollbar (1.2.13)
+      multi_json (~> 1.3)
     rspec-core (3.1.7)
       rspec-support (~> 3.1.0)
     rspec-expectations (3.1.2)
@@ -268,6 +271,7 @@ DEPENDENCIES
   acts-as-taggable-on (~> 3.4)
   acts_as_votable (~> 0.10.0)
   bundler (>= 1.7.0)
+  cancancan (~> 1.10)
   capybara
   carrierwave-aws
   codeclimate-test-reporter
@@ -288,6 +292,7 @@ DEPENDENCIES
   rails-assets-moment (~> 2.9)!
   rails_12factor
   react-rails (~> 1.0.0.pre)!
+  rollbar (~> 1.2.7)
   rspec-rails (~> 3.1.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)

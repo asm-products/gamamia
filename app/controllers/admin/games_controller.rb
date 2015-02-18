@@ -1,20 +1,18 @@
 module Admin
   class GamesController < ApplicationController
+    load_and_authorize_resource
     def index
-      @games = Game.all.order(:scheduled_at)
+      @games = @games.order(:scheduled_at)
     end
 
     def show
-      @game = Game.find(params[:id])
       @video = @game.videos.new
     end
 
     def edit
-      @game = Game.find(params[:id])
     end
 
     def update
-      @game = Game.find(params.fetch(:id))
       scheduled_before = @game.scheduled_at?
       if @game.update_attributes(game_params)
         if !scheduled_before && @game.reload.scheduled_at?
@@ -27,7 +25,6 @@ module Admin
     end
 
     def destroy
-      @game = Game.find(params.fetch(:id))
       @game.soft_destroy
       redirect_to admin_games_path, notice: "Destroyed game"
     end
