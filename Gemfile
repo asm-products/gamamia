@@ -21,6 +21,7 @@ gem 'acts-as-taggable-on', '~> 3.4'
 gem 'cancancan', '~> 1.10'
 gem 'newrelic_rpm'
 gem 'rollbar', '~> 1.2.7'
+gem 'turbolinks'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-moment', '~> 2.9'
