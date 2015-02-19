@@ -33,7 +33,7 @@ RSpec.describe GamesController do
       end
 
       it "should not see other users games" do
-        pending "not working right now"
+        pending
         game.update_attributes scheduled_at: nil, user_id: Fabricate(:user).id
         expect(subject).to_not render_template(:show)
       end
