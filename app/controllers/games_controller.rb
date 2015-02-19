@@ -1,5 +1,7 @@
 class GamesController < ApplicationController
   load_and_authorize_resource
+  respond_to :html, :js
+  
   def index
     @weeks = @games.includes(:user, :platforms).scheduled.display_order.group_by{|x| x.scheduled_at.beginning_of_week }.sort.reverse
   end
