@@ -2,7 +2,8 @@
 //= require jquery_ujs
 //= require turbolinks
 
-$('.js-vote').on('click', function(data, status, xhr) {
+$('.js-vote').on('click', function(e) {
+	e.preventDefault();
 	var $this = $(this),
 	voted = $this.data('voted'),
 	votes = $this.find('.votetext');
@@ -10,6 +11,8 @@ $('.js-vote').on('click', function(data, status, xhr) {
 		$this.removeClass('-voted');
 		votes.html(parseInt(votes.html()) - 1);
 		$this.data('voted', false);
+
+
 	} else {
 		$this.addClass('-voted');
 		votes.html(parseInt(votes.html()) + 1);
