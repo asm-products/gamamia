@@ -1,7 +1,9 @@
 class GamesController < ApplicationController
   load_and_authorize_resource
   def index
-    @weeks = @games.includes(:user, :platforms).scheduled.display_order.group_by{|x| x.scheduled_at.beginning_of_week }.sort.reverse
+    @weeks = @games.includes(:user, :platforms).scheduled.display_order.group_by do |game|
+      params[:view] == "daily" ? game.scheduled_at : game.scheduled_at.beginning_of_week
+    end.sort.reverse
   end
 
   def new

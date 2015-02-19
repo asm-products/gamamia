@@ -1,10 +1,14 @@
 <h5 class="day-header center light-gray">
-	
-	
+
+
   <span class="ml1">
   	<% if i == 0 %>
-  		This Week
+  		<% if params[:view] == "daily"  %>
+              Today - <%= link_to "weekly", games_path %>
+            <% else %>
+              This Week - <%= link_to "daily", games_path(view: "daily") %>
+            <% end %>
   	<% else %>
-  		Week of <%= format_date(week) %></span>
+  		<%= params[:view] == "daily" ? "" : "Week of" %> <%= format_date(week) %></span>
   	<% end %>
 </h5>
