@@ -10,8 +10,8 @@ class GamesController < ApplicationController
   def create
     @game.user = current_user
     if @game.save
-      flash[:notice] = "Thanks, your game has been submitted. We will review it and let you know if it is scheduled"
-      redirect_to game_path(@game)
+      flash[:notice] = "Thanks for submitting, your submission is under review. You'll be emailed if and when your submission is scheduled"
+      redirect_to root_path
     else
       render :new
     end
