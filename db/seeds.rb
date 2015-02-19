@@ -64,7 +64,7 @@ Video.create!(
              created_at:    created_at,
              updated_at:    created_at,
              user:          user,
-             scheduled_at:  rand(4).weeks.from_now)
+             scheduled_at:  Date.today - n.days)
 end
 
 199.times do |n|
