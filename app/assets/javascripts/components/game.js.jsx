@@ -19,12 +19,12 @@ var Game = React.createClass({
         }} />
 
     return (
-      <div className="table game-block" onClick={this.handleClick}>
+      <div className="table game-block">
         <div className="col-1 table-cell">
           <Upvote game={game}
             hasCurrentUserVotedForGame={this.props.hasCurrentUserVotedForGame} />
         </div>
-        <div className="rounded bg-white relative table-cell col-12 clearfix">
+        <div className="rounded bg-white relative table-cell col-12 clearfix" onClick={this.handleClick}>
 
           <div className="col col-4 p2">
             <h4 className="mt0">
