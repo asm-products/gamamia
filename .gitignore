@@ -28,3 +28,4 @@ public/assets/
 .ruby-version
 # vim backup files
 *.swp
+.vagrant
