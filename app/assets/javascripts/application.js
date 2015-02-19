@@ -9,9 +9,11 @@ $('.js-vote').on('click', function(data, status, xhr) {
 	if(voted) {
 		$this.removeClass('-voted');
 		votes.html(parseInt(votes.html()) - 1);
+		$this.data('voted', false);
 	} else {
 		$this.addClass('-voted');
 		votes.html(parseInt(votes.html()) + 1);
+		$this.data('voted', true);
 	}
 });
 
@@ -24,8 +26,10 @@ $('.js-vote').on('ajax:error', function(xhr, status, error) {
 	if(voted) {
 		$this.addClass('-voted');
 		votes.html(parseInt(votes.html()) + 1);
+		$this.data('voted', true);
 	} else {
 		$this.removeClass('-voted');
 		votes.html(parseInt(votes.html()) - 1);
+		$this.data('voted', false);
 	}
 });
