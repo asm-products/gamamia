@@ -2,6 +2,13 @@
 <html>
   <head>
     <title>Gamamia</title>
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Gamamia">
+    <meta property="og:description" content="Find, share, and discuss the best indie games around.">
+    <meta property="og:url" content="<%= request.original_url %>">
+    <meta property="og:site_name" content="Gamamia">
+    <meta property="og:image" content="http://localhost:3000/assets/Gamamia_logo_circle.png">
     <link href="http://d2v52k3cl9vedd.cloudfront.net/basscss/4.2.4/basscss.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <%= favicon_link_tag 'favicon.ico' %>
@@ -12,6 +19,7 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
+
     <%= yield %>
 
     <a class="mt4 mb2" style="display: block; text-align: center;" href='https://assembly.com/product_slug?utm_campaign=assemblage&utm_source=product_slug&utm_medium=flair_widget&utm_content=dark_banner'><img src='https://treasure.assembly.com/assets/badges/dark_text_transparent-dae972d967095f44ce66d381dd861056.svg' width=243px height=34px /></a>
