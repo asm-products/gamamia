@@ -3,6 +3,9 @@ class UserMailer < ApplicationMailer
     @user = game.user
     @game = game
     return if @user.is_admin?
-    mail(to: @user.email, subject: "Your game #{@game.title} has been accepted")
+    mail(to: @user.email, subject: "Your game #{@game.title} has been accepted") do |format|
+    	format.html { render layout: 'mailer.html.erb'}
+    	format.text
+    end
   end
 end
