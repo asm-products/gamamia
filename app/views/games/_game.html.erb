@@ -1,3 +1,5 @@
+<div class="table game-block">
+
 <div class="col-1 table-cell">
   <%= render partial: 'upvotes/upvote', locals: { game: game } %>
 </div>
@@ -13,7 +15,7 @@
 
     <footer class="clearfix mt3 game-meta">
 
-      <p class="left mb0"><%= game.platform %></p>
+      <p class="left mb0"><%= game.platform_list %></p>
 
           <div class="right light-gray mb0 comments">
             <%= icon('comment') %> <%= game.comments_count %>
@@ -24,5 +26,7 @@
   </div>
 
   <div class="bg-mid-gray col col-8" style="background-image:url(<%= image_path(game.thumbnail) %>);background-size:cover;background-position:center;height:12em"></div>
+
+</div>
 
 </div>
