@@ -7,7 +7,7 @@
     <%= favicon_link_tag 'favicon.ico' %>
     <%= favicon_link_tag 'favicon-152.png', rel: 'apple-touch-icon', type: 'image/png' %>
     <meta name="msapplication-TileColor" content="#F45B5E">
-    <meta name="msapplication-TileImage" content="favicon-152.png">
+    <meta name="msapplication-TileImage" content="<%= asset_path "favicon-152.png"%>">
     <%= stylesheet_link_tag 'application', media: 'all' %>
     <%= csrf_meta_tags %>
   </head>
