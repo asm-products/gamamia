@@ -1,0 +1,11 @@
+<% if signed_in? && current_user.voted_for?(game) %>
+  <a class="upvote-block -voted block px2 py1" href="<%= unupvote_game_path(game) %>" data-method="post">
+    <p class="voteicon">▲</p>
+    <p class="m0"><%= game.cached_votes_up %></p>
+  </a>
+<% else %>
+  <a class="upvote-block block px2 py1 light-gray" href="<%= upvote_game_path(game) %>" data-method="post">
+   	<p class="voteicon">▲</p>
+    <p><%= game.cached_votes_up %></p>
+  </a>
+<% end %>
