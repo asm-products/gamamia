@@ -1,0 +1,32 @@
+<div class="table game-block">
+
+<div class="col-1 table-cell">
+  <%= render partial: 'upvotes/upvote', locals: { game: game } %>
+</div>
+
+<div class="rounded bg-white relative table-cell col-12 clearfix js-game">
+
+  <div class="col col-4 p2">
+
+    <h4 class="mt0">
+      <a class="dark-gray" href="<%= game_path(game) %>"><%= game.title %></a>
+    </h4>
+    <p class="mb0 light-gray gamecaption"><%= truncate(game.description, length: 100) %></p>
+
+    <footer class="clearfix mt3 game-meta">
+
+      <p class="left mb0"><%= game.platform_list %></p>
+
+          <div class="right light-gray mb0 comments">
+            <%= icon('comment') %> <%= game.comments_count %>
+          </div>
+
+    </footer>
+
+  </div>
+
+  <div class="bg-mid-gray col col-8" style="background-image:url(<%= image_path(game.thumbnail) %>);background-size:cover;background-position:center;height:12em"></div>
+
+</div>
+
+</div>
