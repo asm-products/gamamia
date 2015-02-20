@@ -1,11 +1,13 @@
-<% if signed_in? && current_user.voted_for?(game) %>
-  <a class="upvote-block -voted block js-vote" href="<%= game_path(game) %>" data-method="post" data-voted="true">
-    <p class="voteicon">▲</p>
-    <p class="m0 votetext"><%= game.cached_votes_up %></p>
-  </a>
-<% else %>
-  <a class="upvote-block block js-vote" href="<%= game_path(game) %>" data-method="post" data-voted="false">
-   	<p class="voteicon">▲</p>
-    <p class="m0 votetext"><%= game.cached_votes_up %></p>
-  </a>
+<%= div_for(game, :vote) do %>
+  <% if signed_in? && current_user.voted_for?(game) %>
+    <%= link_to "<p class=\"voteicon\">▲</p><p class=\"m0 votetext\">#{game.cached_votes_up}</p>".html_safe,
+                unupvote_game_path(game),
+                remote: true,
+                class: "upvote-block -voted block" %>
+  <% else %>
+    <%= link_to "<p class=\"voteicon\">▲</p><p class=\"m0 votetext\">#{game.cached_votes_up}</p>".html_safe,
+                upvote_game_path(game),
+                remote: true,
+                class: "upvote-block block" %>
+  <% end %>
 <% end %>

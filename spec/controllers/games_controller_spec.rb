@@ -70,33 +70,33 @@ RSpec.describe GamesController do
       end
     end
 
-    describe "POST unupvote" do
+    describe "GET unupvote" do
       before(:each) do
         request.env["HTTP_REFERER"] = game_path(game)
       end
       it "should redirect back" do
-        post :unupvote, id: game.id
+        get :unupvote, id: game.id
         expect(response).to redirect_to(game)
       end
 
       it "should remove upvote" do
         game.upvote_by(@user)
-        post :unupvote, id: game.id
+        get :unupvote, id: game.id
         expect(game.reload.cached_votes_up).to eq(0)
       end
     end
 
-    describe "POST upvote" do
+    describe "GET upvote" do
       before(:each) do
         request.env["HTTP_REFERER"] = game_path(game)
       end
       it "should redirect back" do
-        post :upvote, id: game.id
+        get :upvote, id: game.id
         expect(response).to redirect_to(game)
       end
 
       it "should add upvote" do
-        post :upvote, id: game.id
+        get :upvote, id: game.id
         expect(game.reload.cached_votes_up).to eq(1)
       end
     end
