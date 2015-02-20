@@ -62,6 +62,10 @@ class UsersController < ApplicationController
   private
     def set_user
       @user = current_user
+      unless @user
+        flash[:error] = "Something went wrong while signup. Please try again."
+        redirect_to root_path
+      end
     end
 
     # This checks which parameters are permitted for change. Remember to update it if new parameters are introduced
