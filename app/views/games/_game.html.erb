@@ -1,7 +1,9 @@
 <div class="table game-block">
 
 <div class="col-1 table-cell">
-  <%= render partial: 'upvotes/upvote', locals: { game: game } %>
+  <%= div_for(game, :vote) do %>
+    <%= render partial: 'upvotes/upvote', locals: { game: game } %>
+  <% end %>
 </div>
 
 <div class="rounded bg-white relative table-cell col-12 clearfix js-game">
