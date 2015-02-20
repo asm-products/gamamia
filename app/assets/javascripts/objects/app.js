@@ -1,5 +1,5 @@
-var Game = {
-	config : {
+var App = {
+	el : {
 		gameLink: $('.js-game')
 	},
 
@@ -8,10 +8,10 @@ var Game = {
 	},
 
 	bindUIActions: function() {
-		Game.config.gameLink.on('click', Game.handleState)
+		App.el.gameLink.on('click', App.handleGameState)
 	},
 
-	handleState: function() {
+	handleGameState: function() {
 		var link = $(this).find('a').first().attr('href');
 		window.location = link;
 	}
