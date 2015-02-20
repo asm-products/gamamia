@@ -1,10 +1,10 @@
 <% if signed_in? && current_user.voted_for?(game) %>
-  <a class="upvote-block -voted block js-vote" href="<%= unupvote_game_path(game) %>" data-method="post" data-voted="true">
+  <a class="upvote-block -voted block js-vote" href="<%= game_path(game) %>" data-method="post" data-voted="true">
     <p class="voteicon">▲</p>
     <p class="m0 votetext"><%= game.cached_votes_up %></p>
   </a>
 <% else %>
-  <a class="upvote-block block js-vote" href="<%= upvote_game_path(game) %>" data-method="post" data-voted="false">
+  <a class="upvote-block block js-vote" href="<%= game_path(game) %>" data-method="post" data-voted="false">
    	<p class="voteicon">▲</p>
     <p class="m0 votetext"><%= game.cached_votes_up %></p>
   </a>

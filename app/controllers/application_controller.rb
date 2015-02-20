@@ -22,8 +22,8 @@ class ApplicationController < ActionController::Base
     else
       "You need to be signed in for that action. Please click Login above to sign in or register."
     end
-
-    redirect_to back_or_root_path
+    flash.keep(:error)
+    render js: "window.location = '#{back_or_root_path}'"
   end
 
   def user_is_admin?
