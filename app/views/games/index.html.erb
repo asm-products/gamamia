@@ -37,12 +37,7 @@
 
       <% end %>
         <div class="clearfix m2">
-          <%=
-            game_component(
-              game: game,
-              has_current_user_voted_for_game: signed_in? && current_user.voted_for?(game)
-            )
-          %>
+          <%= render 'games/game', game: game %>
         </div>
       <% end %>
 

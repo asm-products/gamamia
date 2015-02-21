@@ -1,0 +1,11 @@
+<% if signed_in? && current_user.voted_for?(game) %>
+  <%= link_to "<p class=\"voteicon\">▲</p><p class=\"m0 votetext\">#{game.cached_votes_up}</p>".html_safe,
+              unupvote_game_path(game),
+              remote: true,
+              class: "upvote-block -voted block" %>
+<% else %>
+  <%= link_to "<p class=\"voteicon\">▲</p><p class=\"m0 votetext\">#{game.cached_votes_up}</p>".html_safe,
+              upvote_game_path(game),
+              remote: true,
+              class: "upvote-block block" %>
+<% end %>

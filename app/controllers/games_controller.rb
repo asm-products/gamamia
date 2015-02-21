@@ -1,5 +1,7 @@
 class GamesController < ApplicationController
   load_and_authorize_resource
+  respond_to :html, :js
+
   def index
     @weeks = @games.includes(:user, :platforms).scheduled.display_order.group_by{|x| x.scheduled_at.beginning_of_week }.sort.reverse
   end
@@ -31,12 +33,20 @@ class GamesController < ApplicationController
       flash[:error] = "Sorry. You can't vote on unpublished games"
     end
 
-    redirect_to :back
+    respond_to do |format|
+      format.js do
+        @game.scheduled_at? ? render(:vote) : render(js: "window.location = '#{game_path(@game)}'")
+      end
+      format.html { redirect_to :back }
+    end
   end
 
   def unupvote
     @game.unvote_by(current_user)
-    redirect_to :back
+    respond_to do |format|
+      format.js { render :vote }
+      format.html {redirect_to :back}
+    end
   end
 
   def upload

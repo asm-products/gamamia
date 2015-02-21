@@ -22,8 +22,12 @@ class ApplicationController < ActionController::Base
     else
       "You need to be signed in for that action. Please click Login above to sign in or register."
     end
-
-    redirect_to back_or_root_path
+    if request.xhr?
+      flash.keep(:error)
+      render js: "window.location = '#{back_or_root_path}'"
+    else
+      redirect_to back_or_root_path
+    end
   end
 
   def user_is_admin?
@@ -42,4 +46,5 @@ class ApplicationController < ActionController::Base
   def back_or_root_path
     session[:referrer_url] || root_path
   end
+  helper_method :back_or_root_path
 end
