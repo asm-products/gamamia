@@ -30,7 +30,7 @@
                 <p class="mb0"><%= time_ago_in_words(@game.created_at) %> ago</p>
               </div>
               <div class="left mr1">
-                <%= avatar(user: @game.user) %>
+                <%= render partial: 'avatars/avatar', locals: {user: @game.user} %>
               </div>
 
             </div>
@@ -45,7 +45,7 @@
         <ul class="list-reset clearfix mxn1" style="margin-top:-.5rem;margin-bottom:-.5rem">
           <% @game.votes_for.up.each do |vote| %>
             <li class="left p1">
-              <%= avatar(user: vote.voter) %>
+              <%= render partial: 'avatars/avatar', locals: {user: vote.voter} %>
             </li>
           <% end %>
         </ul>
@@ -64,7 +64,7 @@
             <%= form_for [@game, @comment], html: {class: 'form clearfix mb2'} do |f| %>
               <div class="clearfix">
                 <div class="left mr2">
-                  <%= avatar(user: current_user) %>
+                  <%= render partial: 'avatars/avatar', locals: {user: current_user} %>
                 </div>
                 <div class="overflow-hidden">
                   <%= f.text_area :content, class: 'field-light block full-width mb2', rows: 2 %>
