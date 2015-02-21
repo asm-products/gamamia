@@ -20,11 +20,17 @@ class GamesController < ApplicationController
   def show
     @comment = Comment.new
     @video = Video.new
-    @related_games = @game.find_related_platforms.first(3)
+    @related_games = @game.find_related_platforms.scheduled.first(3)
+    flash[:notice] = "This game is under review." unless @game.scheduled_at?
   end
 
   def upvote
-    @game.upvote_by(current_user)
+    if @game.scheduled_at?
+      @game.upvote_by(current_user)
+    else
+      flash[:error] = "Sorry. You can't vote on unpublished games"
+    end
+
     redirect_to :back
   end
 

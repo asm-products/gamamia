@@ -6,17 +6,19 @@ class Ability
 
     can :read, Comment
 
+    can :index, Game
+    can :show, Game
+
+
     unless user # abilities only for guests
-      can :read, Game, Game.scheduled do |game|
-        game.scheduled_at?
-      end
+      # can :read, Game, Game.scheduled do |game|
+      #   game.scheduled_at?
+      # end
     end
 
     if user
       # abilities for every logged in user
       can :create, Comment
-      can :index, Game
-      can :show, Game
       # can :show, Game.scheduled do |game|
       #   puts "block called"
       #   game.scheduled_at.nil? && game.user == user
