@@ -24,7 +24,12 @@ class GamesController < ApplicationController
   end
 
   def upvote
-    @game.upvote_by(current_user)
+    if @game.scheduled_at?
+      @game.upvote_by(current_user)
+    else
+      flash[:error] = "Sorry. You can't vote on unpublished games"
+    end
+
     redirect_to :back
   end
 

@@ -99,6 +99,12 @@ RSpec.describe GamesController do
         post :upvote, id: game.id
         expect(game.reload.cached_votes_up).to eq(1)
       end
+
+      it "should add upvote for unpublished games" do
+        game.update_attributes scheduled_at: nil
+        post :upvote, id: game.id
+        expect(game.reload.cached_votes_up).to eq(0)
+      end
     end
   end
 
