@@ -27,10 +27,17 @@ class GamesController < ApplicationController
   end
 
   def upvote
-    @game.upvote_by(current_user)
+    if @game.scheduled_at?
+      @game.upvote_by(current_user)
+    else
+      flash[:error] = "Sorry. You can't vote on unpublished games"
+    end
+
     respond_to do |format|
-      format.js { render :vote }
-      format.html {redirect_to :back}
+      format.js do
+        @game.scheduled_at? ? render(:vote) : render(js: "window.location = '#{game_path(@game)}'")
+      end
+      format.html { redirect_to :back }
     end
   end
 

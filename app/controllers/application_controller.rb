@@ -46,4 +46,5 @@ class ApplicationController < ActionController::Base
   def back_or_root_path
     session[:referrer_url] || root_path
   end
+  helper_method :back_or_root_path
 end
