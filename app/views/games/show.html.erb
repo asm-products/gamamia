@@ -13,7 +13,9 @@
 
           <p class="col-9"><%= @game.description %></p>
 
-          <%= render partial: 'upvotes/upvote', locals: { game: @game } %>
+          <%= div_for(@game, :vote) do %>
+            <%= render partial: 'upvotes/upvote', locals: { game: @game } %>
+          <% end %>
           <a href="<%= @game.link %>" target="_blank"><%= icon 'link' %> <%= @game.link %></a>
 
           <ul class="list-reset sb-platforms">
