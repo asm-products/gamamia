@@ -134,11 +134,48 @@ textarea {
 	font-size: 0.875em;
 }
 
+.filter-bar a {
+	font-size: 0.875em;
+	color: #4A4A4A;
+
+	&:hover {
+		color: #FA5A5A;
+		text-decoration: none;
+	}
+}
+
+.fb-link.selected {
+	border-bottom: 2px solid #FA5A5A;
+}
+
 .day-header {
 	font-size: 1.125em;
-	margin-top: 2.778em;
-	margin-bottom: 2.778em;
-	font-weight: 300;
+	margin-top: 3em;
+	margin-bottom: 3em;
+	text-transform: uppercase;
+}
+
+.lines {
+	display: inline-block;
+	letter-spacing: 2px;
+}
+
+.lines:before, .lines:after {
+	content: '';
+	width: 30%;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.lines:before {
+	border-top: 1px solid #4A4A4A;
+	margin-bottom: 10px;
+}
+
+.lines:after {
+	margin-top: 12px;
+	border-bottom: 1px solid #4A4A4A;
 }
 
 .upvote-block {

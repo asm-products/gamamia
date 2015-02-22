@@ -1,6 +1,6 @@
+<%= render 'ui/filterbar' %>
+<% @weeks.each_with_index do |(week, games), i| %>
 <div class="container">
-
-  <% @weeks.each_with_index do |(week, games), i| %>
 
     <%= render 'weeks/week', week: week, i: i %>
 
