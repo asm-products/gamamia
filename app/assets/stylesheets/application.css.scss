@@ -99,18 +99,26 @@ textarea {
 	letter-spacing: 1px;
 }
 
+.navbar {
+	background: #4A4A4A;
+}
+
+.logo-bar {
+	height: 63px;
+}
+
 .logo-bar .logo {
-	max-height: 60px;
+	max-height: 63px;
 	width: auto;
 }
 
 .logo-bar a {
-	color: #FA5555;
 	text-decoration: none;
+	color: #fff;
 }
 
 .logotext {
-	font-size: 1em;
+	font-size: 1.125em;
 }
 
 .logocaption {
@@ -122,7 +130,8 @@ textarea {
 }
 
 .nav-bar a {
-	color: #4A4A4A;
+	color: #fff;
+	font-size: 0.875em;
 }
 
 .day-header {

@@ -1,11 +1,11 @@
-<div class="bg-white">
-  <div class="container clearfix py1">
+<header class="navbar">
+  <div class="container clearfix">
 
     <div class="left logo-bar">
       <a class="clearfix block" href="<%= root_path %>">
 
         <div class="left mr2">
-          <%= image_tag 'Gamamia_logo_circle.png', :class => 'logo' %>
+          <%= image_tag 'Gamamia_Logo_Square.png', :class => 'logo' %>
         </div>
         <div class="overflow-hidden textbox">
           <h1 class="logotext mt1 mb0">Gamamia</h4>
@@ -42,7 +42,7 @@
     </div>
 
   </div>
-</div>
+</header>
 
 <% if flash[:notice] -%>
   <p class='error blue center mt2'><%=h flash[:notice] %></p>
