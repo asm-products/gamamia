@@ -4,6 +4,7 @@
 [![Build Status](https://travis-ci.org/asm-products/gamamia.svg)](https://travis-ci.org/asm-products/gamamia)
 [![Code Climate](https://codeclimate.com/github/asm-products/gamamia/badges/gpa.svg)](https://codeclimate.com/github/asm-products/gamamia)
 [![Test Coverage](https://codeclimate.com/github/asm-products/gamamia/badges/coverage.svg)](https://codeclimate.com/github/asm-products/gamamia)
+[![Dependency Status](https://gemnasium.com/asm-products/gamamia.svg)](https://gemnasium.com/asm-products/gamamia)
 
 ## An independent game discovery platform
 
