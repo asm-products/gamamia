@@ -31,7 +31,7 @@
           <p>@<%= game.user.username %></p>
         </div>
         <div class="left ml1">
-          <%= render partial: 'avatars/avatar', locals: {user: game.user} %>
+          <%= avatar_for(game.user) %>
         </div>
 
       </div>
