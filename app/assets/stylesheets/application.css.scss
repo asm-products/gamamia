@@ -266,6 +266,20 @@ textarea {
 	padding-left: 1.5em;
 }
 
+.gametitle:hover {
+	text-decoration: none;
+	color: #FA5A5A;
+}
+
+.gametitle:after {
+	content: '▸';
+	font-size: 0.6em;
+	position: relative;
+	bottom: 2px;
+	margin-left: 3px;
+	color: #FA5A5A;
+}
+
 .game-meta {
 	position: absolute;
 	bottom: 0;
