@@ -3,9 +3,9 @@
   <div class="relative">
       <div class="imageblur" style="background-image:url(<%= @game.thumbnail %>);background-size:cover;"></div>
       <div class="bglayer"></div>
-      <div class="p3 clearfix relative sb-gameinfo container sb-bg">
+      <div class="p3 clearfix relative info container">
 
-          <h3 class="mt0 mb0 sb-title">
+          <h3 class="mt0 mb0 title">
             <a class="white" href="<%= @game.link %>" target="_blank"><%= @game.title %></a>
           </h3>
 
@@ -16,18 +16,18 @@
           <% end %>
           <a href="<%= @game.link %>" target="_blank"><%= icon 'link' %> <%= @game.link %></a>
 
-          <ul class="list-reset sb-platforms">
+          <ul class="list-reset platform-list">
             <% @game.platform_list.each do |platform| %>
               <li><%= platform %>
             <% end %>
           </ul>
 
-            <div class="sb-avatar clearfix">
+            <div class="game-posted clearfix">
               <div class="left">
                 <p class="mb0">POSTED</p>
                 <p class="mb0"><%= time_ago_in_words(@game.created_at) %> ago</p>
               </div>
-              <div class="left mr1">
+              <div class="left ml1">
                 <%= avatar_for(@game.user) %>
               </div>
 
@@ -42,7 +42,7 @@
         <h5 class="small-header mb2 mt2"><%= pluralize @game.cached_votes_up, 'upvote' %></h5>
         <ul class="list-reset clearfix mxn1" style="margin-top:-.5rem;margin-bottom:-.5rem">
           <% @game.votes_for.up.each do |vote| %>
-            <li class="left p1">
+            <li class="left ml1">
               <%= avatar_for(vote.voter) %>
             </li>
           <% end %>
@@ -90,13 +90,13 @@
 <% if @related_games.any? %>
 
 <div class="bg-black related-games">
-  <h3 class="rg-header py1">More Games</h3>
-  <div class="rg-block clearfix container">
+  <h3 class="header py1">More Games</h3>
+  <div class="block clearfix container">
     <% @related_games.each do |related_game| %>
       <div class="col col-4 px3 relative">
-        <a class="rg-link" href="<%= game_path(related_game) %>">
-          <img class="rg-thumbnail" src="<%= related_game.thumbnail %>">
-          <p class="rg-title col-12"><%= related_game.title %>  <span class="right rg-votes">▲ <%= related_game.cached_votes_up %></span></p>
+        <a class="link" href="<%= game_path(related_game) %>">
+          <img class="thumbnail" src="<%= related_game.thumbnail %>">
+          <p class="title col-12"><%= related_game.title %>  <span class="right rg-votes">▲ <%= related_game.cached_votes_up %></span></p>
         </a>
       </div>
     <% end %>

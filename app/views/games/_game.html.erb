@@ -11,17 +11,17 @@
 </div>
 
 <div class="bg-white col-11 clearfix js-game relative left">
-  <div class="col col-7 gamecol">
+  <div class="col col-7 column">
 
     <h4 class="mt0">
-      <a class="dark-gray gametitle" href="<%= game_path(game) %>"><%= game.title %></a>
+      <a class="dark-gray title" href="<%= game_path(game) %>"><%= game.title %></a>
     </h4>
-    <p class="mb0 gamecaption"><%= truncate(game.description, length: 120) %></p>
+    <p class="mb0 caption"><%= truncate(game.description, length: 120) %></p>
 
     <footer class="game-meta col-7">        
-        <ul class="list-reset platformlist">
+        <ul class="list-reset platform-list">
             <% game.platform_list.each do |platform| %>
-              <li><%= platform %>
+              <li><%= platform %></li>
             <% end %>
           </ul>
 

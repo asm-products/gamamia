@@ -42,3 +42,28 @@
 .opacity-half {
   opacity: 0.5;
 }
+
+.day-header {
+  font-size: 1.125em;
+  margin-top: 4em;
+  margin-bottom: 2em;
+  text-transform: uppercase;
+}
+
+.lines {
+  display: inline-block;
+  letter-spacing: 2px;
+}
+
+.lines:before, .lines:after {
+  content: '';
+  width: 50%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lines:after {
+  margin-top: 7px;
+  border-bottom: 2px solid #ccc;
+}

@@ -1,0 +1,45 @@
+.related-games {
+	margin-top: -1em;
+	text-align: center;
+
+	p {
+		color: white;
+		font-weight: bold;
+	}
+
+	.header {
+		text-align: center;
+		font-size: 0.75em;
+		text-transform: uppercase;
+		display: inline-block;
+		letter-spacing: 1px;
+		margin: 2em auto;
+		border-bottom: 1px solid #fff;
+	}
+
+	.block {
+		text-align: left;
+	}
+
+	.link {
+		color: white;
+
+		&:hover {
+			text-decoration: none;
+		}
+
+		&:hover p {
+			color: #ccc;
+		}
+	}
+
+	.thumbnail {
+		max-height: 8.5em;
+	}
+
+	.votes {
+		font-size: 0.75em;
+		position: relative;
+		top: 3px;
+	}
+}
