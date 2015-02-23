@@ -54,7 +54,7 @@ body {
 }
 
 .container {
-	max-width: 58em;
+	max-width: 57em;
 }
 
 hr {
@@ -150,8 +150,8 @@ textarea {
 
 .day-header {
 	font-size: 1.125em;
-	margin-top: 3em;
-	margin-bottom: 3em;
+	margin-top: 4em;
+	margin-bottom: 2em;
 	text-transform: uppercase;
 }
 
@@ -162,35 +162,34 @@ textarea {
 
 .lines:before, .lines:after {
 	content: '';
-	width: 30%;
+	width: 50%;
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.lines:before {
-	border-top: 1px solid #4A4A4A;
-	margin-bottom: 10px;
+.lines:after {
+	margin-top: 7px;
+	border-bottom: 2px solid #ccc;
 }
 
-.lines:after {
-	margin-top: 12px;
-	border-bottom: 1px solid #4A4A4A;
+.vote_game {
+	width: 50px;
 }
 
 .upvote-block {
-	font-size: 1.125em;
+	font-size: 0.875em;
 	text-align: center;
-	margin-left: -2em;
-	width: 34px;
-	border: 2px solid #71D8EC;
-	border-radius: 3px;
-	padding: 0.5rem 1rem 0.5rem 1rem;
+	border: 1px solid #71D8EC;
+	padding: 1em 0 1em 0;
+	margin-top: 25px;
+	background: #fff;
 }
 
 .upvote-block > p {
 	font-size: 1.125em;
 	color: #71D8EC;
+	font-weight: bold;
 }
 
 .upvote-block:hover {
@@ -227,54 +226,82 @@ textarea {
 	position: relative;
 	padding: 3px 10px 3px 10px;
 	border: 1px solid #71D8EC;
-	border-radius: 6px;
 	color: #71D8EC;
 	font-size: 0.6em;
-	margin-top: 0.2em;
+	display: inline-block;
+	background: #fff;
+	margin-left: 1.25em;
+	font-weight: bold;
+}
+
+.speech-bubble:before, .speech-bubble:after {
+	content: '';
+	position: absolute;
+	border-width: 6px 5px 0;
+	border-style: solid;
+	display: block;
+	width: 0;
+	transform: rotate(5deg);
 }
 
 .speech-bubble:before {
-	content: '';
-	position: absolute;
-	bottom: -9px;
-	left: 8px;
-	border-width: 10px 6px 0;
-	border-style: solid;
+	bottom: -7px;
+	left: 5px;
 	border-color: #71D8EC transparent;
-	display: block;
-	width: 0;
+	border-width: 7px 5px 0;
 }
 
 .speech-bubble:after {
-	content: '';
-	position: absolute;
-	bottom: -8px;
-	left: 9px;
-	border-width: 9px 5px 0;
-	border-style: solid;
+	bottom: -5px;
+	left: 5px;
 	border-color: #fff transparent;
-	display: block;
-	width: 0;
 }
 
 .game-block {
 	cursor: pointer;
 }
 
-.game-meta {
-	font-size: 0.875em;
-	position: absolute;
-	bottom: 0.5em;
-	width: 28%;
+.gamecol {
+	padding-top: 1.5em;
+	padding-left: 1.5em;
 }
 
-.game-meta > p, .game-meta > div {
-	font-size: 0.875em;
+.game-meta {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.game-meta > p, .game-meta > div, .game-meta li {
+	font-size: 0.6em;
 	color: #9B9B9B;
 }
 
-.game-meta > .comments {
-	color: #D8D8D8;
+.platformlist {
+	padding-left: 1.5rem;
+
+	li {
+		display: inline-block;
+		margin-right: 1em;
+		vertical-align: bottom;
+	}
+}
+
+.game-posted {
+	position: absolute;
+	right: 3em;
+	bottom: 0;
+	text-align: right;
+
+	p {
+		font-size: 0.6em;
+	}
+	
+}
+
+.posted {
+	text-transform: uppercase;
+		color: #4A4A4A;
 }
 
 .gameplatform {
@@ -285,6 +312,8 @@ textarea {
 
 .gamecaption {
 	font-size: 0.875em;
+	color: #4A4A4A;
+	max-width: 95%;
 }
 
 .signup {
@@ -346,7 +375,7 @@ div[data-react-class="Icon"]{ display: inline; }
 		color: white;
 	}
 
-	.upvote-block {
+	.vote_game {
 		position: absolute;
 		top: 2em;
 		right: 1em;
