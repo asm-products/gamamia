@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150218150351) do
+ActiveRecord::Schema.define(version: 20150223213235) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -105,6 +105,7 @@ ActiveRecord::Schema.define(version: 20150218150351) do
     t.boolean  "receive_newsletter"
     t.string   "username",               default: "", null: false
     t.string   "role"
+    t.string   "twitter_handle"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
