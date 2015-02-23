@@ -1,0 +1,44 @@
+  <%= form_for(@user, :html => { role: 'form'}) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <% @user.errors.full_messages.each do |msg| %>
+          <%= msg %><br>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="form-group">
+
+      <%= f.label :username %>
+      <div class="controls">
+        <%= f.text_field :username, :autofocus => true, class: '' %>
+
+        <p class="help-block">Username should only contain letters, numbers, and "-", "_".</p>
+      </div>
+
+      <%= f.label :email %>
+      <div class="controls">
+        <% if @user.email %>
+          <%= f.text_field :email, :value => @user.email, class: '' %>
+        <% else %>
+          <%= f.text_field :email, :value => '', class: '', placeholder: 'Example: email@me.com' %>
+        <% end %>
+
+        <p class="help-block">Please confirm your email address. No spam.</p>
+      </div>
+
+    <div class="form-group">
+      <div class="controls">
+        <%= f.check_box :receive_newsletter %> Signup For Our Newsletter
+        <p class="help-block">Get new games in your inbox every week. Unsubscribe at any time.</p>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :occupation %>
+        <div class="controls">
+          <%= f.text_field :occupation, :value => @user.occupation, class: '', placeholder: 'Occupation' %>
+        </div>
+    </div>
+    <div class="actions">
+      <%= f.submit 'Continue', :class => 'btn btn-primary' %>
+    </div>
+  <% end %>

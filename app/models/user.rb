@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
                 presence: true,
                 uniqueness: true
 
+  def to_param
+    username
+  end
+
   def is_admin?
     self.role == "admin"
   end
