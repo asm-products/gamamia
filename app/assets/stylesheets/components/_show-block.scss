@@ -36,6 +36,14 @@
 			top: 2em;
 			right: 1em;
 		}
+
+	.upvote-block p {
+		color: $blue;
+	}
+
+	.upvote-block:hover p {
+		color: white;
+	}
 	}
 
 	.title {
