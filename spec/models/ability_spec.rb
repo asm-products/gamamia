@@ -22,6 +22,11 @@ RSpec.describe Ability do
   end
 
   context "users" do
+    it "should finish signup" do
+      expect(ability.can? :finish_signup, user).to be(true)
+    end
+
+
     it "should show users" do
       expect(ability.can? :index, User).to be(true)
     end
