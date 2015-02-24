@@ -17,7 +17,7 @@ class Ability
     end
 
     if user
-      can :update, User, {id: user.id}
+      can [:update, :finish_signup], User, {id: user.id}
 
       # abilities for every logged in user
       can :create, Comment
