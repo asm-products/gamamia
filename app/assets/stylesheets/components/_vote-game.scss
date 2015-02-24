@@ -1,0 +1,47 @@
+.vote_game {
+	width: 50px;
+}
+
+.upvote-block {
+	color: #71D8EC;
+	text-align: center;
+	border: 1px solid #71D8EC;
+	padding: 1em 0 1em 0;
+	margin-top: 25px;
+	background: #fff;
+	font-weight: bold;
+
+	p {
+		font-size: 1.125em;
+	}
+
+	.voteicon {
+		margin-bottom: 0;
+		color: $blue;
+	}
+}
+
+.upvote-block:hover {
+	text-decoration: none;
+	background: $blue;
+}
+
+.upvote-block:hover {
+	color: $blue;
+
+	.voteicon {
+		color: white;
+	}
+
+	p {
+		color: white;
+	}
+}
+
+.upvote-block.-voted {
+	background: $blue;
+
+	p, .voteicon {
+		color: white;
+	}
+}

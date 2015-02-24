@@ -50,10 +50,16 @@ RSpec.describe GamesController do
       it "renders index template" do
         expect(subject).to render_template(:index)
       end
+      context "daily view" do
+        it "assigns daily scheduled games as @weeks" do
+          game.update_attributes scheduled_at: Date.parse("11.02.2015")
+          game2 = Fabricate(:game, scheduled_at: Date.parse("10.02.2015"))
 
-      it "renders index template for users when trying to access admin template" do
-        get :index, layout: 'admin'
-        expect(response).to render_template(:index)
+          day1 = game.scheduled_at
+          day2 = game2.scheduled_at
+          get :index, view: "daily"
+          expect(assigns(:weeks)).to eq([[day1,[game]], [day2,[game2]]])
+        end
       end
     end
 
