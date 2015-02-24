@@ -26,7 +26,7 @@ var App = {
 			class: 'tooltip'
 		});
 
-		$('body').append(tooltip);
+		el.closest('a').append(tooltip);
 
 		var top = el.position().top + el.height();
 		var left = el.position().left;
