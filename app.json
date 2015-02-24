@@ -7,6 +7,9 @@
     "addons": [
         "mandrill: starter"
     ],
+    "scripts": {
+        "postdeploy": "bundle exec rake db:migrate"
+    },
     "env": {
         "AWS_ACCESS_KEY": {
             "description": "Amazon AWS Access Key"
