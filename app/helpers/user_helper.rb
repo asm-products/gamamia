@@ -9,7 +9,13 @@ module UserHelper
     end
 
     link_to "#", class: "block" do
-      image_tag avatar_url, class: "block circle", width: "24", height: "24"
+      image_tag(
+        avatar_url,
+        class: "block circle has-tooltip",
+        width: "24",
+        height: "24",
+        data: { tooltip: user.username }
+      )
     end
   end
 end
