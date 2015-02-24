@@ -41,6 +41,10 @@
 		color: $blue;
 	}
 
+	.upvote-block.-voted p {
+		color: $white;
+	}
+
 	.upvote-block:hover p {
 		color: white;
 	}
