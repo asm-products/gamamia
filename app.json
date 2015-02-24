@@ -4,9 +4,6 @@
     "logo": "https://d1015h9unskp4y.cloudfront.net/attachments/c0c26468-7de3-414a-b7b9-62f1a5b9b3fa/Gamamia_Logo_Square.png",
     "repository": "https://github.com/asm-products/gamamia",
     "success_url": "/",
-    "addons": [
-        "mandrill: starter"
-    ],
     "scripts": {
         "postdeploy": "bundle exec rake db:migrate"
     },
