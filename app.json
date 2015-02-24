@@ -5,7 +5,7 @@
     "repository": "https://github.com/asm-products/gamamia",
     "success_url": "/",
     "scripts": {
-        "postdeploy": "bundle exec rake db:migrate"
+        "postdeploy": "rake db:migrate"
     },
     "env": {
         "AWS_ACCESS_KEY_ID": {
