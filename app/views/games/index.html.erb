@@ -1,8 +1,6 @@
-<%= render 'ui/navbar' %>
-
+<%= render 'ui/filterbar' %>
+<% @weeks.each_with_index do |(week, games), i| %>
 <div class="container">
-
-  <% @weeks.each_with_index do |(week, games), i| %>
 
     <%= render 'weeks/week', week: week, i: i %>
 
@@ -36,7 +34,7 @@
         </div>
 
       <% end %>
-        <div class="clearfix m2">
+        <div class="clearfix mb1">
           <%= render 'games/game', game: game %>
         </div>
       <% end %>

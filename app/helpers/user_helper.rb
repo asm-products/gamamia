@@ -9,7 +9,7 @@ module UserHelper
     end
 
     link_to "#", class: "block" do
-      image_tag avatar_url, class: "block circle", width: "24", height: "24"
+      image_tag avatar_url, class: "block", width: "24", height: "24"
     end
   end
 end

@@ -1,0 +1,13 @@
+.filter-bar a {
+	font-size: 0.875em;
+	color: #4A4A4A;
+
+	&:hover {
+		color: #FA5A5A;
+		text-decoration: none;
+	}
+}
+
+.filter-bar a.link.selected {
+	border-bottom: 2px solid #FA5A5A;
+}

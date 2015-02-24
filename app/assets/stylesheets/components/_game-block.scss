@@ -1,0 +1,54 @@
+.game-block {
+	cursor: pointer;
+
+	.column {
+		padding-top: 1.5em;
+		padding-left: 1.5em;
+	}
+
+	.title:hover {
+		color: $red;
+	}
+
+	.title:after {
+		content: '▸';
+		font-size: 0.6em;
+		position: relative;
+		bottom: 2px;
+		margin-left: 3px;
+		color: #FA5A5A;
+	}
+
+	.caption {
+		font-size: 0.875em;
+		max-width: 95%;
+	}
+}
+
+.game-meta {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+}
+
+.game-meta p, .game-meta div, .game-meta li {
+	font-size: 0.6em;
+	color: $light-gray;
+}
+
+.game-posted {
+	position: absolute;
+	right: 3em;
+	bottom: 0;
+	text-align: right;
+
+	p {
+		font-size: 0.6em;
+	}
+
+	.posted {
+		text-transform: uppercase;
+		color: #4A4A4A;
+	}
+	
+}
