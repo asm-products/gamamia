@@ -1,0 +1,33 @@
+{
+    "name": "Gamamia",
+    "description": "Crowdsourced Game Reviews, Ratings and Recommendations",
+    "logo": "https://d1015h9unskp4y.cloudfront.net/attachments/c0c26468-7de3-414a-b7b9-62f1a5b9b3fa/Gamamia_Logo_Square.png",
+    "repository": "https://github.com/asm-products/gamamia",
+    "success_url": "/",
+    "env": {
+        "AWS_ACCESS_KEY_ID": {
+            "description": "Amazon AWS Access Key"
+        },
+        "AWS_S3_BUCKET": {
+            "description": "Amazon S3 Bucket Name"
+        },
+        "AWS_SECRET_ACCESS_KEY": {
+            "description": "Amazon AWS Secret Key"
+        },
+        "FACEBOOK_APP_ID": {
+            "description": "Facebook App ID"
+        },
+        "FACEBOOK_APP_SECRET": {
+            "description": "Facebook App Secret"
+        },
+        "TWITTER_APP_ID": {
+            "description": "Twitter Consumer Key (API Key)"
+        },
+        "TWITTER_APP_SECRET": {
+            "description": "Twitter Consumer Secret (API Secret)"
+        }
+    },
+    "scripts": {
+        "postdeploy": "rake db:migrate"
+    }
+}
