@@ -22,6 +22,7 @@ gem 'cancancan', '~> 1.10'
 gem 'newrelic_rpm'
 gem 'rollbar', '~> 1.2.7'
 gem 'turbolinks'
+gem 'nav_lynx'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-moment', '~> 2.9'
