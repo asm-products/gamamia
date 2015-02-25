@@ -1,6 +1,7 @@
 var App = {
 	el : {
-		gameLink: $('.js-game')
+		gameLink: $('.js-game'),
+		dropdown: $('.profile-menu .avatar')
 	},
 
 	init: function() {
@@ -9,10 +10,16 @@ var App = {
 
 	bindUIActions: function() {
 		App.el.gameLink.on('click', App.handleGameState)
+		App.el.dropdown.on('click', App.handleDropdownToggle)
 	},
 
 	handleGameState: function() {
 		var link = $(this).find('a').first().attr('href');
 		window.location = link;
+	},
+
+	handleDropdownToggle: function(e) {
+		e.preventDefault();
+		$(this).next('.dropdown-menu').toggle();
 	}
 }
