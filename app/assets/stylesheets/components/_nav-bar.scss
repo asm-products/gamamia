@@ -6,3 +6,20 @@
 	color: #fff;
 	font-size: 0.875em;
 }
+
+.add {
+	background: $red;
+	color: $white;
+	font-weight: bold;
+	font-size: 1.5em;
+	margin-top: -1em;
+	padding-top: 2em;
+	padding-bottom: 1.4em;
+	padding-right: 1em;
+	padding-left: 1em;
+	transition: 0.5s;
+
+	&:hover {
+		background: $blue;
+	}
+}
