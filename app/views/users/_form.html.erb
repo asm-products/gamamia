@@ -7,23 +7,24 @@
       </div>
     <% end %>
     <div class="form-group">
-
-      <%= f.label :username %>
-      <div class="controls">
-        <%= f.text_field :username, :autofocus => true, class: '' %>
-
-        <p class="help-block">Username should only contain letters, numbers, and "-", "_".</p>
+      
+      <div class="clearfix mb2">
+        <%= f.label :username, class: 'block col col-3' %>
+        <%= f.text_field :username, :autofocus => true, class: 'block field-light col col-9' %>
       </div>
 
-      <%= f.label :email %>
-      <div class="controls">
+      <div class="clearfix mb2">
+        <%= f.label :email, class: 'block col col-3' %>
         <% if @user.email %>
-          <%= f.text_field :email, :value => @user.email, class: '' %>
+          <%= f.text_field :email, :value => @user.email, class: 'block field-light col col-9' %>
         <% else %>
-          <%= f.text_field :email, :value => '', class: '', placeholder: 'Example: email@me.com' %>
+          <%= f.text_field :email, :value => '', class: 'block field-light col col-9', placeholder: 'Example: email@me.com' %>
         <% end %>
+      </div>
 
-        <p class="help-block">Please confirm your email address. No spam.</p>
+      <div class="clearfix mb2">
+        <%= f.label :occupation, class: 'block col col-3' %>
+        <%= f.text_field :occupation, :value => @user.occupation, class: 'block field-light col col-9', placeholder: 'Occupation' %>
       </div>
 
     <div class="form-group">
@@ -32,13 +33,7 @@
         <p class="help-block">Get new games in your inbox every week. Unsubscribe at any time.</p>
       </div>
 
-      <div class="form-group">
-        <%= f.label :occupation %>
-        <div class="controls">
-          <%= f.text_field :occupation, :value => @user.occupation, class: '', placeholder: 'Occupation' %>
-        </div>
-    </div>
-    <div class="actions">
-      <%= f.submit 'Continue', :class => 'btn btn-primary' %>
+    <div class="actions clearfix">
+      <%= f.submit 'Update', :class => 'button button-blue right px4' %>
     </div>
   <% end %>

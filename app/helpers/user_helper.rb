@@ -9,7 +9,11 @@ module UserHelper
         "https://gravatar.com/avatar/#{avatar_path}.png?s=130&d=monsterid"
       end
     else
-      user.avatar_url
+      if size == 'small'
+        user.avatar_url
+      elsif size == 'large'
+        user.avatar_url.sub! 'normal', '400x400'
+      end
     end
 
     link_to "#", class: "block" do

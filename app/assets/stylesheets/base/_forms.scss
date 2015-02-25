@@ -61,7 +61,7 @@ textarea {
           transition: box-shadow .2s ease;
   border-style: solid;
   border-width: 1px;
-  border-color: #ccc;
+  border-color: #eee;
   border-radius: 3px;
 }
 
@@ -158,4 +158,9 @@ textarea {
 
 .field-dark.is-error {
   border-color: #ff4919;
+}
+
+.help-block {
+  color: $light-gray;
+  font-size: 0.75em;
 }

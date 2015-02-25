@@ -1,0 +1,40 @@
+<div class="clearfix game-block">
+
+<div class="bg-white clearfix col col-12 js-game relative left">
+  <div class="col col-7 column">
+
+    <h4 class="mt0">
+      <a class="dark-gray title" href="<%= game_path(game) %>"><%= game.title %></a>
+    </h4>
+    <p class="mb0 caption"><%= truncate(game.description, length: 120) %></p>
+
+    <footer class="game-meta col-7">        
+        <ul class="list-reset platform-list">
+            <% game.platform_list.each do |platform| %>
+              <li><%= platform %></li>
+            <% end %>
+          </ul>
+
+      <div class="clearfix game-posted">
+        <div class="left">
+          <p class="mb0 posted">POSTED</p>
+          <p>@<%= game.user.username %></p>
+        </div>
+        <div class="left ml1">
+          <%= avatar_for(game.user, 'small') %>
+        </div>
+
+      </div>
+    </footer>
+
+    
+
+
+
+  </div>
+
+  <div class="col col-5" style="background-image:url(<%= image_path(game.thumbnail) %>);background-size:cover;background-position:center;height:10em"></div>
+
+</div>
+
+</div>

@@ -1,4 +1,19 @@
-<h1><%= @user.name %> <small>(<%= @user.username %>)</small></h1>
-<%= avatar_for @user %>
-<%= @user.twitter_handle %>
-<%= @user.occupation %>
+<% voted_games = @user.find_voted_items %>
+<section class="container clearfix mt2">
+	<div class="col col-4 bg-white user-meta">
+		<%= render 'users/nav' %> 
+		
+		<%= link_to "Edit Profile", edit_user_path(current_user), class: 'button button-blue' %>
+	</div>
+	<div class="col col-8 user-votes">
+		<section class="filter-bar bg-white mb2">
+			<ul class="list-reset clearfix m0 py2">
+				<li><a class="p2 link selected" href="#">Upvoted</a></li>
+			</ul>
+		</section>
+
+		<% voted_games.each do |game| %>
+			<%= render 'users/game', game: game %>
+		<% end %>
+	</div>
+</section>
