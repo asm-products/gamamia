@@ -4,9 +4,6 @@
     "logo": "https://d1015h9unskp4y.cloudfront.net/attachments/c0c26468-7de3-414a-b7b9-62f1a5b9b3fa/Gamamia_Logo_Square.png",
     "repository": "https://github.com/asm-products/gamamia",
     "success_url": "/",
-    "scripts": {
-        "postdeploy": "rake db:migrate"
-    },
     "env": {
         "AWS_ACCESS_KEY_ID": {
             "description": "Amazon AWS Access Key"
@@ -18,16 +15,19 @@
             "description": "Amazon AWS Secret Key"
         },
         "FACEBOOK_APP_ID": {
-            "description": "Facebook application ID"
+            "description": "Facebook App ID"
         },
         "FACEBOOK_APP_SECRET": {
-            "description": "Facebook application secret"
+            "description": "Facebook App Secret"
         },
         "TWITTER_APP_ID": {
-            "description": "Twitter application ID"
+            "description": "Twitter Consumer Key (API Key)"
         },
         "TWITTER_APP_SECRET": {
-            "description": "Twitter application secret"
+            "description": "Twitter Consumer Secret (API Secret)"
         }
+    },
+    "scripts": {
+        "postdeploy": "rake db:migrate"
     }
 }
