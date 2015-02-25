@@ -27,13 +27,23 @@
         <% end %>
 
         <% if user_signed_in? %>
-          <li class="left profile-menu">
+          <div class="left profile-menu">
             <%= avatar_for(current_user, 'small') %>
-            <ul class="hover list-reset">
-              <li><%= link_to 'Profile', current_user, class: 'block p1' %></li>
-              <li><%= link_to "Settings", edit_user_path(current_user), class: 'block p1' %></li>
-              <li><%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'block p1') %></li>
-            </ul>
+            <div class="dropdown-menu">
+              <div class="dropdown-caret">
+                    <span class="caret-outer"></span>
+                    <span class="caret-inner"></span>
+                  </div>
+              <ul class="list-reset">
+                <li><%= link_to 'Profile', current_user, class: 'block p1' %></li>
+                <li><%= link_to "Settings", edit_user_path(current_user), class: 'block p1' %></li>
+                <li><%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'block p1') %></li>
+              </ul>
+            </div>
+          </div>
+          <li class="left profile-menu">
+            
+            
           </li>
         <% else %>
           <li>
