@@ -18,7 +18,7 @@ module UserHelper
 
     link_to current_user, class: "block avatar" do
       if size == 'small'
-        image_tag avatar_url, class: "block", width: "24", height: "24"
+        image_tag avatar_url, class: "block", width: "30", height: "30"
       elsif size == 'large'
         image_tag avatar_url, class: "block", width: "130", height: "130"
       end
