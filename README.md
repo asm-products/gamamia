@@ -6,6 +6,7 @@
 [![Test Coverage](https://codeclimate.com/github/asm-products/gamamia/badges/coverage.svg)](https://codeclimate.com/github/asm-products/gamamia)
 [![Dependency Status](https://gemnasium.com/asm-products/gamamia.svg)](https://gemnasium.com/asm-products/gamamia)
 
+[![Deploy](https://www.herokucdn.com/deploy/button.png)](https://heroku.com/deploy?template=https://github.com/asm-products/gamamia)
 ## An independent game discovery platform
 
 This is a product being built by the Assembly community. You can help push this idea forward by visiting [https://assembly.com/gamamia](https://assembly.com/gamamia).
