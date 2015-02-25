@@ -3,52 +3,6 @@
 	display: inline-block;
 	padding: 0.5em;
 
-	.hover {
-		position: absolute;
-		top: 3em;
-		left: -100%;
-		background: white;
-		color: $dark-gray;
-		padding: 0.5em 1em 0.5em 1em;
-		opacity: 0;
-		transition: 0.2s;
-		border: 1px solid #eee;
-
-		a {
-			color: $dark-gray;
-		}
-
-		a:hover {
-			color: $red;
-		}
-	}
-
-	.hover:before {
-		content: '';
-		width: 0; 
-		height: 0; 
-		border-left: 10px solid transparent;  /* left arrow slant */
-		border-right: 10px solid transparent; /* right arrow slant */
-		border-bottom: 10px solid #fff; /* bottom, add background color here */
-		font-size: 0;
-		line-height: 0;
-		position: absolute;
-		top: -10px;
-		left: 50%;
-	}
-}
-
-/*.profile-menu:after {
-	content: '▾';
-	color: white;
-	position: absolute;
-	top: 12px;
-	right: -3px;
-	font-size: 12px;
-}
-*/
-.profile-menu:hover .hover {
-	opacity:  1;
 }
 
 .dropdown-toggle {
