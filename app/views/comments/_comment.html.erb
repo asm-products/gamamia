@@ -7,7 +7,7 @@
       <%= comment.user.name %>
       <span class="light-gray regular ml1"><%= comment.user.occupation %></span>
     </h5>
-    <%= comment.content %>
+    <%= comment.cached_content.html_safe %>
 
     <div class="h6 mt1 light-gray">
       <%= time_ago_in_words(comment.created_at) %> ago

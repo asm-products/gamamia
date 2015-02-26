@@ -1,0 +1,9 @@
+Hi <%= @user.username %>,
+
+<%= @comment.user.username %> mentioned you:
+
+<%= @comment.content %>
+
+View it online: <%= game_url(@comment.game, host: 'http://www.gamamia.com') %>
+
+Sincerely, The Gamamia Team

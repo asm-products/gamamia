@@ -24,6 +24,13 @@ gem 'rollbar', '~> 1.2.7'
 gem 'turbolinks'
 gem 'nav_lynx'
 
+gem 'html-pipeline'
+# html-pipeline dependencies
+gem 'rinku'
+gem 'gemoji'
+gem 'github-markdown'
+gem 'sanitize'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-moment', '~> 2.9'
 end
