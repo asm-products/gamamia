@@ -2,8 +2,10 @@
 <section class="container clearfix mt2">
 	<div class="col col-4 bg-white user-meta">
 		<%= render 'users/nav' %> 
-		
-		<%= link_to "Edit Profile", edit_user_path(current_user), class: 'button button-blue' %>
+
+		<% if @user == current_user %>
+			<%= link_to "Edit Profile", edit_user_path(current_user), class: 'button button-blue' %>
+		<% end %>
 	</div>
 	<div class="col col-8 user-votes">
 		<section class="filter-bar bg-white mb2">
