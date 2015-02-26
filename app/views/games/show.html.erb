@@ -61,11 +61,11 @@
           <% if can? :create, @comment %>
             <%= form_for [@game, @comment], html: {class: 'form clearfix mb2'} do |f| %>
               <div class="clearfix">
-                <div class="left mr2">
+                <div class="left col col-1">
                   <%= avatar_for(current_user, 'small') %>
                 </div>
-                <div class="overflow-hidden">
-                  <%= f.text_area :content, class: 'field-light block full-width mb2', rows: 2 %>
+                <div class="left col-11">
+                  <%= f.text_area :content, class: 'field-light block full-width mb2 with_autocomplete mention', rows: 2, 'data-autocompleteUrl' => autocomplete_user_name_users_path %>
                 </div>
               </div>
 
