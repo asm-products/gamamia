@@ -101,6 +101,7 @@
     }
 
     function updateValues() {
+      console.log('here');
       var syntaxMessage = getInputBoxValue();
 
       _.each(mentionsCollection, function (mention) {

@@ -88,6 +88,16 @@ $(function () {
          			callback.call(this, data);
          		}
          	})
+    },
+    templates     : {
+      wrapper                    : _.template('<div class="mentions-input-box"></div>'),
+      autocompleteList           : _.template('<div class="mentions-autocomplete-list"></div>'),
+      autocompleteListItem       : _.template('<li data-ref-id="<%= id %>" data-ref-type="<%= type %>" data-display="<%= display %>"><%= content %></li>'),
+      autocompleteListItemAvatar : _.template('<img  src="<%= avatar %>" />'),
+      autocompleteListItemIcon   : _.template('<div class="icon <%= icon %>"></div>'),
+      mentionsOverlay            : _.template('<div class="mentions"><div></div></div>'),
+      mentionItemSyntax          : _.template('@[<%= value %>](<%= type %>:<%= id %>)'),
+      mentionItemHighlight       : _.template('<strong><span><%= value %></span></strong>')
     }
   });
 
