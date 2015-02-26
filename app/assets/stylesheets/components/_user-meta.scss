@@ -1,0 +1,51 @@
+.user-meta {
+	text-align: center;
+	padding-top: 2.5em;
+
+
+	.image {
+		margin-bottom: 2em;
+	}
+	.image img {
+		margin: 0 auto;
+	}
+
+	.user {
+		font-size: 1em;
+	}
+
+	.occupation {
+		font-size: 0.875em;
+	}
+
+	.button {
+		display: block;
+		border-radius: 0;
+		font-size: 0.875em;
+		padding: 1em;
+	}
+}
+
+.user-votes {
+	padding-left: 2.5em;
+	.game-block {
+		margin-bottom: 1em;
+	}
+}
+
+.user-edit {
+	padding-left: 2.5em;
+}
+
+.profile-settings {
+	.update {
+		font-size: 0.875em;
+		padding-bottom: 1.5em;
+		border-bottom: 1px solid #eee;
+	}
+
+	label {
+		font-weight: bold;
+		line-height: 2;
+	}
+}

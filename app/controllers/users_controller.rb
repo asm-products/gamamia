@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy, :finish_signup]
+  load_and_authorize_resource find_by: :username
 
   # GET /users/:id.:format
   def show

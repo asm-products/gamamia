@@ -8,7 +8,7 @@ class Ability
 
     can :index, Game
     can :show, Game
-
+    can :read, User
 
     unless user # abilities only for guests
       # can :read, Game, Game.scheduled do |game|
@@ -17,6 +17,8 @@ class Ability
     end
 
     if user
+      can [:update, :finish_signup], User, {id: user.id}
+
       # abilities for every logged in user
       can :create, Comment
       # can :show, Game.scheduled do |game|

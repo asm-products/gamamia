@@ -1,0 +1,9 @@
+<div class="image">
+	<%= avatar_for @user, 'large' %>
+</div>
+<h3 class="user mt0">@<%= @user.username %></h3>
+<p class="occupation light-gray"><%= @user.occupation %></p>
+
+<a href="http://twitter.com/<%= @user.twitter_handle %>" class="mb3 block">
+	<img src="/twitter.png" width="21" height="17">
+</a>

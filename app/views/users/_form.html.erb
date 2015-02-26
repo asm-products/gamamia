@@ -1,0 +1,39 @@
+  <%= form_for(@user, :html => { role: 'form'}) do |f| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <% @user.errors.full_messages.each do |msg| %>
+          <%= msg %><br>
+        <% end %>
+      </div>
+    <% end %>
+    <div class="form-group">
+      
+      <div class="clearfix mb2">
+        <%= f.label :username, class: 'block col col-3' %>
+        <%= f.text_field :username, :autofocus => true, class: 'block field-light col col-9' %>
+      </div>
+
+      <div class="clearfix mb2">
+        <%= f.label :email, class: 'block col col-3' %>
+        <% if @user.email %>
+          <%= f.text_field :email, :value => @user.email, class: 'block field-light col col-9' %>
+        <% else %>
+          <%= f.text_field :email, :value => '', class: 'block field-light col col-9', placeholder: 'Example: email@me.com' %>
+        <% end %>
+      </div>
+
+      <div class="clearfix mb2">
+        <%= f.label :occupation, class: 'block col col-3' %>
+        <%= f.text_field :occupation, :value => @user.occupation, class: 'block field-light col col-9', placeholder: 'Occupation' %>
+      </div>
+
+    <div class="form-group">
+      <div class="controls">
+        <%= f.check_box :receive_newsletter %> Signup For Our Newsletter
+        <p class="help-block">Get new games in your inbox every week. Unsubscribe at any time.</p>
+      </div>
+
+    <div class="actions clearfix">
+      <%= f.submit 'Update', :class => 'button button-blue right px4' %>
+    </div>
+  <% end %>
