@@ -19,6 +19,10 @@ ActiveRecord::Schema.define(version: 20150226153242) do
     t.integer  "game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent_id"
+    t.integer  "lft"
+    t.integer  "rgt"
+    t.integer  "children_count"
     t.text     "cached_content"
   end
 
