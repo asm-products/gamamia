@@ -1,5 +1,5 @@
 Fabricator(:comment) do
-  content { Faker::Lorem.sentence }
+  content { Faker::Lorem.paragraph }
   user
   game
 end

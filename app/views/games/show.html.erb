@@ -56,26 +56,9 @@
 
         <div class="col col-9 mb4">
           <h5 class="small-header mb2"><%= pluralize @game.comments_count, 'comment' %></h5>
-
-
-          <% if can? :create, @comment %>
-            <%= form_for [@game, @comment], html: {class: 'form clearfix mb2'} do |f| %>
-              <div class="clearfix">
-                <div class="left mr2">
-                  <%= avatar_for(current_user, 'small') %>
-                </div>
-                <div class="overflow-hidden">
-                  <%= f.text_area :content, class: 'field-light block full-width mb2', rows: 2 %>
-                </div>
-              </div>
-
-              <div class="right right-align">
-                <%= f.button 'Comment', class: 'button-blue' %>
-              </div>
-            <% end %>
-          <% end %>
-          <% @game.comments.each do |comment| %>
-            <div class="mb3 mt3">
+          <%= render partial: 'comments/form', locals: {comment: Comment.new, parent: nil} %>
+          <% @comments.each do |comment| %>
+            <div class="mb2 mt2">
               <%= render partial: 'comments/comment', locals: {comment: comment} %>
             </div>
           <% end %>

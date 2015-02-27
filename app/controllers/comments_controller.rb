@@ -7,13 +7,14 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @game
     else
-      render 'games/show'
+      flash[:error] = "Could not create comment"
+      redirect_to @game
     end
   end
 
   private
 
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :parent_id)
   end
 end
