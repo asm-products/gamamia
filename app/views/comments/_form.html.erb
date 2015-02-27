@@ -1,5 +1,5 @@
 <% if can? :create, comment %>
-  <%= form_for [@game, comment], html: {class: 'form clearfix mb2'} do |f| %>
+  <%= form_for [@game, comment], html: {class: 'comment-form form clearfix mb2'} do |f| %>
     <div class="clearfix">
       <div class="left mr2">
         <%= avatar_for(current_user, 'small') %>
