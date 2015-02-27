@@ -1,0 +1,31 @@
+.comment-block {
+
+	.caption {
+		font-size: 0.875em;
+	}
+
+	.username {
+		font-size: 1em;
+		margin-top: -3px;
+	}
+
+	.posted {
+		font-size: 0.7em;
+		font-weight: normal;
+		color: $light-gray;
+	}
+
+	.avatar {
+		padding-right: 0.5em;
+	}
+
+	img {
+		width: 48px!important;
+		height: auto!important;
+		max-width: 100%!important;
+	}
+}
+
+.comment-form {
+	margin-bottom: 3em;
+}

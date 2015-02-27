@@ -1,7 +1,8 @@
 var App = {
 	el : {
 		gameLink: $('.js-game'),
-		dropdown: $('.profile-menu .avatar')
+		dropdown: $('.profile-menu .avatar'),
+		replyBtn: $('.js-reply')
 	},
 
 	init: function() {
@@ -11,6 +12,7 @@ var App = {
 	bindUIActions: function() {
 		App.el.gameLink.on('click', App.handleGameState)
 		App.el.dropdown.on('click', App.handleDropdownToggle)
+		App.el.replyBtn.on('click', App.handleReplyForm)
 	},
 
 	handleGameState: function() {
@@ -21,5 +23,10 @@ var App = {
 	handleDropdownToggle: function(e) {
 		e.preventDefault();
 		$(this).next('.dropdown-menu').toggle();
+	},
+
+	handleReplyForm: function(e) {
+		$(this).closest('.replies-header').next('.replies-block').find('.reply-form').toggle();
+		$(this).toggleClass('blue');
 	}
 }
