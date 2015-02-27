@@ -82,24 +82,16 @@
 
 .mentions-input-box .mentions > div > strong {
   font-weight:normal;
-  background: rgba(113, 216, 236, 0.25);
+  background: transparent;
   color: transparent;
-  display: inline-block;
-  padding-top: 2px;
-  padding-bottom: 2px;
 }
 
 .comment-block a {
   font-weight: normal;
-  background: rgba(113, 216, 236, 0.25);
-  color: $dark-gray;
-  display: inline-block;
-  padding-top: 2px;
-  padding-bottom: 2px;
+  color: $blue;
 
   &:hover {
-    background: rgba(113, 216, 236, 0.4);
-    color: $light-gray;
+      color: darken($blue, 10%);
   }
 }
 

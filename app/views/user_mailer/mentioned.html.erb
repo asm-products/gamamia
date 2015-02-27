@@ -4,7 +4,13 @@
 
 <%= @comment.user.username %> mentioned you:<br>
 <p>
-<%= @comment.cached_content.html_safe %>
+<% 
+	replacements = [/a href="(.+)"/, 'span style="color:#FA5A5A"' ], ['</a>', '</span>']
+	text = @comment.cached_content
+	replacements.each do |replacement| 
+		text.gsub!(replacement[0], replacement[1])
+	end %>
+<%= text.html_safe %>
 </p>
 View it online: <%= game_url(@comment.game, host: 'http://www.gamamia.com') %><br>
 
