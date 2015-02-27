@@ -12,5 +12,7 @@
     <div class="h6 mt1 light-gray">
       <%= time_ago_in_words(comment.created_at) %> ago
     </div>
+    <%= render partial: 'comments/comment', collection: comment.children %>
+    <%= render partial: 'comments/form', locals: {comment: Comment.new, parent: comment} unless comment.parent %>
   </div>
 </div>
