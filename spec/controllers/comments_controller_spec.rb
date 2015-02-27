@@ -45,7 +45,7 @@ RSpec.describe CommentsController do
 
     context "with invalid attributes" do
       let(:invalid_params) { {game_id: game.id, comment: {content: ''}} }
-      it "should render game" do
+      it "should redirect to game" do
         @user = Fabricate(:user)
         sign_in(@user)
 
@@ -53,7 +53,7 @@ RSpec.describe CommentsController do
           post :create, invalid_params
         }.to_not change(Comment, :count)
 
-        expect(subject).to render_template('games/show')
+        expect(subject).to redirect_to(game)
       end
 
       it "should not create comment if not signed in" do
