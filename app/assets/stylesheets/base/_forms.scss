@@ -42,6 +42,8 @@ textarea {
   line-height: 1.75;
   padding: .5rem .5rem;
   resize: vertical;
+  color: $dark-gray;
+  height: 10em;
 }
 
 .fieldset-reset {
@@ -62,12 +64,12 @@ textarea {
   border-style: solid;
   border-width: 1px;
   border-color: #eee;
-  border-radius: 3px;
+  border-radius: 0px;
 }
 
 .field-light:focus {
   outline: none;
-  border-color: #0076df;
+  border-color: #ccc;
   box-shadow: 0 0 2px rgba(0, 118, 223, .5);
 }
 
@@ -116,7 +118,7 @@ textarea {
   color: white;
   background-color: rgba(0, 0, 0, .25);
   border: 1px solid rgba(0, 0, 0, .0625);
-  border-radius: 3px;
+  border-radius: 0px;
 }
 
 .field-dark::-webkit-input-placeholder {

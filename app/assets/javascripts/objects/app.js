@@ -1,7 +1,8 @@
 var App = {
 	el : {
 		gameLink: $('.js-game'),
-		dropdown: $('.profile-menu .avatar')
+		dropdown: $('.profile-menu .avatar'),
+		comment: $('textarea.mention')
 	},
 
 	init: function() {
@@ -9,8 +10,12 @@ var App = {
 	},
 
 	bindUIActions: function() {
-		App.el.gameLink.on('click', App.handleGameState)
-		App.el.dropdown.on('click', App.handleDropdownToggle)
+		App.el.gameLink.on('click', App.handleGameState);
+		App.el.dropdown.on('click', App.handleDropdownToggle);
+		App.el.comment.mentionsInput({
+			onDataRequest: App.handleComment,
+			onCaret: true
+		});
 	},
 
 	handleGameState: function() {
@@ -21,5 +26,18 @@ var App = {
 	handleDropdownToggle: function(e) {
 		e.preventDefault();
 		$(this).next('.dropdown-menu').toggle();
+	},
+
+	handleComment: function(mode, query, callback) {
+		$.ajax({
+          url: '/users/autocomplete_user_name/',
+          dataType: 'json',
+          data: {
+            term: query
+          },
+          success: function(data) {
+            callback.call(this, data);
+          }
+        });
 	}
 }
