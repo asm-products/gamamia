@@ -22,9 +22,9 @@ class GamesController < ApplicationController
   end
 
   def show
-    @comment = Comment.new
     @video = Video.new
     @related_games = @game.find_related_platforms.scheduled.first(3)
+    @comments = @game.comments.where(parent_id: nil).includes(:children).order('updated_at desc')
     flash.now[:notice] = "This game is under review." unless @game.scheduled_at?
   end
 
