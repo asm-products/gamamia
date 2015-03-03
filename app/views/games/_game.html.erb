@@ -18,9 +18,9 @@
     </h4>
     <p class="mb0 caption"><%= truncate(game.description, length: 120) %></p>
 
-    <footer class="game-meta col-7">        
+    <footer class="game-meta col-7">
         <ul class="list-reset platform-list">
-            <% game.platform_list.each do |platform| %>
+            <% game.platforms.map(&:name).each do |platform| %>
               <li><%= platform %></li>
             <% end %>
           </ul>
@@ -37,7 +37,7 @@
       </div>
     </footer>
 
-    
+
 
 
 
