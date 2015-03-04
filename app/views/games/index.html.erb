@@ -43,6 +43,12 @@
 
   <% end %>
 
-  <%= link_to "next week " + format_date(@next_week), games_path({week: (@next_week), view: params[:view]}) unless @next_week > Date.today %>
-  <%= link_to "previous week " + format_date(@last_week), games_path({week: (@last_week), view: params[:view]}) %>
+  <nav class="clearfix pagination">
+    <%= link_to games_path({week: (@last_week), view: params[:view]}), {:class => 'left older'} do %>
+      <span class="hide">Older Games</span>
+    <% end %>
+    <%= link_to games_path({week: (@next_week), view: params[:view]}), {:class => 'right newer'} do %>
+        <span class="hide">Newer Games</span>
+    <% end unless @next_week > Date.today  %>
+  </nav>
 </div>
