@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 20150227142334) do
     t.integer  "game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "cached_content"
     t.integer  "parent_id"
   end
 
