@@ -26,7 +26,21 @@ var App = {
 	},
 
 	handleReplyForm: function(e) {
-		$(this).closest('.replies-header').next('.replies-block').find('.reply-form').toggle();
+
+		var authors = '',
+			commentAuthors = $(this).parents('.comment-block'),
+			replyBlock = $(this).closest('.replies-header').next('.replies-block').find('.reply-form');
+
+		$.each(commentAuthors, function(i, val) {
+			if(i !== 0) {
+				authors+= ' ';
+			}
+			authors+= '@' + $(val).data('comment-author');
+		});
+
+		replyBlock.toggle();
+		replyBlock.find('textarea').val(authors);
+		
 		$(this).toggleClass('blue');
 	}
 }
