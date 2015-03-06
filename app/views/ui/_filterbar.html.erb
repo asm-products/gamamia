@@ -12,6 +12,14 @@
       </ul>
     </div>
 
+    <div class="left ml3">
+      <div class="select">
+      <%= form_tag games_path, method: :get do %>
+        <%= select_tag "platform", options_from_collection_for_select(@platforms, "name", "name", params[:platform]), {:onchange => "this.form.submit();", :include_blank => 'Platform', :index => nil} %>
+      <% end %>
+      </div>
+    </div>
+
     <div class="right">
       <ul class="list-reset clearfix m0 py2">
         <li>
@@ -19,6 +27,8 @@
         </li>
       </ul>
     </div>
+
+
 
   </div>
 </section>

@@ -15,3 +15,17 @@
 .filter-bar a.icon img {
   width: 20px;
 }
+
+.filter-bar .select {
+	  top: 4px;
+}
+
+.filter-bar .select select {
+	font-size: 0.875em;
+}
+
+.filter-bar .select:after {
+	right: 0;
+	left: 60%;
+	margin-top: 2px;
+}

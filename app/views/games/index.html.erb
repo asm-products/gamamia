@@ -1,10 +1,6 @@
 <%= render 'ui/filterbar' %>
 <% @weeks.each_with_index do |(week, games), i| %>
 <div class="container">
-  <%= form_tag games_path, method: :get do %>
-    <%= select_tag "platform", options_from_collection_for_select(@platforms, "name", "name", params[:platform]) %>
-    <%= submit_tag "Go", name: nil %>
-  <% end %>
 
     <%= render 'weeks/week', week: week, i: i %>
 
