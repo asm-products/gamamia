@@ -7,7 +7,7 @@ class GamesController < ApplicationController
     @last_week = @current_week - 7.days
     @next_week = @current_week + 7.days
 
-    @platforms = Game.tags_on(:platforms)
+    @platforms = Game.scheduled.tags_on(:platforms)
 
     @games = @games.with_platform(params[:platform]) if params[:platform].present?
 
