@@ -9,11 +9,7 @@ class GamesController < ApplicationController
 
     @platforms = Game.tags_on(:platforms)
 
-    if !params[:platform].blank?
-      @games = @games.with_platform(params[:platform]) if params[:platform]
-    else
-      @games = Game.all
-    end
+    @games = @games.with_platform(params[:platform]) if params[:platform].present?
 
     @weeks = @games.includes(:user, :platforms).where("scheduled_at >= ? and scheduled_at < ?", @current_week, @next_week).scheduled.display_order.group_by do |game|
       params[:view] == "daily" ? game.scheduled_at : game.scheduled_at.beginning_of_week
