@@ -23,6 +23,7 @@ class Game < ActiveRecord::Base
   scope :unscheduled, -> { where(scheduled_at: nil) }
   scope :scheduled, -> { where('scheduled_at <= ?', Date.today) }
   scope :display_order, -> { order(:cached_votes_up).reverse_order }
+  scope :with_platform, -> (name) { tagged_with(name) }
 
   acts_as_votable
 
