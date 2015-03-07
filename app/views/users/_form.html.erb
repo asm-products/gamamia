@@ -28,8 +28,11 @@
       </div>
 
       <div class="clearfix mb2">
-        <%= f.label :email_notifications, class: 'block col col-3' %>
-        <%= f.check_box :email_notifications, class: 'block field-light col col-9' %>
+        <div class="controls">
+          <%= f.check_box :email_notifications %>Email Notifications
+          <p class="help-block">Recieve emails when you are mentioned in comments.</p>
+        </div>
+       
       </div>
 
     <div class="form-group">
