@@ -48,5 +48,7 @@ Rails.application.configure do
       :authentication => :plain
   }
   ActionMailer::Base.delivery_method = :smtp
-  
+
+  config.action_mailer.preview_path = Rails.root.join("spec", "mailers", "previews")
+
 end
