@@ -19,10 +19,12 @@ ActiveRecord::Schema.define(version: 20150307045630) do
     t.integer  "game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "parent_id"
     t.text     "cached_content"
   end
 
   add_index "comments", ["game_id"], name: "index_comments_on_game_id"
+  add_index "comments", ["parent_id"], name: "index_comments_on_parent_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "games", force: :cascade do |t|
