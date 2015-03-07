@@ -43,7 +43,7 @@ class Comment < ActiveRecord::Base
       pre = mention[0] == "@" ? "" : mention.slice!(0)
       mention_user = User.find_for_mention(mention)
 
-      UserMailer.mentioned(mention_user, self).deliver_later if mention_user
+      UserMailer.mentioned(mention_user, self).deliver_later if mention_user && mention_user.email_notifications
     end
   end
 end
