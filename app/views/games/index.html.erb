@@ -44,10 +44,10 @@
   <% end %>
 
   <nav class="clearfix pagination">
-    <%= link_to games_path({week: (@last_week), view: params[:view]}), {:class => 'left older'} do %>
+    <%= link_to games_path({week: (@last_week), view: params[:view], platform: params[:platform]}), {:class => 'left older'} do %>
       <span class="hide">Older Games</span>
     <% end %>
-    <%= link_to games_path({week: (@next_week), view: params[:view]}), {:class => 'right newer'} do %>
+    <%= link_to games_path({week: (@next_week), view: params[:view], platform: params[:platform]}), {:class => 'right newer'} do %>
         <span class="hide">Newer Games</span>
     <% end unless @next_week > Date.today  %>
   </nav>
