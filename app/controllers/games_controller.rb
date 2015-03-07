@@ -7,8 +7,9 @@ class GamesController < ApplicationController
     @last_week = @current_week - 7.days
     @next_week = @current_week + 7.days
 
-    @platforms = Game.tags_on(:platforms)
-    @games = @games.with_platform(params[:platform]) if params[:platform]
+    @platforms = Game.scheduled.tags_on(:platforms)
+
+    @games = @games.with_platform(params[:platform]) if params[:platform].present?
 
     @weeks = @games.includes(:user, :platforms).where("scheduled_at >= ? and scheduled_at < ?", @current_week, @next_week).scheduled.display_order.group_by do |game|
       params[:view] == "daily" ? game.scheduled_at : game.scheduled_at.beginning_of_week

@@ -66,7 +66,7 @@ RSpec.describe GamesController do
 
       it "assignes platforms as @platforms" do
         game_platform_pc
-        platforms = Game.tags_on(:platforms)
+        platforms = Game.scheduled.tags_on(:platforms)
         get :index
 
         expect(assigns(:platforms)).to eq(platforms)

@@ -17,7 +17,7 @@
 }
 
 .filter-bar .select {
-	  top: 4px;
+	  top: 3px;
 }
 
 .filter-bar .select select {
@@ -25,7 +25,5 @@
 }
 
 .filter-bar .select:after {
-	right: 0;
-	left: 60%;
-	margin-top: 2px;
+	top: 54%;
 }
