@@ -5,8 +5,7 @@
   <div class="col col-11">
     <h4 class="mt0 mb0 username"><%= comment.user.name %><span class="posted"> · <%= time_ago_in_words(comment.created_at) %> ago</span></h4>
       <p class="light-gray caption regular mt0 mb1"><%= comment.user.occupation %> </p>
-
-    <%= comment.content %>
+      <%= comment.cached_content.html_safe %>
     <div class="clearfix replies-header mb2">
       <button class="button js-reply">Reply</button>
     </div>

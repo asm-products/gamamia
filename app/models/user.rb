@@ -35,6 +35,13 @@ class User < ActiveRecord::Base
     self.role == "admin"
   end
 
+  def self.find_for_mention mention
+    find_mention = mention.dup
+    find_mention.strip!
+    find_mention.slice!("@")
+    find_by(username: find_mention)
+  end
+
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
     # Get the identity and user if they exist
