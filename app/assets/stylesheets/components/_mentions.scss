@@ -1,10 +1,10 @@
 
 .with_autocomplete {
-	position: relative;
+  position: relative;
 }
 
 .mentions-input-box {
-	position: relative;
+  position: relative;
 }
 
 .mentions-input-box textarea {
@@ -37,7 +37,7 @@
 }
 
 .mentions-input-box .mentions-autocomplete-list li {
-	color: $dark-gray;
+  color: $dark-gray;
   background-color: #fff;
   padding: 0 5px;
   margin: 0;
@@ -67,10 +67,11 @@
   top: 1px;
   bottom: 0;
   padding: 9px;
-  color: #fff;
+  color: transparent;
   overflow: hidden;
   white-space: pre-wrap;
   word-wrap: break-word;
+  z-index: -1;
 }
 
 .mentions-input-box .mentions > div {

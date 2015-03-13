@@ -36,6 +36,7 @@ var App = {
   },
 
   handleComment: function(mode, query, callback) {
+  console.log('here');
     $.ajax({
           url: '/users/autocomplete_user_name/',
           dataType: 'json',
