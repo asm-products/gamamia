@@ -78,7 +78,7 @@
     <% @related_games.each do |related_game| %>
       <div class="col col-4 px3 relative">
         <a class="link" href="<%= game_path(related_game) %>">
-          <img class="thumbnail" src="<%= related_game.thumbnail %>">
+          <img class="thumbnail" src="<%= related_game.thumbnail.games_index %>">
           <p class="title col-12"><%= related_game.title %>  <span class="right rg-votes">▲ <%= related_game.cached_votes_up %></span></p>
         </a>
       </div>
