@@ -16,6 +16,7 @@ RSpec.describe Comment do
     child_comment.parent = comment
     child_comment.save
     expect(child_comment.reload.parent).to eq(comment)
+  end
 
   it "should deliver email" do
     expect{ mention_comment }.to change { ActionMailer::Base.deliveries.count }.by(1)
