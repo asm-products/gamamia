@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe GamesController do
-  let!(:game) { Fabricate :game, scheduled_at: Date.yesterday }
+  let!(:game) { Fabricate :game, scheduled_at: Date.today }
   let(:game_params) { Fabricate.attributes_for(:game) }
 
   context "logged in as user" do
@@ -40,11 +40,44 @@ RSpec.describe GamesController do
     end
 
     describe "GET index" do
+      let(:game_last_week) { Fabricate :game, scheduled_at: 7.days.ago}
+      let(:game_platform_pc) { Fabricate :game, platform_list: "PC" }
+
       subject { get :index }
       it "assigns scheduled games as @weeks" do
         subject
         week = game.scheduled_at.beginning_of_week
         expect(assigns(:weeks)).to eq([[week,[game]]])
+      end
+
+      it "assignes scheduled games scoped by current week" do
+        game_last_week
+        week = game.scheduled_at.beginning_of_week
+        subject
+        expect(assigns(:weeks)).to eq([[week,[game]]])
+      end
+
+      it "assignes scheduled games scoped by last week" do
+        week = game_last_week.scheduled_at.beginning_of_week
+        get :index, week: week.to_s
+
+        expect(assigns(:weeks)).to eq([[week,[game_last_week]]])
+      end
+
+      it "assignes platforms as @platforms" do
+        game_platform_pc
+        platforms = Game.scheduled.tags_on(:platforms)
+        get :index
+
+        expect(assigns(:platforms)).to eq(platforms)
+      end
+
+      it "assignes games scoped by platform" do
+        week = game.scheduled_at.beginning_of_week
+        weeks = game_platform_pc
+        get :index, platform: "PC"
+
+        expect(assigns(:weeks)).to eq([[week, [weeks]]])
       end
 
       it "renders index template" do
@@ -57,7 +90,7 @@ RSpec.describe GamesController do
 
           day1 = game.scheduled_at
           day2 = game2.scheduled_at
-          get :index, view: "daily"
+          get :index, view: "daily", week: "2015-02-09"
           expect(assigns(:weeks)).to eq([[day1,[game]], [day2,[game2]]])
         end
       end

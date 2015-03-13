@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150226153242) do
+ActiveRecord::Schema.define(version: 20150227142334) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "content"
@@ -19,14 +19,12 @@ ActiveRecord::Schema.define(version: 20150226153242) do
     t.integer  "game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "parent_id"
-    t.integer  "lft"
-    t.integer  "rgt"
-    t.integer  "children_count"
     t.text     "cached_content"
+    t.integer  "parent_id"
   end
 
   add_index "comments", ["game_id"], name: "index_comments_on_game_id"
+  add_index "comments", ["parent_id"], name: "index_comments_on_parent_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "games", force: :cascade do |t|

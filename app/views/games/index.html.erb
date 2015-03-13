@@ -6,7 +6,11 @@
 
       <% games.each_with_index do |game, index| %>
 
-      <% if i == 0 and index == 3 %>
+      <div class="clearfix mb2">
+        <%= render 'games/game', game: game %>
+      </div>
+
+      <% if i == 0 and index == (games.size > 2 ? 2 : games.size-1) %>
 
         <div id="mc_embed_signup" class="mt2 mb2 clearfix">
         <div class="signup relative right">
@@ -34,10 +38,17 @@
         </div>
 
       <% end %>
-        <div class="clearfix mb1">
-          <%= render 'games/game', game: game %>
-        </div>
+
       <% end %>
 
   <% end %>
+
+  <nav class="clearfix pagination">
+    <%= link_to games_path({week: (@last_week), view: params[:view], platform: params[:platform]}), {:class => 'left older'} do %>
+      <span class="hide">Older Games</span>
+    <% end %>
+    <%= link_to games_path({week: (@next_week), view: params[:view], platform: params[:platform]}), {:class => 'right newer'} do %>
+        <span class="hide">Newer Games</span>
+    <% end unless @next_week > Date.today  %>
+  </nav>
 </div>

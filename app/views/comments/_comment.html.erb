@@ -1,16 +1,22 @@
-<div class="clearfix">
-  <div class="left mr2">
+<div class="clearfix mt0 mb0 comment-block relative">
+  <div class="col col-1 left avatar">
     <%= avatar_for(comment.user, 'small') %>
   </div>
-  <div class="overflow-hidden comment-block">
-    <h5 class="mt0 mb0">
-      <%= comment.user.name %>
-      <span class="light-gray regular ml1"><%= comment.user.occupation %></span>
-    </h5>
-    <%= comment.cached_content.html_safe %>
+  <div class="col col-11">
+    <h4 class="mt0 mb0 username"><%= comment.user.name %><span class="posted"> · <%= time_ago_in_words(comment.created_at) %> ago</span></h4>
+      <p class="light-gray caption regular mt0 mb1"><%= comment.user.occupation %> </p>
 
-    <div class="h6 mt1 light-gray">
-      <%= time_ago_in_words(comment.created_at) %> ago
+    <%= comment.cached_content.html_safe %>
+    <% if comment.parent_id.nil? %>
+    <div class="clearfix replies-header mb2">
+      <button class="button js-reply">Reply</button>
+    </div>
+    <% end %>
+    <div class="replies-block mt3">
+      <div class="reply-form">
+        <%= render partial: 'comments/form', locals: {comment: Comment.new, parent: comment} unless comment.parent_id? %>
+      </div>
+      <%= render partial: 'comments/comment', collection: comment.children unless comment.parent_id? %>
     </div>
   </div>
 </div>

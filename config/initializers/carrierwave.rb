@@ -3,7 +3,7 @@ CarrierWave.configure do |config|
   # For testing, upload files to local `tmp` folder.
   if Rails.env.test? || Rails.env.development?
     config.storage = :file
-    config.enable_processing = false
+    #config.enable_processing = false
   else
     config.storage = :aws
     config.aws_acl = :public_read

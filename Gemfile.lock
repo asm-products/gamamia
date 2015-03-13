@@ -221,6 +221,7 @@ GEM
     responders (2.1.0)
       railties (>= 4.2.0, < 5)
     rinku (1.7.3)
+    rmagick (2.13.4)
     rollbar (1.2.13)
       multi_json (~> 1.3)
     rspec-core (3.1.7)
@@ -323,6 +324,7 @@ DEPENDENCIES
   rails_12factor
   react-rails (~> 1.0.0.pre)!
   rinku
+  rmagick
   rollbar (~> 1.2.7)
   rspec-rails (~> 3.1.0)
   sanitize

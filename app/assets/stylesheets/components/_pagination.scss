@@ -1,0 +1,28 @@
+.pagination {
+	a {
+		background: $white;
+		border: 2px solid $blue;
+		color: $blue;
+		padding: 1em;
+		margin-top: 2em;
+
+		&:hover {
+			background: $blue;
+			color: $white;
+		}
+	}
+
+	.older:before, .newer:after {
+		font-weight: bold;
+		position: relative;
+	}
+
+	.older:before {
+		content: '◄';
+	}
+
+	.newer:after {
+		content: '►';
+		bottom: 0;
+	}
+}

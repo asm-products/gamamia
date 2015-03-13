@@ -4,16 +4,20 @@
     <div class="left">
       <ul class="list-reset clearfix m0 py2">
         <li class="left mr3">
-          <% if current_page?(root_url) %>
-            <%= link_to "Weekly", games_path, :class => 'link py2 selected' %>
-          <% else %>
-            <%= nav_link_to "Weekly", games_path, :class => 'link py2' %>
-          <% end %>
+          <%= link_to "Weekly", games_path, :class => 'link py2' + (params[:view] ? "" : " selected") %>
         </li>
         <li class="left">
-          <%= nav_link_to "Daily", games_path(view: "daily"), :class => 'link py2' %>
+          <%= link_to "Daily", games_path(view: "daily"), :class => 'link py2' + (params[:view] ? " selected" : "") %>
         </li>
       </ul>
+    </div>
+
+    <div class="left ml3">
+      <div class="select">
+      <%= form_tag games_path, method: :get do %>
+        <%= select_tag "platform", options_from_collection_for_select(@platforms, "name", "name", params[:platform]), {:onchange => "this.form.submit();", :include_blank => 'Platform', :index => nil} %>
+      <% end %>
+      </div>
     </div>
 
     <div class="right">
@@ -23,6 +27,8 @@
         </li>
       </ul>
     </div>
+
+
 
   </div>
 </section>
