@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource find_by: :username
+  load_and_authorize_resource find_by: :username, :except => :autocomplete_user_name
 
   # GET /users/:id.:format
   def show
@@ -57,6 +57,14 @@ class UsersController < ApplicationController
       format.html { redirect_to root_url }
       format.json { head :no_content }
     end
+  end
+
+  def autocomplete_user_name
+    users = User.select([:username], [:id], [:avatar_url]).where("username LIKE ?", "%#{params[:term]}%")
+    result = users.collect do |t|
+      { id: t.id, name: t.username, avatar: t.avatar_url, type: 'contact' }
+    end
+    render json: result
   end
 
   private

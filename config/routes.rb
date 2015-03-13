@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create]
   end
 
-  resources :users
+  resources :users do
+    get :autocomplete_user_name, :on => :collection
+  end
 
 end
