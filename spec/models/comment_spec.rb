@@ -18,8 +18,18 @@ RSpec.describe Comment do
     expect(child_comment.reload.parent).to eq(comment)
   end
 
-  it "should deliver email" do
-    expect{ mention_comment }.to change { ActionMailer::Base.deliveries.count }.by(1)
+
+  context "emails" do
+    before { ActionMailer::Base.deliveries = [] }
+    it "should deliver email" do
+      expect{ mention_comment }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
+
+    it "should not deliver email if User#email_notifications is false" do
+      user.update(email_notifications: false)
+
+      expect{ mention_comment }.to_not change{ ActionMailer::Base.deliveries.count }.from(0)
+    end
   end
 
   it "should cache html output" do

@@ -7,3 +7,5 @@ Hi <%= @user.username %>,
 View it online: <%= game_url(@comment.game, host: 'http://www.gamamia.com') %>
 
 Sincerely, The Gamamia Team
+
+<%= link_to "Change notifications settings", edit_user_url(@user) %>
