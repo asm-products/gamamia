@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  load_and_authorize_resource find_by: :username
+  load_and_authorize_resource find_by: :username, :except => :autocomplete_user_name
 
   # GET /users/:id.:format
   def show
@@ -59,6 +59,14 @@ class UsersController < ApplicationController
     end
   end
 
+  def autocomplete_user_name
+    users = User.select([:username], [:id], [:avatar_url]).where("username LIKE ?", "%#{params[:term]}%")
+    result = users.collect do |t|
+      { id: t.id, name: t.username, avatar: t.avatar_url, type: 'contact' }
+    end
+    render json: result
+  end
+
   private
     def set_user
       @user = current_user
@@ -70,6 +78,6 @@ class UsersController < ApplicationController
 
     # This checks which parameters are permitted for change. Remember to update it if new parameters are introduced
     def user_params
-      params.require(:user).permit(:name,:email,:password,:password_confirmation,:occupation, :receive_newsletter, :username)
+      params.require(:user).permit(:name,:email,:password,:password_confirmation,:occupation, :receive_newsletter, :username, :email_notifications)
     end
 end

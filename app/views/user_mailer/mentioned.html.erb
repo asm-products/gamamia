@@ -1,0 +1,24 @@
+<h1>You've been mentioned!</h1>
+
+<h3>Hi <%= @user.username %>,</h3>
+
+<%= @comment.user.username %> mentioned you:<br>
+<p>
+<%
+	replacements = [/a href="(.+)"/, 'span style="color:#FA5A5A"' ], ['</a>', '</span>']
+	text = @comment.cached_content
+	replacements.each do |replacement|
+		text.gsub!(replacement[0], replacement[1])
+	end %>
+<%= text.html_safe %>
+</p>
+View it online: <%= game_url(@comment.game, host: 'http://www.gamamia.com') %><br>
+
+<p>Sincerely, <br />
+The Gamamia Team <br />
+<a href="http://gamamia.com" target="_blank">http://gamamia.com</a>
+</p>
+
+<p>
+<%= link_to "Change notifications settings", edit_user_url(@user) %>
+</p>

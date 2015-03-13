@@ -24,6 +24,16 @@ gem 'newrelic_rpm'
 gem 'rollbar', '~> 1.2.7'
 gem 'turbolinks'
 gem 'nav_lynx'
+gem 'underscore-rails'
+
+gem 'html-pipeline'
+# html-pipeline dependencies
+gem 'rinku'
+gem 'gemoji'
+gem 'github-markdown'
+gem 'sanitize'
+
+gem 'jquery-atwho-rails'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-moment', '~> 2.9'

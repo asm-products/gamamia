@@ -8,4 +8,13 @@ class UserMailer < ApplicationMailer
     	format.text
     end
   end
+
+def mentioned(user, comment)
+    @user = user
+    @comment = comment
+    mail(to: @user.email, subject: "You have been mentioned at gamamia.com") do |format|
+      format.html { render layout: 'mailer.html.erb'}
+      format.text
+    end
+  end
 end

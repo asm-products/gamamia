@@ -50,6 +50,12 @@ RSpec.describe UsersController do
         subject
         expect(response).to redirect_to(user.reload)
       end
+
+      it "should update user email_notifications" do
+        user_attributes.merge!({email_notifications: false})
+        subject
+        expect(user.reload.email_notifications).to eq(false)
+      end
     end
   end
 end
