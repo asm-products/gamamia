@@ -7,7 +7,7 @@
       </div>
     <% end %>
     <div class="form-group">
-      
+
       <div class="clearfix mb2">
         <%= f.label :username, class: 'block col col-3' %>
         <%= f.text_field :username, :autofocus => true, class: 'block field-light col col-9' %>
@@ -25,6 +25,14 @@
       <div class="clearfix mb2">
         <%= f.label :occupation, class: 'block col col-3' %>
         <%= f.text_field :occupation, :value => @user.occupation, class: 'block field-light col col-9', placeholder: 'Occupation' %>
+      </div>
+
+      <div class="clearfix mb2">
+        <div class="controls">
+          <%= f.check_box :email_notifications %>Email Notifications
+          <p class="help-block">Recieve emails when you are mentioned in comments.</p>
+        </div>
+       
       </div>
 
     <div class="form-group">

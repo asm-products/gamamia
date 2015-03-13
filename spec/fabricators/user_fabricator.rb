@@ -5,6 +5,7 @@ Fabricator(:user) do
   occupation { Faker::Lorem.word }
   password "foobar123"
   password_confirmation "foobar123"
+  email_notifications true
 end
 
 Fabricator(:admin_user, from: :user) do
