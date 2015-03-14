@@ -17,7 +17,7 @@
     <div class="replies-block mt2">
       <div class="reply-form">
         <% if comment.parent_id? %>
-          <%= render partial: 'comments/form', locals: {comment: Comment.new, parent: Comment.find(comment.parent_id)} %>
+          <%= render partial: 'comments/form', locals: {comment: Comment.new, parent: comment.parent} %>
         <% else %>
           <%= render partial: 'comments/form', locals: {comment: Comment.new, parent: comment} %>
         <% end %>

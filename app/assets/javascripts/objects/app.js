@@ -44,8 +44,8 @@ var App = {
 		});
 
 		replyBlock.toggle();
-		replyBlock.find('textarea').val(authors);
-		
+		replyBlock.find('textarea').val(authors + ' ');
+
 		$(this).toggleClass('blue');
 	},
 
