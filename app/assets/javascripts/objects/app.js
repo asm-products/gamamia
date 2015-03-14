@@ -3,7 +3,8 @@ var App = {
     gameLink: $('.js-game'),
     dropdown: $('.profile-menu .avatar'),
     replyBtn: $('.js-reply'),
-    comment: $('textarea.mention')
+    comment: $('textarea.mention'),
+    menuBtn: $('.hamburger')
   },
 
   init: function() {
@@ -18,6 +19,7 @@ var App = {
       onDataRequest: App.handleComment,
       onCaret: true
     });
+    App.el.menuBtn.on('click', App.toggleMenu)
   },
 
   handleGameState: function() {
@@ -47,5 +49,10 @@ var App = {
             callback.call(this, data);
           }
         });
+  },
+
+  toggleMenu: function(e) {
+    e.preventDefault();
+    $('body').toggleClass('show-nav');
   }
 }

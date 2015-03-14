@@ -4,6 +4,10 @@
 
 .hamburger {
 	display: none;
+	background: transparent;
+	position: absolute;
+	top: 0.5em;
+	right: 1em;
 
 	svg {
 		fill: white;
@@ -12,9 +16,6 @@
 
 	@media (max-width: 41em) {
 		display: block;
-		position: absolute;
-		top: 1em;
-		right: 1em;
 	}
 
 }
@@ -27,12 +28,17 @@
 	.nav-bar {
 
 		@media (max-width: 41em) {
-			width: 100px;
+			box-sizing: border-box;
+			width: 150px;
 			position: absolute;
 			right: 0;
-			background: #333;
+			background: #4A4A4A;
 			padding: 1em;
 			text-align: left;
+			height: 100%;
+			right: -150px;
+			box-shadow: inset 0 0 3px 3px #333;
+
 		}
 		
 
@@ -42,4 +48,8 @@
 			}
 		}
 	}
+}
+
+body.show-nav {
+	transform: translateX(-150px);
 }
