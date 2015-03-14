@@ -72,6 +72,16 @@
   display: none !important;
 }
 
+.lg-hide {
+  @media (min-width: 41em) {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
+}
+
 .hide {
   position: absolute !important;
   height: 1px;

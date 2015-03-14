@@ -13,16 +13,24 @@
 }
 
 .add {
-	background: $red;
-	color: $white;
-	font-weight: bold;
-	font-size: 1em!important;
-	margin-top: -8px;
-	padding-top: 20px;
-	padding-bottom: 19px;
-	padding-right: 1em;
-	padding-left: 1em;
-	transition: 0.5s;
+
+	@media (max-width: 41em) {
+		margin-left: 0;
+	}
+
+	@media (min-width: 41em) {
+		background: $red;
+		color: $white;
+		font-weight: bold;
+		font-size: 1em!important;
+		margin-top: -8px;
+		padding-top: 20px;
+		padding-bottom: 19px;
+		padding-right: 1em;
+		padding-left: 1em;
+		transition: 0.5s;
+	}
+
 
 	&:hover {
 		background: $blue;

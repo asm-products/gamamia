@@ -1,3 +1,45 @@
 .nav-block {
 	background: $dark-gray;
 }
+
+.hamburger {
+	display: none;
+
+	svg {
+		fill: white;
+		width: 25px;
+	}
+
+	@media (max-width: 41em) {
+		display: block;
+		position: absolute;
+		top: 1em;
+		right: 1em;
+	}
+
+}
+
+.nav-menu {
+	@media (min-width: 41em) {
+		float: right;
+	}
+
+	.nav-bar {
+
+		@media (max-width: 41em) {
+			width: 100px;
+			position: absolute;
+			right: 0;
+			background: #333;
+			padding: 1em;
+			text-align: left;
+		}
+		
+
+		.left {
+			@media (max-width: 41em) {
+				float: none;
+			}
+		}
+	}
+}
