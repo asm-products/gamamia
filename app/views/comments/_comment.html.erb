@@ -11,10 +11,10 @@
     </h4>
       <p class="light-gray caption regular mt0 mb1"><%= comment.user.occupation %></p>
       <%= comment.cached_content.html_safe %>
-    <div class="clearfix replies-header mb2">
+    <div class="clearfix replies-header mb3">
       <button class="button js-reply">Reply</button>
     </div>
-    <div class="replies-block mt3">
+    <div class="replies-block mt2">
       <div class="reply-form">
         <% if comment.parent_id? %>
           <%= render partial: 'comments/form', locals: {comment: Comment.new, parent: Comment.find(comment.parent_id)} %>

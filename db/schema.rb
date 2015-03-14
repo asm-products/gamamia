@@ -19,8 +19,8 @@ ActiveRecord::Schema.define(version: 20150307045630) do
     t.integer  "game_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "parent_id"
     t.text     "cached_content"
+    t.integer  "parent_id"
   end
 
   add_index "comments", ["game_id"], name: "index_comments_on_game_id"
