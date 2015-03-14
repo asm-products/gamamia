@@ -47,20 +47,18 @@ var App = {
 		replyBlock.find('textarea').val(authors);
 		
 		$(this).toggleClass('blue');
-	}
-},
+	},
 
   handleComment: function(mode, query, callback) {
-  console.log('here');
-    $.ajax({
-          url: '/users/autocomplete_user_name/',
-          dataType: 'json',
-          data: {
-            term: query
-          },
-          success: function(data) {
-            callback.call(this, data);
-          }
-        });
+  	$.ajax({
+    	url: '/users/autocomplete_user_name/',
+    	dataType: 'json',
+    	data: {
+      	term: query
+      },
+      success: function(data) {
+      	callback.call(this, data);
+      }
+    });
   }
 }
