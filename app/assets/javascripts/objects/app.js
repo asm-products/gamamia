@@ -30,22 +30,35 @@ var App = {
     $(this).next('.dropdown-menu').toggle();
   },
 
-  handleReplyForm: function(e) {
-    $(this).closest('.replies-header').next('.replies-block').find('.reply-form').toggle();
-    $(this).toggleClass('blue');
-  },
+	handleReplyForm: function(e) {
+
+		var authors = '',
+			commentAuthors = $(this).parents('.comment-block'),
+			replyBlock = $(this).closest('.replies-header').next('.replies-block').find('.reply-form');
+
+		$.each(commentAuthors, function(i, val) {
+			if(i !== 0) {
+				authors+= ' ';
+			}
+			authors+= '@' + $(val).data('comment-author');
+		});
+
+		replyBlock.toggle();
+		replyBlock.find('textarea').val(authors + ' ');
+
+		$(this).toggleClass('blue');
+	},
 
   handleComment: function(mode, query, callback) {
-  console.log('here');
-    $.ajax({
-          url: '/users/autocomplete_user_name/',
-          dataType: 'json',
-          data: {
-            term: query
-          },
-          success: function(data) {
-            callback.call(this, data);
-          }
-        });
+  	$.ajax({
+    	url: '/users/autocomplete_user_name/',
+    	dataType: 'json',
+    	data: {
+      	term: query
+      },
+      success: function(data) {
+      	callback.call(this, data);
+      }
+    });
   }
 }
