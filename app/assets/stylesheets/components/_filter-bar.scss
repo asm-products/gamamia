@@ -27,3 +27,9 @@
 .filter-bar .select:after {
 	top: 54%;
 }
+
+.filter-bar .container {
+	@media (max-width: 41em) {
+		max-width: 95%;
+	}
+}
