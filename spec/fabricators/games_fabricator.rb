@@ -3,7 +3,10 @@ Fabricator(:game) do
   description { Faker::Lorem.sentence }
   status { Game::STATUS_TYPES.sample.last }
   link { Faker::Internet.url}
-  videos(count: 2) { |attrs, i| Fabricate(:video) }
   scheduled_at { Date.yesterday }
   user
+
+  after_create do |game, transients|
+    2.times.map { Fabricate(:video, game: game) }
+  end
 end
