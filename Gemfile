@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+
 ruby '2.2.0'
 
 gem 'active_model_serializers'
@@ -57,6 +58,6 @@ group :development do
 end
 
 group :production do
-	gem 'pg'
+  gem 'pg'
   gem 'rails_12factor'
 end
