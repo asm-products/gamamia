@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20150315220949) do
   create_table "games", force: :cascade do |t|
     t.string   "title",                                 null: false
     t.string   "thumbnail"
-    t.string   "description",                           null: false
+    t.string   "description"
     t.string   "status"
     t.string   "link",                                  null: false
     t.integer  "votes"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20150315220949) do
   add_index "games", ["user_id"], name: "index_games_on_user_id"
 
   create_table "identities", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "user_id",    null: false
     t.string   "provider"
     t.string   "uid"
     t.datetime "created_at"
