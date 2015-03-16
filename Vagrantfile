@@ -3,7 +3,7 @@
 
 # http://duleorlovic.github.io/blog/ruby-on-rails/vagrant/digitalocean/2015/02/16/rails-through-vagrant-to-digitalocean/
 # define some inputs... could grep from config
-ADDITIONAL_PACKAGES=""
+ADDITIONAL_PACKAGES="imagemagick libmagickwand-dev"
 TARGET_RUBY_VERSION="2.2" # its better to specify since RUBY_VERSION is taken from vagrant
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
@@ -99,7 +99,7 @@ Vagrant.configure(2) do |config|
       su -l vagrant -c 'rvm use --install --default #{TARGET_RUBY_VERSION}'
       su -l vagrant -c 'cd /vagrant && gem install bundler'
     else
-      echo "rvm already installed" 
+      echo "rvm already installed"
     fi
 
     echo installing bundler
