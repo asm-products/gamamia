@@ -13,7 +13,7 @@ class Game < ActiveRecord::Base
 
   acts_as_taggable_on :platforms
 
-  validates :title, :description, :link, presence: true
+  validates :title, :link, presence: true
 
   has_many :videos
   has_many :comments
