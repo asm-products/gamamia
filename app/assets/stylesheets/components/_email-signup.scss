@@ -1,3 +1,10 @@
+#mc_embed_signup {
+	@include bp(medium) {
+		max-width: 500px;
+		margin: 2em auto;
+	}
+}
+
 .signup {
 	background: #FA5A5A;
 	color: white;
@@ -13,6 +20,10 @@
 	text-transform: lowercase;
 	color: white;
 	font-size: 0.875em;
+
+	@include bp(medium) {
+		bottom: 1.15em;
+	}
 }
 
 .email, input[type=email] {
@@ -21,6 +32,17 @@
 	margin-bottom: 0;
 }
 
+.email {
+	@include bp(medium) {
+		width: 100%;
+	}
+}
+
 .emaillabel {
 	margin-top: 10px;
+
+	@include bp(medium) {
+		width: 100%;
+		margin-bottom: 1em;
+	}
 }
