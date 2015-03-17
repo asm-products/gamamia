@@ -4,7 +4,7 @@
 # http://duleorlovic.github.io/blog/ruby-on-rails/vagrant/digitalocean/2015/02/16/rails-through-vagrant-to-digitalocean/
 # define some inputs... could grep from config
 ADDITIONAL_PACKAGES="imagemagick libmagickwand-dev"
-TARGET_RUBY_VERSION="2.2" # its better to specify since RUBY_VERSION is taken from vagrant
+TARGET_RUBY_VERSION="2.2.1" # its better to specify since RUBY_VERSION is taken from vagrant
 
 # All Vagrant configuration is done below. The "2" in Vagrant.configure
 # configures the configuration version (we support older styles for
