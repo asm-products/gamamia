@@ -28,4 +28,8 @@
 .logo-bar .caption {
 	font-size: 0.75em;
 	padding-top: .1rem;
+
+	@include bp(large) {
+		min-width: 25em;
+	}
 }

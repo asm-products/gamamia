@@ -47,6 +47,10 @@
 	label {
 		font-weight: bold;
 		line-height: 2;
+
+		@include bp(small) {
+			width: $col-12;
+		}
 	}
 }
 
