@@ -49,3 +49,37 @@
 		line-height: 2;
 	}
 }
+
+// Responsive Sizes
+
+.user-meta {
+	@include bp(large) {
+		width: $col-4;
+	}
+
+	@include bp(medium) {
+		width: $col-11;
+		max-width: 500px;
+		margin: 0 auto;
+		float: none;
+	}
+}
+
+.user-votes {
+	@include bp(large) {
+		width: $col-8
+	}
+
+	@include bp(medium) {
+		width: $col-11;
+		max-width: 500px;
+		margin: 0 auto;
+		float: none;
+		margin-top: 2em;
+		padding-left: 0;
+
+		.info {
+			padding-left: 1em;
+		}
+	}
+}
