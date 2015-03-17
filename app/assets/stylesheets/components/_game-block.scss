@@ -61,6 +61,10 @@
 			flex-flow: row wrap;
 			width: $col-12;
 		}
+
+		@include bp(large) {
+			width: $col-11;
+		}
 	}
 
 	.info {
