@@ -1,6 +1,5 @@
 var App = {
   el : {
-    gameLink: $('.js-game'),
     dropdown: $('.profile-menu .avatar'),
     replyBtn: $('.js-reply'),
     comment: $('textarea.mention'),
@@ -12,7 +11,6 @@ var App = {
   },
 
   bindUIActions: function() {
-    App.el.gameLink.on('click', App.handleGameState)
     App.el.dropdown.on('click', App.handleDropdownToggle)
     App.el.replyBtn.on('click', App.handleReplyForm)
     App.el.comment.mentionsInput({
@@ -20,11 +18,6 @@ var App = {
       onCaret: true
     });
     App.el.menuBtn.on('click', App.toggleMenu)
-  },
-
-  handleGameState: function() {
-    var link = $(this).find('a').first().attr('href');
-    window.location = link;
   },
 
   handleDropdownToggle: function(e) {
