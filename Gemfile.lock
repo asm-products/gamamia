@@ -308,7 +308,7 @@ DEPENDENCIES
   dotenv-rails
   fabrication
   faker
-  friendly_id (~> 5.1.0)
+  friendly_id (~> 5.1)
   gemoji
   github-markdown
   html-pipeline
@@ -328,8 +328,8 @@ DEPENDENCIES
   react-rails (~> 1.0.0.pre)!
   rinku
   rmagick
-  rollbar (~> 1.4.4)
-  rspec-rails (~> 3.2.0)
+  rollbar
+  rspec-rails (~> 3.2)
   sanitize
   sass-rails (~> 5.0.1)
   sdoc (~> 0.4.0)
