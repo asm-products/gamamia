@@ -67,11 +67,15 @@
 
 .user-votes {
 	@include bp(large) {
-		width: $col-8
+		width: $col-8;
+
+		.game {
+			width: $col-12;
+		}
 	}
 
 	@include bp(medium) {
-		width: $col-11;
+		width: $col-12;
 		max-width: 500px;
 		margin: 0 auto;
 		float: none;
@@ -81,5 +85,19 @@
 		.info {
 			padding-left: 1em;
 		}
+	}
+}
+
+.user-edit {
+	@include bp(large) {
+		width: $col-8;
+	}
+
+	@include bp(medium) {
+		width: $col-12;
+		max-width: 500px;
+		margin: 0 auto;
+		float: none;
+		padding: 0;
 	}
 }
