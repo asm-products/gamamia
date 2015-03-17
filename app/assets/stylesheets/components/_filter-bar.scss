@@ -29,7 +29,11 @@
 }
 
 .filter-bar .container {
-	@media (max-width: 41em) {
+	@include bp(medium) {
+		max-width: 500px;
+	}
+
+	@include bp(small) {
 		max-width: 95%;
 	}
 }

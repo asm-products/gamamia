@@ -45,7 +45,7 @@
 
 .day-header {
   font-size: 1.125em;
-  margin-top: 4em;
+  margin-top: 2em;
   margin-bottom: 2em;
   text-transform: uppercase;
 }
@@ -73,7 +73,7 @@
 }
 
 .lg-hide {
-  @media (min-width: 41em) {
+  @include bp(large) {
     position: absolute !important;
     height: 1px;
     width: 1px;

@@ -1,8 +1,3 @@
-body {
-	overflow: hidden;
-	transition: transform 0.2s;
-}
-
 body,
 button {
   margin: 0;
@@ -22,4 +17,19 @@ img {
 
 svg {
   max-height: 100%;
+}
+
+#wrapper {
+	overflow: hidden;
+	
+	width: 100%;
+	position: relative;
+}
+
+#canvas {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	transition: transform 0.2s;
+	transform: translateX(0);
 }

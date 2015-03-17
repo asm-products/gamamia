@@ -1,5 +1,9 @@
 .platform-list {
-	padding-left: 1.5rem;
+
+	@media (min-width: 41em) {
+		padding-left: 1.5rem;
+	}
+	
 
 	li {
 		display: inline-block;

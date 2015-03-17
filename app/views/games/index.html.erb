@@ -6,9 +6,7 @@
 
       <% games.each_with_index do |game, index| %>
 
-      <div class="clearfix mb2">
         <%= render 'games/game', game: game %>
-      </div>
 
       <% if i == 0 and index == (games.size > 2 ? 2 : games.size-1) %>
 

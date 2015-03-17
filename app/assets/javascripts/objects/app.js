@@ -53,6 +53,6 @@ var App = {
 
   toggleMenu: function(e) {
     e.preventDefault();
-    $('body').toggleClass('show-nav');
+    $('#navbar').toggleClass('show-nav');
   }
 }

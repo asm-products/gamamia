@@ -1,6 +1,6 @@
 <div class="clearfix game-block">
 
-<div class="col-1 left">
+<div class="left col vote">
   <%= div_for(game, :vote) do %>
     <%= render partial: 'upvotes/upvote', locals: { game: game } %>
   <% end %>
@@ -10,8 +10,8 @@
   </div>
 </div>
 
-<div class="bg-white col-11 clearfix js-game relative left">
-  <div class="col col-7 column">
+<div class="bg-white col-11 clearfix js-game relative left game">
+  <div class="col column info">
 
     <h4 class="mt0">
       <a class="dark-gray title" href="<%= game_path(game) %>"><%= game.title %></a>
@@ -43,7 +43,7 @@
 
   </div>
 
-  <div class="col col-5" style="background-image:url(<%= image_path(game.thumbnail.games_index) %>);background-size:cover;background-position:center;height:10em"></div>
+  <div class="col image" style="background-image:url(<%= image_path(game.thumbnail.games_index) %>);"></div>
 
 </div>
 
