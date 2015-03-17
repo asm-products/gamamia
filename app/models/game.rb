@@ -1,5 +1,4 @@
 class Game < ActiveRecord::Base
-
   STATUS_TYPES = ["released", 0], ["beta",1]
 
   PLATFORMS = [
@@ -13,6 +12,8 @@ class Game < ActiveRecord::Base
   ]
 
   acts_as_taggable_on :platforms
+
+  validates :title, :link, presence: true
 
   has_many :videos
   has_many :comments
