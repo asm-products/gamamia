@@ -33,7 +33,7 @@ gem 'gemoji'
 gem 'github-markdown'
 gem 'sanitize'
 
-gem 'jquery-atwho-rails'
+gem "autoprefixer-rails"
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-moment', '~> 2.9'

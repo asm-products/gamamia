@@ -54,6 +54,9 @@ GEM
       activerecord (>= 3.2, < 5)
     acts_as_votable (0.10.0)
     arel (6.0.0)
+    autoprefixer-rails (5.1.7)
+      execjs
+      json
     aws-sdk (1.34.1)
       json (~> 1.4)
       nokogiri (>= 1.4.4)
@@ -124,7 +127,6 @@ GEM
       activesupport (>= 2)
       nokogiri (~> 1.4)
     i18n (0.7.0)
-    jquery-atwho-rails (1.0.1)
     jquery-rails (3.1.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
@@ -296,6 +298,7 @@ DEPENDENCIES
   active_model_serializers
   acts-as-taggable-on (~> 3.4)
   acts_as_votable (~> 0.10.0)
+  autoprefixer-rails
   bundler (>= 1.7.0)
   cancancan (~> 1.10)
   capybara
@@ -309,7 +312,6 @@ DEPENDENCIES
   gemoji
   github-markdown
   html-pipeline
-  jquery-atwho-rails
   jquery-rails
   nav_lynx
   newrelic_rpm
