@@ -105,7 +105,9 @@ RSpec.describe GamesController do
 
       it "should save tags" do
         post :create, game: game_params.merge(platform_list: ["iOS", "Mac", "Windows"])
-        expect(Game.last.platform_list).to eq(["iOS", "Mac", "Windows"])
+        expect(Game.last.platform_list).to include("iOS")
+        expect(Game.last.platform_list).to include("Mac")
+        expect(Game.last.platform_list).to include("Windows")
       end
     end
 

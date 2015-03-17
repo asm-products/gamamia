@@ -40,7 +40,6 @@ source 'https://rails-assets.org' do
 end
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'faker'
   gem 'rspec-rails', '~> 3.1.0'
   gem 'fabrication'
