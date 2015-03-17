@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-ruby '2.2.0'
+
+ruby '2.2.1'
 
 gem 'active_model_serializers'
 gem 'acts_as_votable', '~> 0.10.0'
@@ -56,6 +57,6 @@ group :development do
 end
 
 group :production do
-	gem 'pg'
+  gem 'pg'
   gem 'rails_12factor'
 end
