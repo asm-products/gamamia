@@ -14,7 +14,9 @@ RSpec.describe Admin::GamesController do
     describe "PATCH update" do
       it "should save tags" do
         patch :update, {id: game.id, game: game_params.merge(platform_list: ["iOS", "Mac", "Windows"])}
-        expect(game.reload.platform_list).to eq(["iOS", "Mac", "Windows"])
+        expect(game.reload.platform_list).to include("iOS")
+        expect(game.reload.platform_list).to include("Mac")
+        expect(game.reload.platform_list).to include("Windows")
       end
 
       it "should send notification email when scheduled" do
