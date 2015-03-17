@@ -3,7 +3,7 @@
   <div class="relative">
       <div class="imageblur" style="background-image:url(<%= @game.thumbnail %>);background-size:cover;"></div>
       <div class="bglayer"></div>
-      <div class="p3 clearfix relative info container">
+      <div class="clearfix relative info container">
 
           <h3 class="mt0 mb0 title">
             <a class="white" href="<%= @game.link %>" target="_blank"><%= @game.title %></a>
@@ -54,7 +54,7 @@
 
     <div class="clearfix">
 
-        <div class="col col-9 mb4">
+        <div class="col comment mb4">
           <h5 class="small-header mb2"><%= pluralize @game.comments_count, 'comment' %></h5>
           <%= render partial: 'comments/form', locals: {comment: Comment.new, parent: nil} %>
           <% @comments.each do |comment| %>

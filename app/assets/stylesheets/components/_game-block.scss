@@ -42,7 +42,7 @@
 
 	@include bp(medium) {
 		max-width: 500px;
-		margin: 0 auto;
+		margin: 2em auto;
 	}
 	.vote {
 		width: $col-1;

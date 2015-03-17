@@ -31,12 +31,6 @@
 			color: white;
 		}
 
-		.vote_game {
-			position: absolute;
-			top: 2em;
-			right: 1em;
-		}
-
 	.upvote-block p {
 		color: $blue;
 	}
@@ -48,10 +42,6 @@
 	.upvote-block:hover p {
 		color: white;
 	}
-	}
-
-	.title {
-		font-size: 3em;
 	}
 
 	.platform-list {
@@ -72,4 +62,44 @@
 		right: 1em;
 	}
 
+}
+
+// Responsive Styles
+
+.show-block {
+	.info {
+		@include bp(large) {
+			padding: 2em;
+		}
+
+		@include bp(medium) {
+			padding: 1em;
+		}
+	}
+
+	.title {
+		line-height: 1;
+		margin-bottom: 0.5em;
+		@include bp(large) {
+			font-size: 3em;
+		}
+		
+		@include bp(medium) {
+			font-size: 2em;
+			max-width: 75%;
+		}
+	}
+
+	.vote_game {
+		position: absolute;
+		right: 1em;
+
+		@include bp(large) {
+			top: 2em;
+		}
+
+		@include bp(medium) {
+			top: 0;
+		}
+	}
 }
