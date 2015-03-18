@@ -11,9 +11,11 @@
     </h4>
       <p class="light-gray caption regular mt0 mb1"><%= comment.user.occupation %></p>
       <%= comment.cached_content.html_safe %>
+    <% if can? :create, comment %>
     <div class="clearfix replies-header mb2">
       <button class="button js-reply">Reply</button>
     </div>
+    <% end %>
     <div class="replies-block mt2">
       <div class="reply-form">
         <% if comment.parent_id? %>

@@ -14,4 +14,6 @@
       <%= f.button 'Comment', class: 'button-blue' %>
     </div>
   <% end %>
+<% else %>
+<p class="error requireauth mt0">You need to <%= link_to('login', user_omniauth_authorize_path("twitter")) %> to be able to comment or reply.</p>
 <% end %>
