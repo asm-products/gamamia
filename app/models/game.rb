@@ -1,16 +1,6 @@
 class Game < ActiveRecord::Base
   STATUS_TYPES = ["released", 0], ["beta",1]
 
-  PLATFORMS = [
-    'PC',
-    'Mac',
-    'Linux',
-    'iOS',
-    'Android',
-    'Windows Phone',
-    'Web'
-  ]
-
   acts_as_taggable_on :platforms
 
   validates :title, :link, presence: true
@@ -34,5 +24,4 @@ class Game < ActiveRecord::Base
     touch(:deleted_at)
     freeze
   end
-
 end
