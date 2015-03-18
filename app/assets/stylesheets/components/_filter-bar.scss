@@ -27,3 +27,13 @@
 .filter-bar .select:after {
 	top: 54%;
 }
+
+.filter-bar .container {
+	@include bp(medium) {
+		max-width: 500px;
+	}
+
+	@include bp(small) {
+		max-width: 95%;
+	}
+}

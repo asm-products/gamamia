@@ -1,5 +1,9 @@
 .logo-bar {
 	height: 63px;
+
+	@media (max-width: 41em) {
+		max-width: 75%;
+	}
 }
 
 .logo-bar .image {
@@ -15,9 +19,17 @@
 .logo-bar .text {
 	font-size: 1.125em;
 	margin-top: 0.75rem;
+
+	@media (max-width: 41em) {
+		margin-top: 5px;
+	}
 }
 
 .logo-bar .caption {
 	font-size: 0.75em;
 	padding-top: .1rem;
+
+	@include bp(large) {
+		min-width: 25em;
+	}
 }

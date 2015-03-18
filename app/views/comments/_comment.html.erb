@@ -1,8 +1,8 @@
 <div class="clearfix mt0 mb0 comment-block relative" data-comment-author="<%= comment.user.username %>">
-  <div class="col col-1 left avatar">
+  <div class="left mr2">
     <%= avatar_for(comment.user, 'small') %>
   </div>
-  <div class="col col-11">
+  <div class="overflow-hidden">
     <h4 class="mt0 mb0 username">
       <%= link_to comment.user, class: "" do 
         '@' + comment.user.username
@@ -11,7 +11,7 @@
     </h4>
       <p class="light-gray caption regular mt0 mb1"><%= comment.user.occupation %></p>
       <%= comment.cached_content.html_safe %>
-    <div class="clearfix replies-header mb3">
+    <div class="clearfix replies-header mb2">
       <button class="button js-reply">Reply</button>
     </div>
     <div class="replies-block mt2">

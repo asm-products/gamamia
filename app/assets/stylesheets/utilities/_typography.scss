@@ -45,7 +45,7 @@
 
 .day-header {
   font-size: 1.125em;
-  margin-top: 4em;
+  margin-top: 2em;
   margin-bottom: 2em;
   text-transform: uppercase;
 }
@@ -70,6 +70,16 @@
 
 .display-none {
   display: none !important;
+}
+
+.lg-hide {
+  @include bp(large) {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px, 1px, 1px, 1px);
+  }
 }
 
 .hide {
