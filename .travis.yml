@@ -3,10 +3,14 @@ sudo: false
 language: ruby
 
 rvm:
-  - 2.2.0
+  - 2.2.1
+
+before_script:
+  - bundle exec rake db:test:prepare
 
 addons:
-  code_climate:
+ postgresql: "9.3"
+ code_climate:
     repo_token: a02ee115e8eeb1b0ec95c693ac1a09b34f428557d68b701d0a3eca2e17c39fa8
 
 cache:

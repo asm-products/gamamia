@@ -41,7 +41,7 @@ RSpec.describe GamesController do
 
     describe "GET index" do
       let(:game_last_week) { Fabricate :game, scheduled_at: 7.days.ago}
-      let(:game_platform_pc) { Fabricate :game, platform_list: "PC" }
+      let(:game_platform_pc) { Fabricate :game, platform_list: "PC", scheduled_at: Date.today }
 
       subject { get :index }
       it "assigns scheduled games as @weeks" do
@@ -105,7 +105,9 @@ RSpec.describe GamesController do
 
       it "should save tags" do
         post :create, game: game_params.merge(platform_list: ["iOS", "Mac", "Windows"])
-        expect(Game.last.platform_list).to eq(["iOS", "Mac", "Windows"])
+        expect(Game.last.platform_list).to include("iOS")
+        expect(Game.last.platform_list).to include("Mac")
+        expect(Game.last.platform_list).to include("Windows")
       end
     end
 

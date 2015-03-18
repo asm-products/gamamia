@@ -11,12 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307045630) do
+ActiveRecord::Schema.define(version: 20150317210255) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.text     "content"
-    t.integer  "user_id"
-    t.integer  "game_id"
+    t.text     "content",        null: false
+    t.integer  "user_id",        null: false
+    t.integer  "game_id",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "cached_content"
@@ -28,11 +31,11 @@ ActiveRecord::Schema.define(version: 20150307045630) do
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "games", force: :cascade do |t|
-    t.string   "title"
+    t.string   "title",                                 null: false
     t.string   "thumbnail"
     t.string   "description"
     t.string   "status"
-    t.string   "link"
+    t.string   "link",                                  null: false
     t.integer  "votes"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -120,8 +123,8 @@ ActiveRecord::Schema.define(version: 20150307045630) do
     t.string   "title"
     t.string   "thumbnail"
     t.string   "category"
-    t.string   "embed"
-    t.integer  "game_id"
+    t.string   "embed",      null: false
+    t.integer  "game_id",    null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -143,4 +146,10 @@ ActiveRecord::Schema.define(version: 20150307045630) do
   add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope"
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope"
 
+  add_foreign_key "comments", "games", name: "comments_game_id_fk"
+  add_foreign_key "comments", "users", name: "comments_user_id_fk"
+  add_foreign_key "games", "users"
+  add_foreign_key "games", "users", name: "games_user_id_fk"
+  add_foreign_key "identities", "users", name: "identities_user_id_fk"
+  add_foreign_key "videos", "games", name: "videos_game_id_fk"
 end

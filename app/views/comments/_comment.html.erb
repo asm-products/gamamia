@@ -1,20 +1,26 @@
-<div class="clearfix mt0 mb0 comment-block relative">
+<div class="clearfix mt0 mb0 comment-block relative" data-comment-author="<%= comment.user.username %>">
   <div class="left mr2">
     <%= avatar_for(comment.user, 'small') %>
   </div>
   <div class="overflow-hidden">
-    <h4 class="mt0 mb0 username"><%= comment.user.name %><span class="posted"> · <%= time_ago_in_words(comment.created_at) %> ago</span></h4>
-      <p class="light-gray caption regular mt0 mb1"><%= comment.user.occupation %> </p>
-
-    <%= comment.cached_content.html_safe %>
-    <% if comment.parent_id.nil? %>
+    <h4 class="mt0 mb0 username">
+      <%= link_to comment.user, class: "" do 
+        '@' + comment.user.username
+      end%>
+      <span class="posted"> · <%= time_ago_in_words(comment.created_at) %> ago</span>
+    </h4>
+      <p class="light-gray caption regular mt0 mb1"><%= comment.user.occupation %></p>
+      <%= comment.cached_content.html_safe %>
     <div class="clearfix replies-header mb2">
       <button class="button js-reply">Reply</button>
     </div>
-    <% end %>
-    <div class="replies-block mt3">
+    <div class="replies-block mt2">
       <div class="reply-form">
-        <%= render partial: 'comments/form', locals: {comment: Comment.new, parent: comment} unless comment.parent_id? %>
+        <% if comment.parent_id? %>
+          <%= render partial: 'comments/form', locals: {comment: Comment.new, parent: comment.parent} %>
+        <% else %>
+          <%= render partial: 'comments/form', locals: {comment: Comment.new, parent: comment} %>
+        <% end %>
       </div>
       <%= render partial: 'comments/comment', collection: comment.children unless comment.parent_id? %>
     </div>

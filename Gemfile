@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
-ruby '2.2.0'
+
+ruby '2.2.1'
 
 gem 'active_model_serializers'
 gem 'acts_as_votable', '~> 0.10.0'
@@ -7,7 +8,7 @@ gem 'bundler', '>= 1.7.0'
 gem 'rmagick'
 gem 'carrierwave-aws'
 gem 'devise'
-gem 'friendly_id', '~> 5.0.0'
+gem 'friendly_id', '~> 5.1'
 gem 'jquery-rails'
 gem 'omniauth-facebook'
 gem 'omniauth-twitter'
@@ -15,13 +16,13 @@ gem 'omniauth'
 gem 'puma'
 gem 'rails', '4.2.0'
 gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0.1'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'uglifier', '>= 1.3.0'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'cancancan', '~> 1.10'
 gem 'newrelic_rpm'
-gem 'rollbar', '~> 1.2.7'
+gem 'rollbar'
 gem 'turbolinks'
 gem 'nav_lynx'
 gem 'underscore-rails'
@@ -40,10 +41,10 @@ source 'https://rails-assets.org' do
 end
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'faker'
-  gem 'rspec-rails', '~> 3.1.0'
+  gem 'rspec-rails', '~> 3.2'
   gem 'fabrication'
+  gem 'byebug', '~> 3.0'
   gem 'pry-byebug'
   gem 'dotenv-rails'
   gem 'capybara'
@@ -57,6 +58,6 @@ group :development do
 end
 
 group :production do
-	gem 'pg'
+  gem 'pg'
   gem 'rails_12factor'
 end
