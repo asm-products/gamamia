@@ -12,3 +12,11 @@
 .error.blue {
 	background: #71D8EC;
 }
+
+.error.requireauth {
+    color: #FA5A5A;
+    padding: 1em 0;
+    a {
+        color: #FA5A5A;
+    }
+}
