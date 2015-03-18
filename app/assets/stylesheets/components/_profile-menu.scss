@@ -3,6 +3,11 @@
 	display: inline-block;
 	padding: 0.5em;
 
+	@include bp(medium) {
+		width: 100%;
+		padding: 0;
+	}
+
 }
 
 .dropdown-toggle {
@@ -12,62 +17,71 @@
 }
 
 .dropdown-menu {
-	right: 0;
-	margin: 5px -35px 0 0;
-	position: absolute;
-	top: 100%;
-	z-index: 10;
-	float: left;
-	padding: 10px 0;
-	background: #fff;
-	border: 1px solid #eee;
-	display: none;
 
-	a {
-		color: $dark-gray;
-		padding: 5px 20px;
-		display: block;
+	@include bp(medium) {
+		padding-left: 0;
 	}
 
-	a:hover {
-		background: $red;
-		color: $white;
-	}
-
-	.dropdown-caret {
+	@include bp(large) {
+		right: 0;
+		margin: 5px -35px 0 0;
 		position: absolute;
-		top: -10px;
-		left: auto;
-		right: 47px;
-		width: 18px;
-		height: 10px;
+		top: 100%;
+		z-index: 10;
 		float: left;
-		overflow: hidden;
+		padding: 10px 0;
+		background: #fff;
+		border: 1px solid #eee;
+		display: none;
 
-		.caret-outer, .caret-inner {
+		a {
+			color: $dark-gray;
+			padding: 5px 20px;
+			display: block;
+		}
+
+		a:hover {
+			background: $red;
+			color: $white;
+		}
+
+		.dropdown-caret {
 			position: absolute;
-			top: 0;
-			left: 0;
-			display: inline-block;
-			margin-left: -1px;
-		}
+			top: -10px;
+			left: auto;
+			right: 47px;
+			width: 18px;
+			height: 10px;
+			float: left;
+			overflow: hidden;
 
-		.caret-outer {
-			border-bottom: 10px solid #eee;
-			border-left: 10px solid transparent;
-			border-right: 10px solid transparent;
-			height: auto;
-			left: 0;
-			top: 0;
-			width: auto;
-		}
+			.caret-outer, .caret-inner {
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: inline-block;
+				margin-left: -1px;
+			}
 
-		.caret-inner {
-			top: 1px;
-			left: 1px;
-			border-left: 9px solid transparent;
-			border-right: 9px solid transparent;
-			border-bottom: 9px solid #fff;
+			.caret-outer {
+				border-bottom: 10px solid #eee;
+				border-left: 10px solid transparent;
+				border-right: 10px solid transparent;
+				height: auto;
+				left: 0;
+				top: 0;
+				width: auto;
+			}
+
+			.caret-inner {
+				top: 1px;
+				left: 1px;
+				border-left: 9px solid transparent;
+				border-right: 9px solid transparent;
+				border-bottom: 9px solid #fff;
+			}
 		}
 	}
+
+
 }

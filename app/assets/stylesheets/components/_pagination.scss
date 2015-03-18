@@ -25,4 +25,14 @@
 		content: '►';
 		bottom: 0;
 	}
+
+	@include bp(medium) {
+		max-width: 500px;
+		margin: 0 auto;
+	}
+
+	@include bp(small) {
+		max-width: 90%;
+		margin: 0 auto;
+	}
 }

@@ -47,6 +47,62 @@
 	label {
 		font-weight: bold;
 		line-height: 2;
+
+		@include bp(small) {
+			width: $col-12;
+		}
+	}
+}
+
+// Responsive Sizes
+
+.user-meta {
+	@include bp(large) {
+		width: $col-4;
+	}
+
+	@include bp(medium) {
+		width: $col-11;
+		max-width: 500px;
+		margin: 0 auto;
+		float: none;
+	}
+}
+
+.user-votes {
+	@include bp(large) {
+		width: $col-8;
+
+		.game {
+			width: $col-12;
+		}
+	}
+
+	@include bp(medium) {
+		width: $col-12;
+		max-width: 500px;
+		margin: 0 auto;
+		float: none;
+		margin-top: 2em;
+		padding-left: 0;
+
+		.info {
+			padding-left: 1em;
+		}
+	}
+}
+
+.user-edit {
+	@include bp(large) {
+		width: $col-8;
+	}
+
+	@include bp(medium) {
+		width: $col-12;
+		max-width: 500px;
+		margin: 0 auto;
+		float: none;
+		padding: 0;
 	}
 }
 
