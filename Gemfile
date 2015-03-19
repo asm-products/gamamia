@@ -49,7 +49,6 @@ group :development, :test do
   gem 'byebug', '~> 3.0'
   gem 'pry-byebug'
   gem 'dotenv-rails'
-  gem 'capybara'
   gem 'shoulda-matchers'
 end
 
