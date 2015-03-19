@@ -43,7 +43,8 @@
           </div>
         <% else %>
           <li class="left">
-            <%= link_to('Login / Signup', user_omniauth_authorize_path("twitter"), class: 'block link-item logtext') %>
+            <%= link_to('Signup', new_user_registration_path, class: 'link-item logtext') %>
+            <%= link_to('Login', new_user_session_path, class: 'link-item logtext') %>
           </li>
         <% end %>
         <li class="left">

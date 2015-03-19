@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
   before_filter :ensure_signup_complete
+  before_action :signup_permitted_params, if: :devise_controller?
 
   def ensure_signup_complete
     # Ensure we don't go into an infinite loop
@@ -39,7 +40,7 @@ class ApplicationController < ActionController::Base
     if resource_or_scope.sign_in_count == 1
       finish_signup_path(resource_or_scope)
     else
-      session[:referrer_url] || request.env['omniauth.origin'] || stored_location_for(resource) || root_path
+      session[:referrer_url] || request.env['omniauth.origin'] || stored_location_for(resource_or_scope) || root_path
     end
   end
 
@@ -47,4 +48,9 @@ class ApplicationController < ActionController::Base
     session[:referrer_url] || root_path
   end
   helper_method :back_or_root_path
+
+  protected
+  def signup_permitted_params
+    devise_parameter_sanitizer.for(:sign_up) << :username
+  end
 end
