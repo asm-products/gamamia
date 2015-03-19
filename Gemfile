@@ -42,12 +42,13 @@ end
 
 group :development, :test do
   gem 'faker'
-  gem 'rspec-rails', '~> 3.2'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'poltergeist'
   gem 'fabrication'
   gem 'byebug', '~> 3.0'
   gem 'pry-byebug'
   gem 'dotenv-rails'
-  gem 'capybara'
   gem 'shoulda-matchers'
 end
 
