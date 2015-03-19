@@ -7,7 +7,7 @@ RSpec.feature "Adding a game", js: true do
     visit new_game_path
   end
 
-  it 'adding a game' do
+  it 'shows the form to add a new game' do
     expect(page).to have_content "Add a game"
   end
 end
