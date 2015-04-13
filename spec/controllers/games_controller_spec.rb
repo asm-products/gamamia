@@ -46,7 +46,7 @@ RSpec.describe GamesController do
       subject { get :index }
       it "assigns scheduled games as @weeks" do
         subject
-        week = game.scheduled_at.beginning_of_week
+        week = game.scheduled_at
         expect(assigns(:weeks)).to eq([[week,[game]]])
       end
 
