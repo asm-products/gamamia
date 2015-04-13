@@ -12,8 +12,23 @@
 
 This is a product being built by the Assembly community. You can help push this idea forward by visiting [https://assembly.com/gamamia](https://assembly.com/gamamia).
 
-### How Assembly Works
+### How To Get Gamamia Set Up
 
-Assembly products are like open-source and made with contributions from the community. Assembly handles the boring stuff like hosting, support, financing, legal, etc. Once the product launches we collect the revenue and split the profits amongst the contributors.
+Right now, we are developing everything on the develop branch of Gamamia at [https://github.com/asm-products/gamamia/tree/develop](https://github.com/asm-products/gamamia/tree/develop). The main branch of this repository is set up to faciliate the daily newsletter updates, until we have verison 2.0 of Gamamia all set up.
 
-Visit [https://assembly.com](https://assembly.com) to learn more.
+Gamamia is run on Rails. In order to get everything set up, you will want to have Postgres installed as well.
+
+To start working with Gamamia locally:
+
+##### Clone Gamamia
+`git clone https://github.com/asm-products/gamamia.git`
+
+##### Switch to Develop Branch
+`git checkout develop`
+
+##### Run Rake to set up Database and Start Rails server
+`rake db:create db:migrate db:seed`
+
+`rails s`
+
+And that's it! You'll have a version of this app running at http://localhost:3000/ that you can start playing around with. Please let us know if you run into any problems.
