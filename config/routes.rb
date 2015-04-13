@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'newsletter/home'
+
   devise_for :users, :controllers => { omniauth_callbacks: 'omniauth_callbacks' }, skip: :registrations
 
   match '/users/:id/finish_signup' => 'users#finish_signup', via: [:get, :patch], :as => :finish_signup
@@ -7,7 +9,7 @@ Rails.application.routes.draw do
     resources :games
   end
 
-  root 'games#index'
+  root 'newsletter#home'
 
   resources :games, only: [:index, :show, :new, :create] do
     member do
