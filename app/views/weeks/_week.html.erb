@@ -2,17 +2,17 @@
 
 
   <span class="ml1 lines">
-    <% if params[:view] == "daily"  %>
-      <% if week == Date.today %>
-        Today
-      <% else %>
-        <%= format_date(week) %>
-      <% end %>
-    <% else %>
+    <% if params[:view] == "weekly"  %>
       <% if week == Date.today.beginning_of_week %>
         This Week
       <% else %>
         Week of <%= format_date(week) %>
+      <% end %>
+    <% else %>
+      <% if week == Date.today %>
+        Today
+      <% else %>
+        <%= format_date(week) %>
       <% end %>
     <% end %>
   </span>
