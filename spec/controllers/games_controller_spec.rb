@@ -44,24 +44,35 @@ RSpec.describe GamesController do
       let(:game_platform_pc) { Fabricate :game, platform_list: "PC", scheduled_at: Date.today }
 
       subject { get :index }
-      it "assigns scheduled games as @weeks" do
-        subject
-        week = game.scheduled_at.beginning_of_week
-        expect(assigns(:weeks)).to eq([[week,[game]]])
-      end
 
-      it "assignes scheduled games scoped by current week" do
-        game_last_week
-        week = game.scheduled_at.beginning_of_week
-        subject
-        expect(assigns(:weeks)).to eq([[week,[game]]])
-      end
+      context "weekly" do
+        it "assigns scheduled games as @weeks" do
+          get :index, view: 'weekly'
+          week = game.scheduled_at.beginning_of_week
+          expect(assigns(:weeks)).to eq([[week,[game]]])
+        end
 
-      it "assignes scheduled games scoped by last week" do
-        week = game_last_week.scheduled_at.beginning_of_week
-        get :index, week: week.to_s
+        it "assignes scheduled games scoped by current week" do
+          game_last_week
+          week = game.scheduled_at.beginning_of_week
+          get :index, view: 'weekly'
+          expect(assigns(:weeks)).to eq([[week,[game]]])
+        end
 
-        expect(assigns(:weeks)).to eq([[week,[game_last_week]]])
+        it "assignes scheduled games scoped by last week" do
+          week = game_last_week.scheduled_at.beginning_of_week
+          get :index, week: week.to_s, view: 'weekly'
+
+          expect(assigns(:weeks)).to eq([[week,[game_last_week]]])
+        end
+
+        it "assignes games scoped by platform" do
+          week = game.scheduled_at.beginning_of_week
+          weeks = game_platform_pc
+          get :index, platform: "PC", view: 'weekly'
+
+          expect(assigns(:weeks)).to eq([[week, [weeks]]])
+        end
       end
 
       it "assignes platforms as @platforms" do
@@ -72,17 +83,10 @@ RSpec.describe GamesController do
         expect(assigns(:platforms)).to eq(platforms)
       end
 
-      it "assignes games scoped by platform" do
-        week = game.scheduled_at.beginning_of_week
-        weeks = game_platform_pc
-        get :index, platform: "PC"
-
-        expect(assigns(:weeks)).to eq([[week, [weeks]]])
-      end
-
       it "renders index template" do
         expect(subject).to render_template(:index)
       end
+
       context "daily view" do
         it "assigns daily scheduled games as @weeks" do
           game.update_attributes scheduled_at: Date.parse("11.02.2015")
