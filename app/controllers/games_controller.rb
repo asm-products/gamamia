@@ -3,7 +3,7 @@ class GamesController < ApplicationController
   respond_to :html, :js
 
   def index
-    @current_week = params[:week].present? ? Date.parse(params[:week]) : Date.today
+    @current_week = params[:week].present? ? Date.parse(params[:week]) : Date.today.beginning_of_week
     @last_week = @current_week - 7.days
     @next_week = @current_week + 7.days
 
@@ -11,7 +11,7 @@ class GamesController < ApplicationController
 
     @games = @games.with_platform(params[:platform]) if params[:platform].present?
 
-    @weeks = @games.includes(:user, :platforms).where("scheduled_at >= ? and scheduled_at < ?", @last_week, @current_week).scheduled.display_order.group_by do |game|
+    @weeks = @games.includes(:user, :platforms).where("scheduled_at >= ? and scheduled_at < ?", @current_week, @next_week).scheduled.display_order.group_by do |game|
       params[:view] == "weekly" ? game.scheduled_at.beginning_of_week : game.scheduled_at
     end.sort.reverse
   end
