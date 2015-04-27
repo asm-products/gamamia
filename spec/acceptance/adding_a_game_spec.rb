@@ -10,6 +10,8 @@ RSpec.feature "Adding a game" do
   def add_game
     fill_in :game_title, with: "Test Game"
     fill_in :game_link, with: "testgame.com"
+    fill_in :game_description, with: "The best game in the world"
+    fill_in :game_extended_description, with: "The best game in the world extended"
     click_on 'Submit Game'
   end
 
