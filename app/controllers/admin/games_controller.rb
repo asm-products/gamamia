@@ -10,6 +10,7 @@ module Admin
     end
 
     def edit
+      @devs = GameDeveloper.order(:title).all.pluck(:title, :id)
     end
 
     def update
@@ -31,7 +32,7 @@ module Admin
 
     private
     def game_params
-      params.require(:game).permit(:title, :thumbnail, :description, :extended_description, :status, :link, :scheduled_at, platform_list: [])
+      params.require(:game).permit(:title, :thumbnail, :description, :extended_description, :status, :link, :scheduled_at, :game_developer_id, platform_list: [])
     end
   end
 end
