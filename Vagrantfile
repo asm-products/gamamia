@@ -109,6 +109,7 @@ Vagrant.configure(2) do |config|
     fi
 
     echo installing bundler
+    su -l vagrant -c 'cd /vagrant && git checkout develop'
     su -l vagrant -c 'cd /vagrant && bundle'
     su -l vagrant -c 'cd /vagrant && rake db:create'
     su -l vagrant -c 'cd /vagrant && rake db:migrate'
