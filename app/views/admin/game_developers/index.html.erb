@@ -1,0 +1,31 @@
+<div class="container py3">
+  <%= link_to 'Manage Games', admin_games_path %> | <%= link_to 'Create Game Developer', new_admin_game_developer_path %>
+  <table class="table-light">
+    <thead>
+      <tr>
+        <th></th>
+        <th>Title</th>
+        <th>Location</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @game_developers.each do |dev| %>
+        <tr>
+          <td>
+            <a class="light-gray" href="<%= edit_admin_game_developer_path(dev) %>">Edit</a>
+          </td>
+          <td><%= dev.title %></td>
+          <td>
+            <%= dev.location %>
+          </td>
+          <td>
+            <%= link_to [:admin, dev], method: :delete, data: { confirm: "Are you sure?" }, class: 'red' do %>
+              Delete
+            <% end %>
+          </td>
+       </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

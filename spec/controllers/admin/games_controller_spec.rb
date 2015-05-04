@@ -11,6 +11,14 @@ RSpec.describe Admin::GamesController do
       sign_in(@user)
     end
 
+    describe "GET edit" do
+      it "should assign the correct objects" do
+        get :edit, id: game
+        expect(assigns(:game)).to eq game
+        expect(assigns(:devs)).to_not be_nil
+      end
+    end
+
     describe "PATCH update" do
       it "should save tags" do
         patch :update, {id: game.id, game: game_params.merge(platform_list: ["iOS", "Mac", "Windows"])}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150426235803) do
+ActiveRecord::Schema.define(version: 20150428064920) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(version: 20150426235803) do
   add_index "comments", ["game_id"], name: "index_comments_on_game_id", using: :btree
   add_index "comments", ["parent_id"], name: "index_comments_on_parent_id", using: :btree
   add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
+  create_table "game_developers", force: :cascade do |t|
+    t.string   "thumbnail"
+    t.string   "location"
+    t.string   "title"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "games", force: :cascade do |t|
     t.string   "title",                                 null: false
@@ -52,6 +60,7 @@ ActiveRecord::Schema.define(version: 20150426235803) do
     t.datetime "deleted_at"
     t.integer  "user_id"
     t.text     "extended_description"
+    t.integer  "game_developer_id"
   end
 
   add_index "games", ["cached_votes_down"], name: "index_games_on_cached_votes_down", using: :btree
@@ -61,6 +70,7 @@ ActiveRecord::Schema.define(version: 20150426235803) do
   add_index "games", ["cached_weighted_average"], name: "index_games_on_cached_weighted_average", using: :btree
   add_index "games", ["cached_weighted_score"], name: "index_games_on_cached_weighted_score", using: :btree
   add_index "games", ["cached_weighted_total"], name: "index_games_on_cached_weighted_total", using: :btree
+  add_index "games", ["game_developer_id"], name: "index_games_on_game_developer_id", using: :btree
   add_index "games", ["user_id"], name: "index_games_on_user_id", using: :btree
 
   create_table "identities", force: :cascade do |t|
@@ -149,6 +159,7 @@ ActiveRecord::Schema.define(version: 20150426235803) do
 
   add_foreign_key "comments", "games", name: "comments_game_id_fk"
   add_foreign_key "comments", "users", name: "comments_user_id_fk"
+  add_foreign_key "games", "game_developers", name: "games_game_developer_id_fk"
   add_foreign_key "games", "users", name: "games_user_id_fk"
   add_foreign_key "identities", "users", name: "identities_user_id_fk"
   add_foreign_key "videos", "games", name: "videos_game_id_fk"
