@@ -89,6 +89,12 @@ Vagrant.configure(2) do |config|
     # postresql
     apt-get -y install postgresql postgresql-contrib libpq-dev
 
+    # Create user vagrant within postgres which can create databases
+    su -l postgres -c 'createuser --createdb vagrant'
+    # Update postgres config to allow local user to connect
+    sed -i.bak -E 's/(local|host)(\s+?all\s+?all.*?)(peer|md5)/\\1\\2trust/' /etc/postgresql/9.3/main/pg_hba.conf
+    /etc/init.d/postgresql restart
+
     # check if rvm is installed
     if [ "`su -l vagrant -c 'type -t rvm'`" != "function" ]; then
       echo install rvm, not so usefull in VMbut usefull if you want to set up locally and follow this steps
@@ -103,6 +109,7 @@ Vagrant.configure(2) do |config|
     fi
 
     echo installing bundler
+    su -l vagrant -c 'cd /vagrant && git checkout develop'
     su -l vagrant -c 'cd /vagrant && bundle'
     su -l vagrant -c 'cd /vagrant && rake db:create'
     su -l vagrant -c 'cd /vagrant && rake db:migrate'
