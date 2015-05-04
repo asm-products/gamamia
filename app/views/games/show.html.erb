@@ -35,6 +35,14 @@
 
       </div>
   </div>
+  <% if @game.game_developer %>
+    <div class="container">
+      <h3>Developer</h3>
+      <p><%= @game.game_developer.title %></p>
+      <p><%= image_tag @game.game_developer.thumbnail %></p>
+      <p><%= @game.game_developer.location %></p>
+    </div>
+  <% end %>
   <div class="container">
     <h3>Description</h3>
     <%= @game.extended_description %>
