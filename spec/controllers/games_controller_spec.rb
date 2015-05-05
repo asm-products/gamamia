@@ -108,10 +108,26 @@ RSpec.describe GamesController do
       end
 
       it "should save tags" do
-        post :create, game: game_params.merge(platform_list: ["iOS", "Mac", "Windows"])
-        expect(Game.last.platform_list).to include("iOS")
-        expect(Game.last.platform_list).to include("Mac")
-        expect(Game.last.platform_list).to include("Windows")
+        ios = Platform.create!(name: "iOS")
+        mac = Platform.create!(name: "Mac")
+        windows = Platform.create!(name: "Windows")
+
+        post :create,
+             game: game_params.merge(
+               game_platforms_attributes: [
+                 {
+                   platform_id: ios.id
+                 },
+                 {
+                   platform_id: mac.id
+                 },
+                 {
+                   platform_id: windows.id
+                 }
+               ]
+             )
+
+        expect(Game.last.platforms.map(&:name)).to eq(['iOS', 'Mac', 'Windows'])
       end
     end
 
@@ -156,10 +172,16 @@ RSpec.describe GamesController do
   context "not logged in" do
     describe "GET show" do
       it "should assign related_games" do
-        game1 = Fabricate(:game, platform_list: ["ios", "web"])
-        game2 = Fabricate(:game, platform_list: ["pc"])
-        game3 = Fabricate(:game, platform_list: ["ios", "web"], scheduled_at: nil)
-        game.update_attributes platform_list: ["ios", "android"]
+        ios = Platform.create!(name: "iOS")
+        web = Platform.create!(name: "Web")
+        pc = Platform.create!(name: "PC")
+        android = Platform.create!(name: "Android")
+
+        game1 = Fabricate(:game, platforms: [ios, web])
+        game2 = Fabricate(:game, platforms: [pc])
+        game3 = Fabricate(:game, platforms: [ios, web], scheduled_at: nil)
+        game.platforms << ios
+        game.platforms << android
 
         get :show, id: game.id
         expect(assigns(:related_games)).to eq([game1])

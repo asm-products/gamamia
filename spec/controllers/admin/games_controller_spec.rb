@@ -26,25 +26,22 @@ RSpec.describe Admin::GamesController do
         windows = Platform.create!(name: "Windows")
 
         patch :update,
-              {
-                id: game.id,
-                game: game_params.merge(
-                  game_platforms_attributes: [
-                    {
-                      platform_id: ios.id
-                    },
-                    {
-                      platform_id: mac.id
-                    },
-                    {
-                      platform_id: windows.id
-                    }
-                  ]
-                )
-              }
-        expect(game.reload.platforms.map(&:name)).to include("iOS")
-        expect(game.reload.platforms.map(&:name)).to include("Mac")
-        expect(game.reload.platforms.map(&:name)).to include("Windows")
+              id: game.id,
+              game: game_params.merge(
+                game_platforms_attributes: [
+                  {
+                    platform_id: ios.id
+                  },
+                  {
+                    platform_id: mac.id
+                  },
+                  {
+                    platform_id: windows.id
+                  }
+                ]
+              )
+
+        expect(game.reload.platforms.map(&:name)).to eq(['iOS', 'Mac', 'Windows'])
       end
 
       it "should send notification email when scheduled" do

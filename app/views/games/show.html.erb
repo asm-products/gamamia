@@ -17,8 +17,8 @@
           <a href="<%= @game.link %>" target="_blank"><%= icon 'link' %> <%= @game.link %></a>
 
           <ul class="list-reset platform-list">
-            <% @game.platform_list.each do |platform| %>
-              <li><%= platform %>
+            <% @game.platforms.each do |platform| %>
+              <li><%= platform.name %>
             <% end %>
           </ul>
 
