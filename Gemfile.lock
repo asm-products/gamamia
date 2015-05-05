@@ -84,6 +84,7 @@ GEM
       aws-sdk (~> 1.58)
       carrierwave (~> 0.7)
     cliver (0.3.2)
+    cocoon (1.2.6)
     codeclimate-test-reporter (0.4.7)
       simplecov (>= 0.7.1, < 1.0.0)
     coderay (1.1.0)
@@ -315,6 +316,7 @@ DEPENDENCIES
   cancancan (~> 1.10)
   capybara
   carrierwave-aws
+  cocoon
   codeclimate-test-reporter
   devise
   dotenv-rails
