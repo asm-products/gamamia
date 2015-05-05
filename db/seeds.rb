@@ -93,3 +93,9 @@ Game.find_each do |game|
   game.videos_count = game.videos.count
   game.save!
 end
+
+platforms = ['PC', 'Mac', 'Linux', 'iOS', 'Android', 'Windows Phone', 'Web']
+
+platforms.each do |platform|
+  Platform.create!(name: platform)
+end
