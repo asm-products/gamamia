@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150505123715) do
+ActiveRecord::Schema.define(version: 20150505124600) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,18 @@ ActiveRecord::Schema.define(version: 20150505123715) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "game_platforms", force: :cascade do |t|
+    t.integer  "game_id"
+    t.integer  "platform_id"
+    t.string   "url"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "game_platforms", ["game_id", "platform_id"], name: "index_game_platforms_on_game_id_and_platform_id", unique: true, using: :btree
+  add_index "game_platforms", ["game_id"], name: "index_game_platforms_on_game_id", using: :btree
+  add_index "game_platforms", ["platform_id"], name: "index_game_platforms_on_platform_id", using: :btree
 
   create_table "games", force: :cascade do |t|
     t.string   "title",                                 null: false
@@ -165,6 +177,8 @@ ActiveRecord::Schema.define(version: 20150505123715) do
 
   add_foreign_key "comments", "games", name: "comments_game_id_fk"
   add_foreign_key "comments", "users", name: "comments_user_id_fk"
+  add_foreign_key "game_platforms", "games"
+  add_foreign_key "game_platforms", "platforms"
   add_foreign_key "games", "game_developers", name: "games_game_developer_id_fk"
   add_foreign_key "games", "users", name: "games_user_id_fk"
   add_foreign_key "identities", "users", name: "identities_user_id_fk"
