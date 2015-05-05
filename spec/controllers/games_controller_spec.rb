@@ -52,21 +52,21 @@ RSpec.describe GamesController do
           expect(assigns(:weeks)).to eq([[week,[game]]])
         end
 
-        it "assignes scheduled games scoped by current week" do
+        it "assigns scheduled games scoped by current week" do
           game_last_week
           week = game.scheduled_at.beginning_of_week
           get :index, view: 'weekly'
           expect(assigns(:weeks)).to eq([[week,[game]]])
         end
 
-        it "assignes scheduled games scoped by last week" do
+        it "assigns scheduled games scoped by last week" do
           week = game_last_week.scheduled_at.beginning_of_week
           get :index, week: week.to_s, view: 'weekly'
 
           expect(assigns(:weeks)).to eq([[week,[game_last_week]]])
         end
 
-        it "assignes games scoped by platform" do
+        it "assigns games scoped by platform" do
           week = game.scheduled_at.beginning_of_week
           weeks = game_platform_pc
           get :index, platform: "PC", view: 'weekly'
@@ -75,7 +75,7 @@ RSpec.describe GamesController do
         end
       end
 
-      it "assignes platforms as @platforms" do
+      it "assigns platforms as @platforms" do
         game_platform_pc
         platforms = Game.scheduled.tags_on(:platforms)
         get :index
