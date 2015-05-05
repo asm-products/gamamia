@@ -1,0 +1,17 @@
+<div class="mb3 nested-fields">
+  <%= f.hidden_field :id %>
+  <div>
+    <%= f.label :platform_id %>
+    <br />
+    <%= f.collection_select(:platform_id, Platform.all, :id, :name) %>
+  </div>
+  <div>
+    <%= f.label :url %>
+    <br />
+    <%= f.text_field :url %>
+  </div>
+
+  <div>
+    <%= link_to_remove_association 'Remove platform', f, class: 'red' %>
+  </div>
+</div>

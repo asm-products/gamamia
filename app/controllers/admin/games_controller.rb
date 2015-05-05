@@ -38,7 +38,22 @@ module Admin
     end
 
     def game_params
-      params.require(:game).permit(:title, :thumbnail, :description, :extended_description, :status, :link, :scheduled_at, :game_developer_id, platform_list: [])
+      params.require(:game).permit(
+        :title,
+        :thumbnail,
+        :description,
+        :extended_description,
+        :status,
+        :link,
+        :scheduled_at,
+        :game_developer_id,
+        game_platforms_attributes: [
+          :id,
+          :platform_id,
+          :url,
+          :_destroy
+        ]
+      )
     end
   end
 end

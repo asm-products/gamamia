@@ -10,6 +10,8 @@ class Game < ActiveRecord::Base
   belongs_to :user
   belongs_to :game_developer
 
+  accepts_nested_attributes_for :game_platforms, reject_if: :all_blank, allow_destroy: true
+
   default_scope -> { where(deleted_at: nil) }
 
   scope :unscheduled, -> { where(scheduled_at: nil) }
