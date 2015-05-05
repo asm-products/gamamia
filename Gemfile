@@ -26,6 +26,7 @@ gem 'turbolinks'
 gem 'nav_lynx'
 gem 'underscore-rails'
 gem 'cocoon'
+gem 'validate_url'
 
 gem 'html-pipeline'
 # html-pipeline dependencies

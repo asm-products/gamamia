@@ -4,4 +4,6 @@ class GamePlatform < ActiveRecord::Base
 
   validates :game,
             uniqueness: { scope: :platform }
+
+  validates :url, url: { allow_blank: true }
 end
