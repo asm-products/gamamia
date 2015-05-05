@@ -23,7 +23,7 @@ module Admin
         end
         redirect_to admin_games_path
       else
-        render 'new'
+        render :edit
       end
     end
 
