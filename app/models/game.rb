@@ -27,4 +27,11 @@ class Game < ActiveRecord::Base
     touch(:deleted_at)
     freeze
   end
+
+  def find_related_platforms
+    Game
+      .joins(:platforms)
+      .where(platforms: { id: platforms.map(&:id) })
+      .where.not(games: { id: id })
+  end
 end
