@@ -6,19 +6,19 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-admin = User.create!(email:         "admin@example.com",
+admin = User.create!(email: "admin@example.com",
              password:      "password",
              name:          "Joe Smith",
-             username: "joe-smith",
+             username:      "joe-smith",
              occupation:    "Developer")
 
 User.create!(email:         "admin@email.com",
              password:      "foobarfoo",
              name:          "Joe Smith",
-             username: "joe-smith2",
+             username:      "joe-smith2",
              occupation:    "admin")
 
-Game.create!(title:          "Example Game",
+Game.create!(title:         "Example Game",
             description:    "Example description of a game, which would include a short summary of what this is all about",
             status:         "released",
             link:           "http://example.com",
@@ -31,8 +31,8 @@ Comment.create!(content:    "Example comment, which would reference a game somew
 
 Video.create!(
             title:          "Game",
-            thumbnail:       "http://placehold.it/150x150",
-            category:        "Trailer",
+            thumbnail:      "http://placehold.it/150x150",
+            category:       "Trailer",
             embed:          "https://www.youtube.com/watch?v=9ZyQK6kUdWQ",
             game_id:        1)
 
