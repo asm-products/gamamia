@@ -41,7 +41,7 @@ RSpec.describe GamesController do
 
     describe "GET index" do
       let(:game_last_week) { Fabricate :game, scheduled_at: 7.days.ago}
-      let(:game_platform_pc) { Fabricate :game, platform_list: "PC", scheduled_at: Date.today }
+      let(:game_platform_pc) { Fabricate :game, platforms: [Platform.create!(name: "PC")], scheduled_at: Date.today }
 
       subject { get :index }
 
@@ -77,7 +77,7 @@ RSpec.describe GamesController do
 
       it "assigns platforms as @platforms" do
         game_platform_pc
-        platforms = Game.scheduled.tags_on(:platforms)
+        platforms = Platform.all
         get :index
 
         expect(assigns(:platforms)).to eq(platforms)
