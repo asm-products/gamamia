@@ -1,5 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Platform, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should have_many(:game_platforms) }
+  it { should have_many(:games) }
 end
