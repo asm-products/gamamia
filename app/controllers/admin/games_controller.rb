@@ -1,6 +1,9 @@
 module Admin
   class GamesController < ApplicationController
     load_and_authorize_resource
+
+    before_action :set_game_developers, only: [:edit, :update]
+
     def index
       @games = @games.order(:scheduled_at)
     end
@@ -10,7 +13,6 @@ module Admin
     end
 
     def edit
-      @devs = GameDeveloper.order(:title).all.pluck(:title, :id)
     end
 
     def update
@@ -31,6 +33,10 @@ module Admin
     end
 
     private
+    def set_game_developers
+      @game_developers = GameDeveloper.order(:title).all.pluck(:title, :id)
+    end
+
     def game_params
       params.require(:game).permit(:title, :thumbnail, :description, :extended_description, :status, :link, :scheduled_at, :game_developer_id, platform_list: [])
     end
