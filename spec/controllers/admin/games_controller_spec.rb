@@ -15,16 +15,33 @@ RSpec.describe Admin::GamesController do
       it "should assign the correct objects" do
         get :edit, id: game
         expect(assigns(:game)).to eq game
-        expect(assigns(:devs)).to_not be_nil
+        expect(assigns(:game_developers)).to_not be_nil
       end
     end
 
     describe "PATCH update" do
       it "should save tags" do
-        patch :update, {id: game.id, game: game_params.merge(platform_list: ["iOS", "Mac", "Windows"])}
-        expect(game.reload.platform_list).to include("iOS")
-        expect(game.reload.platform_list).to include("Mac")
-        expect(game.reload.platform_list).to include("Windows")
+        ios = Platform.create!(name: "iOS")
+        mac = Platform.create!(name: "Mac")
+        windows = Platform.create!(name: "Windows")
+
+        patch :update,
+              id: game.id,
+              game: game_params.merge(
+                game_platforms_attributes: [
+                  {
+                    platform_id: ios.id
+                  },
+                  {
+                    platform_id: mac.id
+                  },
+                  {
+                    platform_id: windows.id
+                  }
+                ]
+              )
+
+        expect(game.reload.platforms.map(&:name)).to eq(['iOS', 'Mac', 'Windows'])
       end
 
       it "should send notification email when scheduled" do

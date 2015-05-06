@@ -19,13 +19,14 @@ gem 'react-rails', '~> 1.0.0.pre', github: 'reactjs/react-rails'
 gem 'sass-rails', '~> 5.0.1'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'uglifier', '>= 1.3.0'
-gem 'acts-as-taggable-on', '~> 3.4'
 gem 'cancancan', '~> 1.10'
 gem 'newrelic_rpm'
 gem 'rollbar'
 gem 'turbolinks'
 gem 'nav_lynx'
 gem 'underscore-rails'
+gem 'cocoon'
+gem 'validate_url'
 
 gem 'html-pipeline'
 # html-pipeline dependencies

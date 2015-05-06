@@ -41,7 +41,7 @@ RSpec.describe GamesController do
 
     describe "GET index" do
       let(:game_last_week) { Fabricate :game, scheduled_at: 7.days.ago}
-      let(:game_platform_pc) { Fabricate :game, platform_list: "PC", scheduled_at: Date.today }
+      let(:game_platform_pc) { Fabricate :game, platforms: [Platform.create!(name: "PC")], scheduled_at: Date.today }
 
       subject { get :index }
 
@@ -52,21 +52,21 @@ RSpec.describe GamesController do
           expect(assigns(:weeks)).to eq([[week,[game]]])
         end
 
-        it "assignes scheduled games scoped by current week" do
+        it "assigns scheduled games scoped by current week" do
           game_last_week
           week = game.scheduled_at.beginning_of_week
           get :index, view: 'weekly'
           expect(assigns(:weeks)).to eq([[week,[game]]])
         end
 
-        it "assignes scheduled games scoped by last week" do
+        it "assigns scheduled games scoped by last week" do
           week = game_last_week.scheduled_at.beginning_of_week
           get :index, week: week.to_s, view: 'weekly'
 
           expect(assigns(:weeks)).to eq([[week,[game_last_week]]])
         end
 
-        it "assignes games scoped by platform" do
+        it "assigns games scoped by platform" do
           week = game.scheduled_at.beginning_of_week
           weeks = game_platform_pc
           get :index, platform: "PC", view: 'weekly'
@@ -75,9 +75,9 @@ RSpec.describe GamesController do
         end
       end
 
-      it "assignes platforms as @platforms" do
+      it "assigns platforms as @platforms" do
         game_platform_pc
-        platforms = Game.scheduled.tags_on(:platforms)
+        platforms = Platform.all
         get :index
 
         expect(assigns(:platforms)).to eq(platforms)
@@ -108,10 +108,26 @@ RSpec.describe GamesController do
       end
 
       it "should save tags" do
-        post :create, game: game_params.merge(platform_list: ["iOS", "Mac", "Windows"])
-        expect(Game.last.platform_list).to include("iOS")
-        expect(Game.last.platform_list).to include("Mac")
-        expect(Game.last.platform_list).to include("Windows")
+        ios = Platform.create!(name: "iOS")
+        mac = Platform.create!(name: "Mac")
+        windows = Platform.create!(name: "Windows")
+
+        post :create,
+             game: game_params.merge(
+               game_platforms_attributes: [
+                 {
+                   platform_id: ios.id
+                 },
+                 {
+                   platform_id: mac.id
+                 },
+                 {
+                   platform_id: windows.id
+                 }
+               ]
+             )
+
+        expect(Game.last.platforms.map(&:name)).to eq(['iOS', 'Mac', 'Windows'])
       end
     end
 
@@ -156,10 +172,16 @@ RSpec.describe GamesController do
   context "not logged in" do
     describe "GET show" do
       it "should assign related_games" do
-        game1 = Fabricate(:game, platform_list: ["ios", "web"])
-        game2 = Fabricate(:game, platform_list: ["pc"])
-        game3 = Fabricate(:game, platform_list: ["ios", "web"], scheduled_at: nil)
-        game.update_attributes platform_list: ["ios", "android"]
+        ios = Platform.create!(name: "iOS")
+        web = Platform.create!(name: "Web")
+        pc = Platform.create!(name: "PC")
+        android = Platform.create!(name: "Android")
+
+        game1 = Fabricate(:game, platforms: [ios, web])
+        game2 = Fabricate(:game, platforms: [pc])
+        game3 = Fabricate(:game, platforms: [ios, web], scheduled_at: nil)
+        game.platforms << ios
+        game.platforms << android
 
         get :show, id: game.id
         expect(assigns(:related_games)).to eq([game1])

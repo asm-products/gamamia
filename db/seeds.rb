@@ -6,19 +6,19 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-admin = User.create!(email:         "admin@example.com",
+admin = User.create!(email: "admin@example.com",
              password:      "password",
              name:          "Joe Smith",
-             username: "joe-smith",
+             username:      "joe-smith",
              occupation:    "Developer")
 
 User.create!(email:         "admin@email.com",
              password:      "foobarfoo",
              name:          "Joe Smith",
-             username: "joe-smith2",
+             username:      "joe-smith2",
              occupation:    "admin")
 
-Game.create!(title:          "Example Game",
+Game.create!(title:         "Example Game",
             description:    "Example description of a game, which would include a short summary of what this is all about",
             status:         "released",
             link:           "http://example.com",
@@ -31,16 +31,24 @@ Comment.create!(content:    "Example comment, which would reference a game somew
 
 Video.create!(
             title:          "Game",
-            thumbnail:       "http://placehold.it/150x150",
-            category:        "Trailer",
+            thumbnail:      "http://placehold.it/150x150",
+            category:       "Trailer",
             embed:          "https://www.youtube.com/watch?v=9ZyQK6kUdWQ",
             game_id:        1)
+
+platform_names = ['PC', 'Mac', 'Linux', 'iOS', 'Android', 'Windows Phone', 'Web']
+
+platform_names.each do |name|
+  Platform.create!(name: name)
+end
+
+platforms = Platform.all
 
 99.times do |n|
   title  = Faker::App.name
   description = Faker::Lorem.sentence
   status = ["released", "beta"].sample
-  platform = ["Xbox", "Playstation", "PC"].sample
+  platform = platforms.sample
   votes = rand(1..15)
   created_at = Faker::Time.between(7.days.ago, Time.now)
 
@@ -56,16 +64,20 @@ Video.create!(
     occupation: occupation
   )
 
-  Game.create!(title:       title,
-             description:   description,
-             status:        status,
-             link:          "http://example.com",
-             votes:         votes,
-             created_at:    created_at,
-             updated_at:    created_at,
-             user:          user,
-             scheduled_at:  Date.today - n.days,
-             platform_list: platform)
+  Game.create!(title:         title,
+               description:   description,
+               status:        status,
+               link:          "http://example.com",
+               votes:         votes,
+               created_at:    created_at,
+               updated_at:    created_at,
+               user:          user,
+               scheduled_at:  Date.today - n.days,
+               game_platforms_attributes: [
+                 {
+                   platform_id: platform.id
+                 }
+               ])
 end
 
 199.times do |n|

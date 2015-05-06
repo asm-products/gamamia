@@ -1,20 +1,4 @@
-class Platform
-  attr_reader :id, :name
-
-  def initialize(name)
-    @name = name
-    @id = name
-  end
-
-  def self.all
-    [
-      Platform.new('PC'),
-      Platform.new('Mac'),
-      Platform.new('Linux'),
-      Platform.new('iOS'),
-      Platform.new('Android'),
-      Platform.new('Windows Phone'),
-      Platform.new('Web')
-    ]
-  end
+class Platform < ActiveRecord::Base
+  has_many :game_platforms, dependent: :destroy
+  has_many :games, through: :game_platforms
 end

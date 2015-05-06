@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150428064920) do
+ActiveRecord::Schema.define(version: 20150505153616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,6 +37,18 @@ ActiveRecord::Schema.define(version: 20150428064920) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "game_platforms", force: :cascade do |t|
+    t.integer  "game_id"
+    t.integer  "platform_id"
+    t.string   "url"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "game_platforms", ["game_id", "platform_id"], name: "index_game_platforms_on_game_id_and_platform_id", unique: true, using: :btree
+  add_index "game_platforms", ["game_id"], name: "index_game_platforms_on_game_id", using: :btree
+  add_index "game_platforms", ["platform_id"], name: "index_game_platforms_on_platform_id", using: :btree
 
   create_table "games", force: :cascade do |t|
     t.string   "title",                                 null: false
@@ -83,25 +95,11 @@ ActiveRecord::Schema.define(version: 20150428064920) do
 
   add_index "identities", ["user_id"], name: "index_identities_on_user_id", using: :btree
 
-  create_table "taggings", force: :cascade do |t|
-    t.integer  "tag_id"
-    t.integer  "taggable_id"
-    t.string   "taggable_type"
-    t.integer  "tagger_id"
-    t.string   "tagger_type"
-    t.string   "context",       limit: 128
-    t.datetime "created_at"
+  create_table "platforms", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
-
-  add_index "taggings", ["tag_id", "taggable_id", "taggable_type", "context", "tagger_id", "tagger_type"], name: "taggings_idx", unique: true, using: :btree
-  add_index "taggings", ["taggable_id", "taggable_type", "context"], name: "index_taggings_on_taggable_id_and_taggable_type_and_context", using: :btree
-
-  create_table "tags", force: :cascade do |t|
-    t.string  "name"
-    t.integer "taggings_count", default: 0
-  end
-
-  add_index "tags", ["name"], name: "index_tags_on_name", unique: true, using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "",   null: false
@@ -159,6 +157,8 @@ ActiveRecord::Schema.define(version: 20150428064920) do
 
   add_foreign_key "comments", "games", name: "comments_game_id_fk"
   add_foreign_key "comments", "users", name: "comments_user_id_fk"
+  add_foreign_key "game_platforms", "games"
+  add_foreign_key "game_platforms", "platforms"
   add_foreign_key "games", "game_developers", name: "games_game_developer_id_fk"
   add_foreign_key "games", "users", name: "games_user_id_fk"
   add_foreign_key "identities", "users", name: "identities_user_id_fk"

@@ -7,7 +7,7 @@ class GamesController < ApplicationController
     @last_week = @current_week - 7.days
     @next_week = @current_week + 7.days
 
-    @platforms = Game.scheduled.tags_on(:platforms)
+    @platforms = Platform.all
 
     @games = @games.with_platform(params[:platform]) if params[:platform].present?
 
@@ -68,6 +68,19 @@ class GamesController < ApplicationController
 
   private
   def game_params
-    params.require(:game).permit(:title, :thumbnail, :description, :extended_description, :status, :link, platform_list: [])
+    params.require(:game).permit(
+      :title,
+      :thumbnail,
+      :description,
+      :extended_description,
+      :status,
+      :link,
+      game_platforms_attributes: [
+        :id,
+        :platform_id,
+        :url,
+        :_destroy
+      ]
+    )
   end
 end
